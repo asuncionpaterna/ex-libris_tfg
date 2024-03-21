@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_anadir">
 
     <fragment
         android:id="@+id/nav_home"
@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.booklist_tfg.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_anadir"
+        android:name="com.example.booklist_tfg.ui.anadir.AnadirFragment"
+        android:label="@string/menu_anadir"
+        tools:layout="@layout/fragment_anadir" />
 </navigation>
