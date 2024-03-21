@@ -64,9 +64,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             ArrayList<String> autores = bookInfo.getNombreAutoria();
             for (int i = 0; i < autores.size(); i++){
                 sb.append(autores.get(i));
-                if(i< autores.size()-1){
-                    sb.append(", ");
-                }
+                sb.append(i < autores.size() - 1 ? ", " : "");
         }
         holder.autoriaTV.setText("Autoria: " + sb);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
