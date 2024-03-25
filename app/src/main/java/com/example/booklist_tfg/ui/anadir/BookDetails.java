@@ -1,41 +1,47 @@
 package com.example.booklist_tfg.ui.anadir;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class BookDetails extends AppCompatActivity {
 
     // creating variables for strings,text view, image views and button.
     String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink;
+    Libro libro;
     int pageCount;
     private ArrayList<String> authors;
 
-    TextView titleTV, subtitleTV, publisherTV, descTV, pageTV, publishDateTV;
-    Button previewBtn, buyBtn;
+    TextView titleTV, subtitleTV, publisherTV, descTV, pageTV, publishDateTV, idTVFechaLectura;
+    Button previewBtn, anadirBtn, fechaBtn;
+
+    Switch favoritoSwitch, esPapelSwitch;
     private ImageView bookIV;
+    boolean favorito, esPapel;
+
+    private Date fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +56,13 @@ public class BookDetails extends AppCompatActivity {
         pageTV = findViewById(R.id.idTVNoOfPages);
         publishDateTV = findViewById(R.id.idTVPublishDate);
         previewBtn = findViewById(R.id.idBtnPreview);
-        buyBtn = findViewById(R.id.idBtnBuy);
+        anadirBtn = findViewById(R.id.idBtnBuy);
         bookIV = findViewById(R.id.idIVbook);
+        fechaBtn = findViewById(R.id.idBtnFecha);
+        idTVFechaLectura = findViewById(R.id.idTVFechaLectura);
+        favoritoSwitch = findViewById(R.id.idSwitchFavorito);
+        esPapelSwitch = findViewById(R.id.idSwitchEsPapel);
+
 
         // getting the data which we have passed from our adapter class.
         title = getIntent().getStringExtra("title");
@@ -64,15 +75,17 @@ public class BookDetails extends AppCompatActivity {
         previewLink = getIntent().getStringExtra("previewLink");
         infoLink = getIntent().getStringExtra("infoLink");
         buyLink = getIntent().getStringExtra("buyLink");
+        libro = (Libro) getIntent().getSerializableExtra("libro");
+
 
         // after getting the data we are setting
         // that data to our text views and image view.
-        titleTV.setText(title);
+        titleTV.setText("Título: "+title);
         subtitleTV.setText(subtitle);
         publisherTV.setText(publisher);
-        publishDateTV.setText("Published On : " + publishedDate);
+        publishDateTV.setText("Publicado el : " + publishedDate);
         descTV.setText(description);
-        pageTV.setText("No Of Pages : " + pageCount);
+        pageTV.setText("Nº de Páginas : " + pageCount);
 
 
         Picasso.get().load(thumbnail).into(bookIV);
@@ -95,22 +108,56 @@ public class BookDetails extends AppCompatActivity {
             }
         });
 
-        // initializing on click listener for buy button.
-        buyBtn.setOnClickListener(new View.OnClickListener() {
+        // Funcionalidad botón AÑADIR
+        anadirBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (buyLink.isEmpty()) {
-                    // below toast message is displaying when buy link is empty.
-                    Toast.makeText(BookDetails.this, "No buy page present for this book", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                // if the link is present we are opening
-                // the link via an intent.
-                Uri uri = Uri.parse(buyLink);
-                Intent i = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(i);
+                favorito = favoritoSwitch.isChecked();
+                esPapel = esPapelSwitch.isChecked();
+                libro.setFechaLectura(fecha);
+                libro.setFavorito(favorito);
+                libro.setEsPapel(esPapel);
+                System.out.println(libro.toString());
+                new GuardarLibroAsinc(libro, getBaseContext() ).execute();
             }
         });
+
+        fechaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePicker(BookDetails.this);
+            }
+        });
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        fecha = new Date();
+        idTVFechaLectura.setText(sdf.format(fecha));
+
+
     }
 
+    //Para mostrar el calendario de fecha de lectura
+    private void showDatePicker(Context context) {
+        // Obtener la fecha actual
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Crear el DatePickerDialog y configurarlo
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDayOfMonth) {
+                        // Se establece la fecha seleccionada en el TextView
+                        Calendar selectedDate = Calendar.getInstance();
+                        selectedDate.set(selectedYear, selectedMonth, selectedDayOfMonth);
+                        fecha = selectedDate.getTime();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                        String formattedDate = dateFormat.format(fecha);
+                        idTVFechaLectura.setText(formattedDate);
+                    }
+                }, year, month, dayOfMonth);
+        // Mostrar el diálogo
+        datePickerDialog.show();
+    }
 }

@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,7 +19,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class Libro {
+public class Libro implements Serializable {
     //
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -105,4 +106,6 @@ public class Libro {
     public Boolean getEsPapel() {
         return esPapel;
     }
+
+
 }

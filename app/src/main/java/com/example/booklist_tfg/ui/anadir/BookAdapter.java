@@ -81,6 +81,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
                 i.putExtra("pageCount", bookInfo.getPaginas());
                 i.putExtra("thumbnail", bookInfo.getPortada());
+                i.putExtra("libro", bookInfo);
 
 
                 // after passing that data we are

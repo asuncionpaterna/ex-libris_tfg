@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Actualizar datos"
+        android:text="Añadir lectura"
         android:textColor="@color/purple_700"
         android:textSize="20dp"
         android:layout_marginBottom="20dp"/>
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Pratchett"
+            android:text="King"
             android:hint="Introduce tu búsqueda" />
 
         <!-- Botón de búsqueda -->
@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Buscar"/>
+            android:text="Buscar Libro"/>
 
     </LinearLayout>
 

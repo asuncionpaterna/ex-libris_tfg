@@ -12,7 +12,11 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,5 +57,5 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     implementation 'com.squareup.picasso:picasso:2.8'
-
+    implementation 'com.google.code.gson:gson:2.10.1'
 }
