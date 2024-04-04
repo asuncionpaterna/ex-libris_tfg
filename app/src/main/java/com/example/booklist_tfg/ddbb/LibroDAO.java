@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.booklist_tfg.Model.Libro;
@@ -31,4 +32,8 @@ public interface LibroDAO {
 
     @Delete
     void delete(Libro libro);
+
+    @Transaction
+    @Delete
+    void deleteAll(List<Libro> libros);
 }

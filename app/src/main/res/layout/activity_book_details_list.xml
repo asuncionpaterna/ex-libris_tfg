@@ -20,28 +20,27 @@
                 android:id="@+id/idTVDetalles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginTop="4dp"
                 android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
                 android:padding="4dp"
                 android:text="Detalles libro leído"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/idIVPortada"
                 android:layout_width="130dp"
                 android:layout_height="160dp"
                 android:layout_marginHorizontal="135dp"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside" />
         </LinearLayout>
 
         <LinearLayout
@@ -61,8 +60,7 @@
                 android:padding="4dp"
                 android:text="Titulo"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/idTVAutoria"
@@ -94,17 +92,6 @@
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
-            <Switch
-                android:id="@+id/idSwitchFavorito"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-
-                android:padding="4dp"
-                android:text="Favorito"
-                android:textSize="15sp" />
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,8 +102,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
                     android:paddingTop="4dp"
                     android:text="Fecha Lectura"
                     android:textColor="@color/black"
@@ -126,43 +113,48 @@
                     android:id="@+id/idTVFechaLectura"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
                     android:layout_margin="8dp"
+                    android:layout_marginHorizontal="5dp"
                     android:layout_weight="1"
                     android:paddingTop="4dp"
                     android:text="Hoy"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginHorizontal="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:text="Digital" />
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center_vertical"
+                android:weightSum="2"
+                android:orientation="horizontal">
 
-            <Switch
-                android:id="@+id/idSwitchEsPapel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="4dp" />
+                <CheckBox
+                    android:id="@+id/idCBFavorito"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/checkbox_selector_favorite"
+                    android:checked="false"
+                    android:padding="4dp"
+                    android:text="Favorito"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:text="Papel" />
-        </LinearLayout>
+                <CheckBox
+                    android:id="@+id/idCBesPapel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/checkbox_selector_book_digital"
+                    android:checked="true"
+                    android:padding="4dp"
+                    android:text="Formato"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
         </LinearLayout>
 
 
@@ -186,7 +178,7 @@
 
             <!--button for displaying book preview-->
             <Button
-                android:id="@+id/idBtnPreview"
+                android:id="@+id/idBtnVolver"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -196,7 +188,7 @@
 
             <!--button for opening buying page of the book-->
             <Button
-                android:id="@+id/idBtnBuy"
+                android:id="@+id/idBtnModificar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"

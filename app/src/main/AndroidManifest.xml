@@ -27,6 +27,10 @@
         </activity>
         <activity
             android:name="com.example.booklist_tfg.ui.anadir.BookDetails"
+            android:label="Añadir libro"
+            />
+        <activity
+            android:name="com.example.booklist_tfg.ui.listado.BookDetailsList"
             android:label="Detalles del libro"
             />
     </application>

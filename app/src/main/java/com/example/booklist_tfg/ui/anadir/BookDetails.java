@@ -34,7 +34,7 @@ public class BookDetails extends AppCompatActivity {
     int pageCount;
     private ArrayList<String> authors;
 
-    TextView titleTV, subtitleTV, publisherTV, descTV, pageTV, publishDateTV, idTVFechaLectura;
+    TextView titleTV, subtitleTV, autoriaTV, publisherTV, descTV, pageTV, publishDateTV, idTVFechaLectura;
     Button previewBtn, anadirBtn, fechaBtn;
 
     Switch favoritoSwitch, esPapelSwitch;
@@ -50,6 +50,7 @@ public class BookDetails extends AppCompatActivity {
 
         // initializing our views..
         titleTV = findViewById(R.id.idTVTitle);
+        autoriaTV = findViewById(R.id.idTVAutoriaDetails);
         subtitleTV = findViewById(R.id.idTVSubTitle);
         publisherTV = findViewById(R.id.idTVpublisher);
         descTV = findViewById(R.id.idTVDescription);
@@ -65,24 +66,30 @@ public class BookDetails extends AppCompatActivity {
 
 
         // getting the data which we have passed from our adapter class.
-        title = getIntent().getStringExtra("title");
+        libro = (Libro) getIntent().getSerializableExtra("libro");
+        title = libro.getTitulo();
+        authors = libro.getNombreAutoria();
+        publisher = libro.getEditorial();
+        publishedDate = libro.getAnioPublicacion();
+        pageCount = libro.getPaginas();
         subtitle = getIntent().getStringExtra("subtitle");
-        publisher = getIntent().getStringExtra("publisher");
-        publishedDate = getIntent().getStringExtra("publishedDate");
         description = getIntent().getStringExtra("description");
-        pageCount = getIntent().getIntExtra("pageCount", 0);
         thumbnail = getIntent().getStringExtra("thumbnail");
         previewLink = getIntent().getStringExtra("previewLink");
         infoLink = getIntent().getStringExtra("infoLink");
         buyLink = getIntent().getStringExtra("buyLink");
-        libro = (Libro) getIntent().getSerializableExtra("libro");
 
-
+        StringBuilder autoria = new StringBuilder();
+        for (int i = 0; i < authors.size(); i++) {
+            autoria.append(authors.get(i));
+            autoria.append(i < authors.size() - 1 ? ", " : "");
+        }
         // after getting the data we are setting
         // that data to our text views and image view.
-        titleTV.setText("Título: "+title);
+        titleTV.setText("Título: " + title);
+        autoriaTV.setText("Autoria: " + autoria);
         subtitleTV.setText(subtitle);
-        publisherTV.setText(publisher);
+        publisherTV.setText("Editorial: " + publisher);
         publishDateTV.setText("Publicado el : " + publishedDate);
         descTV.setText(description);
         pageTV.setText("Nº de Páginas : " + pageCount);
@@ -95,16 +102,7 @@ public class BookDetails extends AppCompatActivity {
         previewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (previewLink.isEmpty()) {
-                    // below toast message is displayed when preview link is not present.
-                    Toast.makeText(BookDetails.this, "No preview Link present", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                // if the link is present we are opening
-                // that link via an intent.
-                Uri uri = Uri.parse(previewLink);
-                Intent i = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(i);
+                //Botón volver añadir funcionalidad de cerrar
             }
         });
 
@@ -117,8 +115,7 @@ public class BookDetails extends AppCompatActivity {
                 libro.setFechaLectura(fecha);
                 libro.setFavorito(favorito);
                 libro.setEsPapel(esPapel);
-                System.out.println(libro.toString());
-                new GuardarLibroAsinc(libro, getBaseContext() ).execute();
+                new GuardarLibroAsinc(libro, getBaseContext()).execute();
             }
         });
 

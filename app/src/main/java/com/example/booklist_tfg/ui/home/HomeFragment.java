@@ -20,6 +20,7 @@ import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
 import com.example.booklist_tfg.ui.anadir.BookAdapter;
+import com.example.booklist_tfg.ui.listado.BookAdapterList;
 
 
 import java.time.Year;
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment {
      List<Libro> listaMostrar = new ArrayList<>();
      // below line is use to pass our
      // array list in adapter class.
-     BookAdapter adapter = new BookAdapter((ArrayList<Libro>) listaLibros, context);
+     BookAdapterList adapter = new BookAdapterList((ArrayList<Libro>) listaLibros, context);
      // below line is use to add linear layout
      // manager for our recycler view.
      LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
@@ -68,6 +69,8 @@ public class HomeFragment extends Fragment {
 
             LibroDAO libroDAO = database.libroDAO();
             listaLibros = libroDAO.getByAnio(String.valueOf(anio));
+            System.out.println(listaLibros.size());
+            //libroDAO.deleteAll(listaLibros);
             return null;
         }
 
