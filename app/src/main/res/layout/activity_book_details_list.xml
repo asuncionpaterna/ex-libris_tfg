@@ -39,8 +39,8 @@
                 android:id="@+id/idIVPortada"
                 android:layout_width="130dp"
                 android:layout_height="160dp"
-                android:layout_marginHorizontal="135dp"
-                android:scaleType="centerInside" />
+                android:layout_margin="10dp"
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +50,6 @@
             android:layout_marginTop="15dp"
             android:orientation="vertical">
 
-            <!--Text view for displaying book publisher-->
 
             <TextView
                 android:id="@+id/idTVTitulo"
@@ -136,9 +135,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@drawable/checkbox_selector_favorite"
-                    android:checked="false"
+                    android:checked="true"
                     android:padding="4dp"
                     android:text="Favorito"
+                    android:enabled="false"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
@@ -148,9 +148,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@drawable/checkbox_selector_book_digital"
-                    android:checked="true"
+                    android:checked="false"
                     android:padding="4dp"
                     android:text="Formato"
+                    android:enabled="false"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
@@ -178,12 +179,12 @@
 
             <!--button for displaying book preview-->
             <Button
-                android:id="@+id/idBtnVolver"
+                android:id="@+id/idBtnEliminar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:text="Volver"
+                android:text="Eliminar"
                 android:textAllCaps="false" />
 
             <!--button for opening buying page of the book-->

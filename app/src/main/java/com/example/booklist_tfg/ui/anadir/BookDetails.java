@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -35,7 +36,9 @@ public class BookDetails extends AppCompatActivity {
     private ArrayList<String> authors;
 
     TextView titleTV, subtitleTV, autoriaTV, publisherTV, descTV, pageTV, publishDateTV, idTVFechaLectura;
-    Button previewBtn, anadirBtn, fechaBtn;
+    Button fechaBtn;
+
+    ImageButton anadirBtn;
 
     Switch favoritoSwitch, esPapelSwitch;
     private ImageView bookIV;
@@ -56,8 +59,7 @@ public class BookDetails extends AppCompatActivity {
         descTV = findViewById(R.id.idTVDescription);
         pageTV = findViewById(R.id.idTVNoOfPages);
         publishDateTV = findViewById(R.id.idTVPublishDate);
-        previewBtn = findViewById(R.id.idBtnPreview);
-        anadirBtn = findViewById(R.id.idBtnBuy);
+        anadirBtn = findViewById(R.id.idBtnAnadir);
         bookIV = findViewById(R.id.idIVPortadaList);
         fechaBtn = findViewById(R.id.idBtnFecha);
         idTVFechaLectura = findViewById(R.id.idTVFechaLectura);
@@ -98,13 +100,6 @@ public class BookDetails extends AppCompatActivity {
         Picasso.get().load(thumbnail).into(bookIV);
 
 
-        // adding on click listener for our preview button.
-        previewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Botón volver añadir funcionalidad de cerrar
-            }
-        });
 
         // Funcionalidad botón AÑADIR
         anadirBtn.setOnClickListener(new View.OnClickListener() {

@@ -215,27 +215,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="1">
 
-            <!--button for displaying book preview-->
-            <Button
-                android:id="@+id/idBtnPreview"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="Volver"
-                android:textAllCaps="false" />
 
             <!--button for opening buying page of the book-->
-            <Button
-                android:id="@+id/idBtnBuy"
-                android:layout_width="0dp"
+            <ImageButton
+                android:id="@+id/idBtnAnadir"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_add_simple"
+                android:contentDescription="Icono de añadir en listado"
                 android:layout_weight="1"
-                android:text="Añadir"
-                android:textAllCaps="false" />
+
+                android:scaleType="fitCenter"/>
 
         </LinearLayout>
 

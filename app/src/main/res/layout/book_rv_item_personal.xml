@@ -77,36 +77,45 @@
             android:textColor="@color/black"
             android:textSize="11sp" />
 
-
-        <CheckBox
-            android:id="@+id/idCBFavorito"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVFechaLecturaList"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="40dp"
-            android:button="@drawable/checkbox_selector_favorite"
-            android:checked="true"
-            android:padding="3dp"
-            android:text="Favorito"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
+            android:layout_toEndOf="@id/idIVPortadaList"
+            android:gravity="center_vertical"
+            android:weightSum="2"
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/idCBesPapel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/idCBFavorito"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@id/idCBFavorito"
-            android:button="@drawable/checkbox_selector_book_digital"
-            android:checked="false"
-            android:padding="15dp"
-            android:text="Formato"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
+            <CheckBox
+                android:id="@+id/idCBFavorito"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:button="@drawable/checkbox_selector_favorite"
+                android:checked="true"
+                android:padding="3dp"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <CheckBox
+                android:id="@+id/idCBesPapel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:button="@drawable/checkbox_selector_book_digital"
+                android:checked="false"
+                android:padding="15dp"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

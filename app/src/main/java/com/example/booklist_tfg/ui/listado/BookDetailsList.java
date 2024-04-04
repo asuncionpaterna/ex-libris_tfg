@@ -13,8 +13,11 @@ import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BookDetailsList extends AppCompatActivity {
 
@@ -48,7 +51,7 @@ public class BookDetailsList extends AppCompatActivity {
         favoritoCB = findViewById(R.id.idCBFavorito);
         esPapelCB = findViewById(R.id.idCBesPapel);
 
-        volverBtn = findViewById(R.id.idBtnVolver);
+        volverBtn = findViewById(R.id.idBtnEliminar);
         modificarBtn = findViewById(R.id.idBtnModificar);
 
         //Almacenando los datos en las variables
@@ -57,7 +60,7 @@ public class BookDetailsList extends AppCompatActivity {
         autoriaList = libro.getNombreAutoria();
         editorial = libro.getEditorial();
         generoLiterario = libro.getGenero();
-        fechaLectura = libro.getFechaLectura().toString();
+        fecha = libro.getFechaLectura();
         favorito = libro.getFavorito();
         esPapel = libro.getEsPapel();
         portada = libro.getPortada();
@@ -69,15 +72,47 @@ public class BookDetailsList extends AppCompatActivity {
             autoria.append(i < autoriaList.size() - 1 ? ", " : "");
         }
 
-        tituloTV.setText("Título: "+titulo);
-        autoriaTV.setText(("Autoria: ")+autoria);
-        editorialTV.setText("Editorial: "+editorial);
-        generoLiterarioTV.setText("Género literario: "+generoLiterario);
+        fechaLectura = formateoFecha(fecha);
+        tituloTV.setText("Título: " + titulo);
+        autoriaTV.setText(("Autoria: ") + autoria);
+        editorialTV.setText("Editorial: " + verificarEditorial(editorial));
+        generoLiterarioTV.setText("Género literario: " + verificarGeneroLiterario(generoLiterario));
         fechaLecturaTV.setText(fechaLectura);
         esPapelCB.setChecked(esPapel);
         favoritoCB.setChecked(favorito);
 
         Picasso.get().load(portada).into(portadaIV);
+    }
 
+    protected String verificarEditorial(String editorial) {
+        if (editorial.length() == 0 || editorial.equals("")) {
+            editorial = "No hay datos";
+        }
+        return editorial;
+    }
+
+    protected String verificarGeneroLiterario(String generoLiterario) {
+        if (generoLiterario == null || generoLiterario.isEmpty()) {
+            return "No hay datos";
+        } else {
+            String regex = ".*[\\[\\]\"].*"; // Para comprobar si tiene corchetes o comillas dobles
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(generoLiterario);
+
+            if (matcher.matches()) {
+                // Eliminar corchetes y comillas dobles, junto con espacios en blanco al inicio y al final
+                generoLiterario = generoLiterario.replaceAll("[\\[\\]\"]", "").trim();
+            }
+        }
+        System.out.println(generoLiterario);
+        return generoLiterario;
+    }
+
+    protected String formateoFecha(Date fecha) {
+
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        fechaLectura = formatoFecha.format(fecha);
+
+        return fechaLectura;
     }
 }
