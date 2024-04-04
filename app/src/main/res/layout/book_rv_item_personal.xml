@@ -19,62 +19,92 @@
             android:layout_margin="10dp" />
 
         <TextView
-            android:id="@+id/idTVBookTitle"
+            android:id="@+id/idTVTituloList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
-            android:text="Book Title"
+            android:text="Título"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
         <TextView
-            android:id="@+id/idTVpublisher"
+            android:id="@+id/idTVAutoriaList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVBookTitle"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/idIVPortadaList"
-            android:padding="3dp"
-            android:text="Publisher"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
-        <TextView
-            android:id="@+id/idTVautoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idTVpublisher"
+            android:layout_below="@id/idTVTituloList"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Autoria"
             android:textColor="@color/black"
             android:textSize="11sp" />
+
         <TextView
-            android:id="@+id/idTVPageCount"
+            android:id="@+id/idTVEditorialList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVautoria"
+            android:layout_below="@id/idTVAutoriaList"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
-            android:text="Page count"
+            android:text="Editorial"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+        <TextView
+            android:id="@+id/idTGeneroList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idTVEditorialList"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@id/idIVPortadaList"
+            android:padding="3dp"
+            android:text="Género Literario"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
         <TextView
-            android:id="@+id/idTVDate"
+            android:id="@+id/idTVFechaLecturaList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVPageCount"
+            android:layout_below="@id/idTGeneroList"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="5dp"
             android:padding="3dp"
-            android:text="date"
+            android:text="Fecha Lectura"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
+
+        <CheckBox
+            android:id="@+id/idCBFavorito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idTVFechaLecturaList"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:padding="3dp"
+            android:text="Favorito"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            android:checked="true"
+            android:button="@drawable/checkbox_selector_favorite" />
+
+        <CheckBox
+            android:id="@+id/idCBesPapel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/idCBFavorito"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="87dp"
+            android:layout_toStartOf="@id/idCBFavorito"
+            android:button="@drawable/checkbox_selector_book_digital"
+            android:checked="false"
+            android:padding="15dp"
+            android:text="Formato"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Icono cuando el CheckBox está desmarcado -->
+    <item android:drawable="@drawable/ic_no_favorite" android:state_checked="false"/>
+
+    <!-- Icono cuando el CheckBox está marcado -->
+    <item android:drawable="@drawable/ic_favorite" android:state_checked="true"/>
+</selector>

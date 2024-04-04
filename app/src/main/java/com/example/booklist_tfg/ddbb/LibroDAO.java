@@ -19,6 +19,10 @@ public interface LibroDAO {
     @Query("SELECT * FROM libros WHERE id = :id")
     Libro getById(int id);
 
+
+    @Query("SELECT * FROM libros WHERE fecha_lectura LIKE :anio || '%'")
+    List<Libro>getByAnio(String anio);
+
     @Insert
     void insert(Libro libro);
 

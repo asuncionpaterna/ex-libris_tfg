@@ -57,7 +57,7 @@ public class BookDetails extends AppCompatActivity {
         publishDateTV = findViewById(R.id.idTVPublishDate);
         previewBtn = findViewById(R.id.idBtnPreview);
         anadirBtn = findViewById(R.id.idBtnBuy);
-        bookIV = findViewById(R.id.idIVbook);
+        bookIV = findViewById(R.id.idIVPortadaList);
         fechaBtn = findViewById(R.id.idBtnFecha);
         idTVFechaLectura = findViewById(R.id.idTVFechaLectura);
         favoritoSwitch = findViewById(R.id.idSwitchFavorito);

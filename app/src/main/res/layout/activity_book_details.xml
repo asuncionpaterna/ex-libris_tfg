@@ -18,7 +18,7 @@
 
             <!--Image view for displaying our book image-->
             <ImageView
-                android:id="@+id/idIVbook"
+                android:id="@+id/idIVPortadaList"
                 android:layout_width="130dp"
                 android:layout_height="160dp"
                 android:layout_margin="18dp" />

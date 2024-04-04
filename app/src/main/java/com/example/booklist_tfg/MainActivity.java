@@ -1,10 +1,15 @@
 package com.example.booklist_tfg;
 
+import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.ddbb.AppDatabase;
+import com.example.booklist_tfg.ddbb.LibroDAO;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -18,16 +23,21 @@ import androidx.room.Room;
 
 import com.example.booklist_tfg.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
     public static AppDatabase database;
+    public static List<Libro> listaLibros = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        database = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "BaseDatos").build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -52,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        database = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "BaseDatos").build();
+
+
     }
 
     @Override
@@ -69,4 +79,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

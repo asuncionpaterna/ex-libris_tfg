@@ -3,28 +3,16 @@ package com.example.booklist_tfg.ui.anadir;
 
 import android.content.Context;
 import android.content.Intent;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.squareup.picasso.Picasso;
-
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
@@ -110,7 +98,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             publisherTV = itemView.findViewById(R.id.idTVpublisher);
             pageCountTV = itemView.findViewById(R.id.idTVPageCount);
             dateTV = itemView.findViewById(R.id.idTVDate);
-            bookIV = itemView.findViewById(R.id.idIVbook);
+            bookIV = itemView.findViewById(R.id.idIVPortadaList);
             autoriaTV = itemView.findViewById(R.id.idTVautoria);
 
         }
