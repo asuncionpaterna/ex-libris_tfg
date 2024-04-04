@@ -24,7 +24,7 @@ public class GalleryFragment extends Fragment {
 
         final TextView textView = view.findViewById(R.id.text_gallery);
 
-        textView.setText("Asuun");
+        textView.setText("Listado de otros años");
        return view;
     }
 

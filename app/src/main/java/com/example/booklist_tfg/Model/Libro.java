@@ -70,7 +70,7 @@ public class Libro implements Serializable {
 
     public ArrayList<String> getNombreAutoria() {
 
-        return new ArrayList<>(nombreAutoria); //Consejo profesional
+        return new ArrayList<>(nombreAutoria);
     }
 
     public String getEditorial() {
