@@ -1,7 +1,6 @@
 package com.example.booklist_tfg.ui.anadir;
 
 import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
-import static com.example.booklist_tfg.ui.Utils.formateoFecha;
 import static com.example.booklist_tfg.ui.Utils.formateoFechaString;
 import static com.example.booklist_tfg.ui.Utils.verificarDatos;
 import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
@@ -37,7 +36,7 @@ public class BookDetails extends AppCompatActivity {
     int numPaginasDetails;
     private ArrayList<String> autoriaListDetails;
 
-    TextView titleTV, subtitleTV, autoriaTV, publisherTV, descTV, pageTV, publishDateTV, fechaLecturaTV, generoLiterarioTV;
+    TextView titleTV, autoriaTV, publisherTV, descTV, pageTV, publishDateTV, fechaLecturaTV, generoLiterarioTV;
 
     ImageButton anadirBtn, fechaBtn;
 
@@ -119,8 +118,6 @@ public class BookDetails extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         fecha = new Date();
         fechaLecturaTV.setText(sdf.format(fecha));
-
-
     }
 
     //Para mostrar el calendario de fecha de lectura

@@ -13,7 +13,7 @@ public class Utils {
 
     public static String verificarDatos(String datos) {
         if (datos == null || datos.isEmpty()) {
-            datos = "No hay datos disponibles";
+            datos = "No hay datos disponibles.";
         }
         return datos;
     }
@@ -21,7 +21,7 @@ public class Utils {
 
     public static String verificarGeneroLiterario(String generoLiterario) {
         if (generoLiterario == null || generoLiterario.isEmpty()) {
-            return "No hay datos";
+            return "No hay datos disponibles.";
         } else {
             String regex = ".*[\\[\\]\"].*"; // Para comprobar si tiene corchetes o comillas dobles
             Pattern pattern = Pattern.compile(regex);

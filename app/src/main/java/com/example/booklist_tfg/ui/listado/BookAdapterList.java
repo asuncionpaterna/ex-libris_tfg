@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
-import com.example.booklist_tfg.ui.anadir.BookDetails;
+import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
+import static com.example.booklist_tfg.ui.Utils.formateoFecha;
+import static com.example.booklist_tfg.ui.Utils.verificarDatos;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -40,38 +43,33 @@ public class BookAdapterList extends RecyclerView.Adapter<BookAdapterList.BookVi
     public void onBindViewHolder(@NonNull BookAdapterList.BookViewHolder holder, int position) {
         // inside on bind view holder method we are
         // setting our data to each UI component.
-        Libro bookInfo = bookInfoArrayList.get(position);
-        holder.tituloTV.setText(bookInfo.getTitulo());
-        holder.editorialTV.setText(bookInfo.getEditorial());
-        holder.fechaLecturaTV.setText("" + bookInfo.getFechaLectura());
-        holder.favoritoCB.setChecked(bookInfo.getFavorito());
-        holder.esPapelCB.setChecked(bookInfo.getEsPapel());
+        Libro libroInfo = bookInfoArrayList.get(position);
+        holder.tituloTV.setText(libroInfo.getTitulo());
+        holder.editorialTV.setText(verificarDatos(libroInfo.getEditorial()));
+        holder.fechaLecturaTV.setText("Leído el: "+formateoFecha(libroInfo.getFechaLectura()));
+        holder.favoritoCB.setChecked(libroInfo.getFavorito());
+        holder.esPapelCB.setChecked(libroInfo.getEsPapel());
 
         // below line is use to set image from URL in our image view.
-        Picasso.get().load(bookInfo.getPortada()).into(holder.portadaIV);
+        Picasso.get().load(libroInfo.getPortada()).into(holder.portadaIV);
         // below line is use to add on click listener for our item of recycler view.
-        StringBuilder sb = new StringBuilder();
-        ArrayList<String> autores = bookInfo.getNombreAutoria();
-        for (int i = 0; i < autores.size(); i++){
-            sb.append(autores.get(i));
-            sb.append(i < autores.size() - 1 ? ", " : "");
-        }
-        holder.autoriaTV.setText("Autoria: " + sb);
+        ArrayList<String> autores = libroInfo.getNombreAutoria();
+        holder.autoriaTV.setText(formateoAutoria(autores));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // inside on click listener method we are calling a new activity
                 // La informacióin que se pasa a los detalles del libro
                 Intent i = new Intent(mcontext, BookDetailsList.class);
-                i.putExtra("title", bookInfo.getTitulo());
+                i.putExtra("title", libroInfo.getTitulo());
 
-                i.putExtra("authors", bookInfo.getNombreAutoria());
-                i.putExtra("publisher", bookInfo.getEditorial());
-                i.putExtra("publishedDate", bookInfo.getAnioPublicacion());
+                i.putExtra("authors", libroInfo.getNombreAutoria());
+                i.putExtra("publisher", libroInfo.getEditorial());
+                i.putExtra("publishedDate", libroInfo.getAnioPublicacion());
 
-                i.putExtra("pageCount", bookInfo.getPaginas());
-                i.putExtra("thumbnail", bookInfo.getPortada());
-                i.putExtra("libro", bookInfo);
+                i.putExtra("pageCount", libroInfo.getPaginas());
+                i.putExtra("thumbnail", libroInfo.getPortada());
+                i.putExtra("libro", libroInfo);
 
 
                 // after passing that data we are
