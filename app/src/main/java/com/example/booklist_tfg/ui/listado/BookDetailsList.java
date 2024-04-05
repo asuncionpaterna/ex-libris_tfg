@@ -1,10 +1,14 @@
 package com.example.booklist_tfg.ui.listado;
 
+import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
+import static com.example.booklist_tfg.ui.Utils.formateoFecha;
+import static com.example.booklist_tfg.ui.Utils.verificarDatos;
+import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +17,8 @@ import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class BookDetailsList extends AppCompatActivity {
 
@@ -26,7 +27,6 @@ public class BookDetailsList extends AppCompatActivity {
     boolean favorito, esPapel;
     Libro libro;
     private Date fecha;
-
 
     private ImageView portadaIV;
     TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV;
@@ -66,16 +66,10 @@ public class BookDetailsList extends AppCompatActivity {
         portada = libro.getPortada();
 
 
-        StringBuilder autoria = new StringBuilder();
-        for (int i = 0; i < autoriaList.size(); i++) {
-            autoria.append(autoriaList.get(i));
-            autoria.append(i < autoriaList.size() - 1 ? ", " : "");
-        }
-
         fechaLectura = formateoFecha(fecha);
         tituloTV.setText("Título: " + titulo);
-        autoriaTV.setText(("Autoria: ") + autoria);
-        editorialTV.setText("Editorial: " + verificarEditorial(editorial));
+        autoriaTV.setText(("Autoria: ") + formateoAutoria(autoriaList));
+        editorialTV.setText("Editorial: " + verificarDatos(editorial));
         generoLiterarioTV.setText("Género literario: " + verificarGeneroLiterario(generoLiterario));
         fechaLecturaTV.setText(fechaLectura);
         esPapelCB.setChecked(esPapel);
@@ -84,35 +78,5 @@ public class BookDetailsList extends AppCompatActivity {
         Picasso.get().load(portada).into(portadaIV);
     }
 
-    protected String verificarEditorial(String editorial) {
-        if (editorial.length() == 0 || editorial.equals("")) {
-            editorial = "No hay datos";
-        }
-        return editorial;
-    }
 
-    protected String verificarGeneroLiterario(String generoLiterario) {
-        if (generoLiterario == null || generoLiterario.isEmpty()) {
-            return "No hay datos";
-        } else {
-            String regex = ".*[\\[\\]\"].*"; // Para comprobar si tiene corchetes o comillas dobles
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(generoLiterario);
-
-            if (matcher.matches()) {
-                // Eliminar corchetes y comillas dobles, junto con espacios en blanco al inicio y al final
-                generoLiterario = generoLiterario.replaceAll("[\\[\\]\"]", "").trim();
-            }
-        }
-        System.out.println(generoLiterario);
-        return generoLiterario;
-    }
-
-    protected String formateoFecha(Date fecha) {
-
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        fechaLectura = formatoFecha.format(fecha);
-
-        return fechaLectura;
-    }
 }
