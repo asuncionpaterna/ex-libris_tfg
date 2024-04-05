@@ -25,7 +25,21 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
-            android:text="Book Title"
+            android:text="Titulo"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/idTVautoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idTVBookTitle"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@id/idIVPortadaList"
+            android:padding="3dp"
+            android:text="Autoria"
+            android:textStyle="italic"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
@@ -33,33 +47,22 @@
             android:id="@+id/idTVpublisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVBookTitle"
+            android:layout_below="@id/idTVautoria"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
-            android:text="Publisher"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
-        <TextView
-            android:id="@+id/idTVautoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idTVpublisher"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/idIVPortadaList"
-            android:padding="3dp"
-            android:text="Autoria"
+            android:text="Editorial"
             android:textColor="@color/black"
             android:textSize="11sp" />
         <TextView
             android:id="@+id/idTVPageCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVautoria"
+            android:layout_below="@id/idTVpublisher"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
-            android:text="Page count"
+            android:text="Num Paginas"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
@@ -71,7 +74,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="5dp"
             android:padding="3dp"
-            android:text="date"
+            android:text="FechaPublicacion"
             android:textColor="@color/black"
             android:textSize="11sp" />
 

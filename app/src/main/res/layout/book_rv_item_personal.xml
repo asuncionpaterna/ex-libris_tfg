@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -27,7 +26,8 @@
             android:padding="3dp"
             android:text="Título"
             android:textColor="@color/black"
-            android:textSize="11sp" />
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/idTVAutoriaList"
@@ -39,7 +39,8 @@
             android:padding="3dp"
             android:text="Autoria"
             android:textColor="@color/black"
-            android:textSize="11sp" />
+            android:textSize="11sp"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/idTVEditorialList"
@@ -52,6 +53,7 @@
             android:text="Editorial"
             android:textColor="@color/black"
             android:textSize="11sp" />
+
         <TextView
             android:id="@+id/idTGeneroList"
             android:layout_width="match_parent"
@@ -69,9 +71,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/idTGeneroList"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
-            android:layout_alignParentEnd="true"
             android:padding="3dp"
             android:text="Fecha Lectura"
             android:textColor="@color/black"
@@ -83,36 +85,41 @@
             android:layout_below="@id/idTVFechaLecturaList"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:gravity="center_vertical"
-            android:weightSum="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <CheckBox
                 android:id="@+id/idCBFavorito"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
                 android:button="@drawable/checkbox_selector_favorite"
                 android:checked="true"
+                android:enabled="false"
                 android:padding="3dp"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/idCBesPapel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/checkbox_selector_book_digital"
+                android:checked="false"
                 android:enabled="false"
                 android:textColor="@color/black"
                 android:textSize="11sp" />
 
-            <CheckBox
-                android:id="@+id/idCBesPapel"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:button="@drawable/checkbox_selector_book_digital"
-                android:checked="false"
-                android:padding="15dp"
-                android:enabled="false"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 
