@@ -36,7 +36,7 @@ public class BookDetails extends AppCompatActivity {
     int numPaginasDetails;
     private ArrayList<String> autoriaListDetails;
 
-    TextView titleTV, autoriaTV, publisherTV, descTV, pageTV, publishDateTV, fechaLecturaTV, generoLiterarioTV;
+    TextView tituloTV, autoriaTV, editorialTV, descTV, paginasTV, anioPublicacionTV, fechaLecturaTV, generoLiterarioTV;
 
     ImageButton anadirBtn, fechaBtn;
 
@@ -52,12 +52,12 @@ public class BookDetails extends AppCompatActivity {
         setContentView(R.layout.activity_book_details);
 
         // initializing our views..
-        titleTV = findViewById(R.id.idTVTitle);
+        tituloTV = findViewById(R.id.idTVTitle);
         autoriaTV = findViewById(R.id.idTVAutoriaDetails);
-        publisherTV = findViewById(R.id.idTVpublisher);
+        editorialTV = findViewById(R.id.idTVpublisher);
         descTV = findViewById(R.id.idTVDescription);
-        pageTV = findViewById(R.id.idTVNoOfPages);
-        publishDateTV = findViewById(R.id.idTVPublishDate);
+        paginasTV = findViewById(R.id.idTVNoOfPages);
+        anioPublicacionTV = findViewById(R.id.idTVPublishDate);
         anadirBtn = findViewById(R.id.idBtnAnadir);
         bookIV = findViewById(R.id.idIVPortadaList);
         fechaBtn = findViewById(R.id.idBtnFecha);
@@ -84,13 +84,13 @@ public class BookDetails extends AppCompatActivity {
 
         // after getting the data we are setting
         // that data to our text views and image view.
-        titleTV.setText(tituloDetails);
+        tituloTV.setText(tituloDetails);
         autoriaTV.setText(formateoAutoria(autoriaListDetails));
         generoLiterarioTV.setText(verificarGeneroLiterario(generoLiterarioDetails));
-        publisherTV.setText("Editorial: " + verificarDatos(editorialDetails));
-        publishDateTV.setText(formateoFechaString(fechaPublicacionDetails));
+        editorialTV.setText("Editorial: " + verificarDatos(editorialDetails));
+        anioPublicacionTV.setText(formateoFechaString(fechaPublicacionDetails));
         descTV.setText(verificarDatos(sinopsisDetails));
-        pageTV.setText(""+numPaginasDetails);
+        paginasTV.setText(""+numPaginasDetails);
 
         Picasso.get().load(portadaDetails).into(bookIV);
 
