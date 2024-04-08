@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
 
     static RecyclerView mRecyclerView;
     TextView tituloTV;
-    Year anio = Year.parse(Year.now().toString());
+    static Year anio = Year.parse(Year.now().toString());
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,7 +43,8 @@ public class HomeFragment extends Fragment {
         tituloTV = view.findViewById(R.id.idTvTitulo);
         tituloTV.setText("Lecturas del "+anio);
 
-        new RecogerLibrosDB().execute();        return view;
+        new RecogerLibrosDB(getContext()).execute();
+        return view;
     }
 
  public static void mostrarLibros(Context context){
@@ -62,7 +63,11 @@ public class HomeFragment extends Fragment {
      mRecyclerView.setAdapter(adapter);
  }
 
-    private class RecogerLibrosDB extends AsyncTask<Void, Void, Void> {
+    public static class RecogerLibrosDB extends AsyncTask<Void, Void, Void> {
+        Context context;
+        public RecogerLibrosDB(Context context) {
+            this.context = context;
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -76,7 +81,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(getContext());
+            mostrarLibros(context);
         }
     }
 }

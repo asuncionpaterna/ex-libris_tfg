@@ -71,7 +71,6 @@ public class BookAdapterList extends RecyclerView.Adapter<BookAdapterList.BookVi
                 i.putExtra("thumbnail", libroInfo.getPortada());
                 i.putExtra("libro", libroInfo);
 
-
                 // after passing that data we are
                 // starting our new intent.
                 mcontext.startActivity(i);
