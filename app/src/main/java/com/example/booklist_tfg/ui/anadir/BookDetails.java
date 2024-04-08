@@ -2,6 +2,7 @@ package com.example.booklist_tfg.ui.anadir;
 
 import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
 import static com.example.booklist_tfg.ui.Utils.formateoFechaString;
+import static com.example.booklist_tfg.ui.Utils.showDatePicker;
 import static com.example.booklist_tfg.ui.Utils.verificarDatos;
 import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
 
@@ -44,14 +45,14 @@ public class BookDetails extends AppCompatActivity {
     private ImageView bookIV;
     boolean favorito, esPapel;
 
-    private Date fecha;
+    public Date fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
 
-        // initializing our views..
+        // Inicializando las vistas
         tituloTV = findViewById(R.id.idTVTitle);
         autoriaTV = findViewById(R.id.idTVAutoriaDetails);
         editorialTV = findViewById(R.id.idTVpublisher);
@@ -67,7 +68,7 @@ public class BookDetails extends AppCompatActivity {
         esPapelCB = findViewById(R.id.idCBesPapelDetails);
 
 
-        // getting the data which we have passed from our adapter class.
+        // Se recogen los datos que se pasan con la clase BookAdapter
         libro = (Libro) getIntent().getSerializableExtra("libro");
         tituloDetails = libro.getTitulo();
         autoriaListDetails = libro.getNombreAutoria();
@@ -112,7 +113,8 @@ public class BookDetails extends AppCompatActivity {
         fechaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePicker(BookDetails.this);
+
+                showDatePicker(BookDetails.this, fechaLecturaTV, fecha);
             }
         });
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -121,28 +123,5 @@ public class BookDetails extends AppCompatActivity {
     }
 
     //Para mostrar el calendario de fecha de lectura
-    private void showDatePicker(Context context) {
-        // Obtener la fecha actual
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Crear el DatePickerDialog y configurarlo
-        DatePickerDialog datePickerDialog = new DatePickerDialog(context,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDayOfMonth) {
-                        // Se establece la fecha seleccionada en el TextView
-                        Calendar selectedDate = Calendar.getInstance();
-                        selectedDate.set(selectedYear, selectedMonth, selectedDayOfMonth);
-                        fecha = selectedDate.getTime();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String formattedDate = dateFormat.format(fecha);
-                        fechaLecturaTV.setText(formattedDate);
-                    }
-                }, year, month, dayOfMonth);
-        // Mostrar el diálogo
-        datePickerDialog.show();
-    }
 }

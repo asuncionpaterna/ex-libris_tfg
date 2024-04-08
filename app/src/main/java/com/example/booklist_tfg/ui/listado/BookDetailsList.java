@@ -3,28 +3,37 @@ package com.example.booklist_tfg.ui.listado;
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
 import static com.example.booklist_tfg.ui.Utils.formateoFecha;
+import static com.example.booklist_tfg.ui.Utils.showDatePicker;
 import static com.example.booklist_tfg.ui.Utils.verificarDatos;
 import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
 import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
+import com.example.booklist_tfg.ui.anadir.BookDetails;
 import com.example.booklist_tfg.ui.anadir.GuardarLibroAsinc;
 import com.example.booklist_tfg.ui.home.HomeFragment;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 
 public class BookDetailsList extends AppCompatActivity {
@@ -41,6 +50,7 @@ public class BookDetailsList extends AppCompatActivity {
     CheckBox favoritoCB, esPapelCB;
     Button eliminarBtn, modificarBtn;
 
+    ImageButton fechaBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +72,7 @@ public class BookDetailsList extends AppCompatActivity {
 
         eliminarBtn = findViewById(R.id.idBtnEliminar);
         modificarBtn = findViewById(R.id.idBtnModificar);
+        fechaBtn = findViewById(R.id.idBtnFechaDetails);
 
         //Almacenando los datos en las variables
         libro = (Libro) getIntent().getSerializableExtra("libro");
@@ -77,7 +88,7 @@ public class BookDetailsList extends AppCompatActivity {
 
         fechaLectura = formateoFecha(fecha);
         tituloTV.setText("Título: " + titulo);
-        autoriaTV.setText(("Autoria: ") + formateoAutoria(autoriaList));
+        autoriaTV.setText(formateoAutoria(autoriaList));
         editorialTV.setText("Editorial: " + verificarDatos(editorial));
         generoLiterarioTV.setText("Género literario: " + verificarGeneroLiterario(generoLiterario));
         fechaLecturaTV.setText(fechaLectura);
@@ -86,6 +97,7 @@ public class BookDetailsList extends AppCompatActivity {
 
         Picasso.get().load(portada).into(portadaIV);
 
+        //Funcionalidad del botón Eliminar
         eliminarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,12 +119,30 @@ public class BookDetailsList extends AppCompatActivity {
                                 }
                             });
                         } catch (Exception exception) {
-                            //Si ocurre alfuna excepción se notifica por consola y por la aplicación
+                            //Si ocurre alguna excepción se notifica por consola
                             exception.printStackTrace();
                         }
                     }
                 });
             }
         });
+
+        modificarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        fechaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePicker(BookDetailsList.this, fechaLecturaTV, fecha);
+            }
+        });
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        fecha = new Date();
+        fechaLecturaTV.setText(sdf.format(fecha));
     }
+
 }

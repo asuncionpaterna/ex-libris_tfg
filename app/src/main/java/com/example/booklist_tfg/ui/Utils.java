@@ -1,9 +1,16 @@
 package com.example.booklist_tfg.ui;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.widget.DatePicker;
+import android.widget.TextView;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,5 +67,30 @@ public class Utils {
         return autoria;
     }
 
+
+    public static void showDatePicker(Context context, TextView fechaLecturaTV, Date fecha) {
+        // Obtener la fecha actual
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        final Date[] FECHAFINAL = {fecha};
+        // Crear el DatePickerDialog y configurarlo
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDayOfMonth) {
+                        // Se establece la fecha seleccionada en el TextView
+                        Calendar selectedDate = Calendar.getInstance();
+                        selectedDate.set(selectedYear, selectedMonth, selectedDayOfMonth);
+                        FECHAFINAL[0] = selectedDate.getTime();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                        String formattedDate = dateFormat.format(FECHAFINAL[0]);
+                        fechaLecturaTV.setText(formattedDate);
+                    }
+                }, year, month, dayOfMonth);
+        // Mostrar el diálogo
+        datePickerDialog.show();
+    }
 
 }
