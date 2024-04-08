@@ -1,6 +1,7 @@
 package com.example.booklist_tfg.ui.home;
 
 import static com.example.booklist_tfg.MainActivity.database;
+import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
 
 import android.content.Context;
@@ -38,33 +39,36 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        if (floatingBTN != null) {
+            floatingBTN.show();
+        }
         mRecyclerView = view.findViewById(R.id.idRVMostrarLista);
         tituloTV = view.findViewById(R.id.idTvTitulo);
-        tituloTV.setText("Lecturas del "+anio);
+        tituloTV.setText("Lecturas del " + anio);
 
         new RecogerLibrosDB(getContext()).execute();
         return view;
     }
 
- public static void mostrarLibros(Context context){
+    public static void mostrarLibros(Context context) {
 
-     List<Libro> listaMostrar = new ArrayList<>();
-     // below line is use to pass our
-     // array list in adapter class.
-     BookAdapterList adapter = new BookAdapterList((ArrayList<Libro>) listaLibros, context);
-     // below line is use to add linear layout
-     // manager for our recycler view.
-     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        List<Libro> listaMostrar = new ArrayList<>();
+        // below line is use to pass our
+        // array list in adapter class.
+        BookAdapterList adapter = new BookAdapterList((ArrayList<Libro>) listaLibros, context);
+        // below line is use to add linear layout
+        // manager for our recycler view.
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
 
-     // in below line we are setting layout manager and
-     // adapter to our recycler view.
-     mRecyclerView.setLayoutManager(linearLayoutManager);
-     mRecyclerView.setAdapter(adapter);
- }
+        // in below line we are setting layout manager and
+        // adapter to our recycler view.
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setAdapter(adapter);
+    }
 
     public static class RecogerLibrosDB extends AsyncTask<Void, Void, Void> {
         Context context;
+
         public RecogerLibrosDB(Context context) {
             this.context = context;
         }
@@ -74,7 +78,6 @@ public class HomeFragment extends Fragment {
 
             LibroDAO libroDAO = database.libroDAO();
             listaLibros = libroDAO.getByAnio(String.valueOf(anio));
-            System.out.println(listaLibros.size());
             //libroDAO.deleteAll(listaLibros);
             return null;
         }

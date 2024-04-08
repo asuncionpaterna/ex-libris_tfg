@@ -1,5 +1,6 @@
 package com.example.booklist_tfg.ui.gallery;
 
+import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +23,10 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
 
+        if(floatingBTN !=null){
+            floatingBTN.hide();
+        }
         final TextView textView = view.findViewById(R.id.text_gallery);
-
         textView.setText("Listado de otros años");
        return view;
     }

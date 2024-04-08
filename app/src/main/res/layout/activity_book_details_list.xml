@@ -109,6 +109,18 @@
                     android:text="Hoy"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/idBtnFechaDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:contentDescription="Icono de modificar fecha"
+                    android:src="@drawable/ic_edit_calendar"
+                    android:text="Cambiar" />
 
 
             </LinearLayout>
@@ -132,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:button="@drawable/checkbox_selector_favorite"
                     android:checked="true"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:padding="4dp"
                     android:text="Favorito"
                     android:textColor="@color/black"
@@ -148,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:button="@drawable/checkbox_selector_book_digital"
                     android:checked="false"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:padding="4dp"
                     android:text="Formato"
                     android:textColor="@color/black"

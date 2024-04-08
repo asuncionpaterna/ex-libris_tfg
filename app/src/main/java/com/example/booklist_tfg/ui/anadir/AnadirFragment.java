@@ -1,5 +1,7 @@
 package com.example.booklist_tfg.ui.anadir;
 
+import static com.example.booklist_tfg.MainActivity.floatingBTN;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,49 +33,45 @@ import java.util.ArrayList;
 
 public class AnadirFragment extends Fragment {
     private RequestQueue mRequestQueue;
-    private ArrayList<Libro> bookInfoArrayList;
+    private ArrayList<Libro> libroInfoArrayList;
     private ProgressBar progressBar;
-    private EditText searchEdt;
-    private Button searchBtn;
+    private EditText buscarET;
+    private Button buscarBTN;
     RecyclerView mRecyclerView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_anadir, container, false);
+        floatingBTN.hide();
+
         // initializing our views.
         progressBar = view.findViewById(R.id.idLoadingPB);
-        searchEdt =  view.findViewById(R.id.idEdtSearchBooks);
-        searchBtn =  view.findViewById(R.id.idBtnSearch);
+        buscarET =  view.findViewById(R.id.idEdtSearchBooks);
+        buscarBTN =  view.findViewById(R.id.idBtnSearch);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.idRVBooks);
 
-        searchBtn.setOnClickListener(new View.OnClickListener() {
+        buscarBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
 
                 // checking if our edittext field is empty or not.
-                if (searchEdt.getText().toString().isEmpty()) {
-                    searchEdt.setError("Please enter search query");
+                if (buscarET.getText().toString().isEmpty()) {
+                    buscarET.setError("Please enter search query");
                     return;
                 }
                 // if the search query is not empty then we are
                 // calling get book info method to load all
                 // the books from the API.
-                getBooksInfo(searchEdt.getText().toString());
+                getBooksInfo(buscarET.getText().toString());
             }
         });
-
-
-
-
-
-
 
         return view;
     }
     private void getBooksInfo(String query) {
 
         // creating a new array list.
-        bookInfoArrayList = new ArrayList<>();
+        libroInfoArrayList = new ArrayList<>();
 
         // below line is use to initialize
         // the variable for our request queue.
@@ -87,7 +85,6 @@ public class AnadirFragment extends Fragment {
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
         // below line we are creating a new request queue.
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        System.out.println(url);
         // below line is use to make json object request inside that we
         // are passing url, get method and getting json object. .
         JsonObjectRequest booksObjrequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -122,7 +119,7 @@ public class AnadirFragment extends Fragment {
 
                           // below line is use to ---st."-
                             Libro bookInfo = new Libro(titulo,authorsArrayList,editorial,genero,anioPublicacion,paginas,portada);
-                            bookInfoArrayList.add(bookInfo);
+                            libroInfoArrayList.add(bookInfo);
 
 
 
@@ -132,7 +129,7 @@ public class AnadirFragment extends Fragment {
 
                         // below line is use to pass our
                         // array list in adapter class.
-                        BookAdapter adapter = new BookAdapter(bookInfoArrayList, getContext());
+                        BookAdapter adapter = new BookAdapter(libroInfoArrayList, getContext());
 
 
                         // below line is use to add linear layout
@@ -147,7 +144,7 @@ public class AnadirFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     // displaying a toast message when we get any error from API
-                    Toast.makeText(getContext(), "No Data Found" + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No se han encontrado datos" + e, Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
