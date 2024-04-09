@@ -8,13 +8,11 @@ import static com.example.booklist_tfg.ui.Utils.verificarDatos;
 import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
 import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
+import com.example.booklist_tfg.ui.Utils;
 import com.example.booklist_tfg.ui.anadir.BookDetails;
 import com.example.booklist_tfg.ui.anadir.GuardarLibroAsinc;
 import com.example.booklist_tfg.ui.home.HomeFragment;
@@ -31,7 +30,6 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.Executors;
@@ -49,7 +47,7 @@ public class BookDetailsList extends AppCompatActivity {
 
     CheckBox favoritoCB, esPapelCB;
     Button eliminarBtn, modificarBtn;
-
+    Date[] fechas = new Date[1];
     ImageButton fechaBtn;
 
     @Override
@@ -57,14 +55,13 @@ public class BookDetailsList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details_list);
 
-        LibroDAO libroDAO = database.libroDAO();
 
         //Inicializando los elementos
         tituloTV = findViewById(R.id.idTVTitulo);
         autoriaTV = findViewById(R.id.idTVAutoria);
         editorialTV = findViewById(R.id.idTVEditorial);
         generoLiterarioTV = findViewById(R.id.idTVGenero);
-        fechaLecturaTV = findViewById(R.id.idTVFechaLectura);
+        fechaLecturaTV = findViewById(R.id.idTVFechaLecturaBookDetails);
 
         portadaIV = findViewById(R.id.idIVPortada);
         favoritoCB = findViewById(R.id.idCBFavorito);
@@ -73,7 +70,7 @@ public class BookDetailsList extends AppCompatActivity {
         eliminarBtn = findViewById(R.id.idBtnEliminar);
         modificarBtn = findViewById(R.id.idBtnModificar);
         fechaBtn = findViewById(R.id.idBtnFechaDetails);
-
+        fechas[0] = fecha;
         //Almacenando los datos en las variables
         libro = (Libro) getIntent().getSerializableExtra("libro");
         titulo = libro.getTitulo();
@@ -93,9 +90,14 @@ public class BookDetailsList extends AppCompatActivity {
         generoLiterarioTV.setText("Género literario: " + verificarGeneroLiterario(generoLiterario));
         fechaLecturaTV.setText(fechaLectura);
         esPapelCB.setChecked(esPapel);
+        actualizarTextoFormato(esPapelCB);
         favoritoCB.setChecked(favorito);
 
         Picasso.get().load(portada).into(portadaIV);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        fechaLecturaTV.setText(sdf.format(fecha));
+
 
         //Funcionalidad del botón Eliminar
         eliminarBtn.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +108,8 @@ public class BookDetailsList extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
+                            LibroDAO libroDAO = database.libroDAO();
+
                             //Mediante una estructura de control Try&Catch se elimina el libro utilizando el DAO
                             libroDAO.delete(libro);
                             new HomeFragment.RecogerLibrosDB(mcontext).execute();
@@ -130,19 +134,68 @@ public class BookDetailsList extends AppCompatActivity {
         modificarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                libro.setFechaLectura(fecha);
+                libro.setFavorito(favoritoCB.isChecked());
+                libro.setEsPapel(esPapelCB.isChecked());
+                System.out.println(libro.getFechaLectura());
+                System.out.println(libro.getFavorito());
+                System.out.println(libro.getEsPapel());
 
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            LibroDAO libroDAO = database.libroDAO();
+                            libroDAO.update(libro);
+                            new HomeFragment.RecogerLibrosDB(mcontext).execute();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mostrarLibros(mcontext);
+                                    finish();
+                                }
+                            });
+                        } catch (Exception exception) {
+                            exception.printStackTrace();
+                        }
+                    }
+                });
             }
         });
 
         fechaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDatePicker(BookDetailsList.this, fechaLecturaTV, fecha);
+                // Llamar a showDatePicker pasando un OnDateSelectedListener
+                showDatePicker(BookDetailsList.this, fechaLecturaTV, fecha, new Utils.OnDateSelectedListener() {
+                    @Override
+                    public void onDateSelected(Date selectedDate) {
+                        // Manejar la fecha seleccionada aquí
+                        fecha = selectedDate;
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                        fechaLecturaTV.setText(sdf.format(selectedDate));
+                    }
+                });
             }
         });
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        fecha = new Date();
-        fechaLecturaTV.setText(sdf.format(fecha));
-    }
 
+        esPapelCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (esPapelCB.isChecked()) {
+                    esPapelCB.setText("Papel");
+                } else {
+                    esPapelCB.setText("Digital");
+                }
+            }
+        });
+    }
+    public void actualizarTextoFormato(CheckBox checkBox) {
+        if (checkBox.isChecked()) {
+            checkBox.setText("Papel");
+        } else {
+            checkBox.setText("Digital");
+        }
+    }
 }
+

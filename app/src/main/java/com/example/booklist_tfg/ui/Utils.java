@@ -68,13 +68,12 @@ public class Utils {
     }
 
 
-    public static void showDatePicker(Context context, TextView fechaLecturaTV, Date fecha) {
+    public static void showDatePicker(Context context, TextView fechaLecturaTV, Date fecha, OnDateSelectedListener listener) {
         // Obtener la fecha actual
         final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-        final Date[] FECHAFINAL = {fecha};
+        int anio = calendar.get(Calendar.YEAR);
+        int mes = calendar.get(Calendar.MONTH);
+        int diaMes = calendar.get(Calendar.DAY_OF_MONTH);
         // Crear el DatePickerDialog y configurarlo
         DatePickerDialog datePickerDialog = new DatePickerDialog(context,
                 new DatePickerDialog.OnDateSetListener() {
@@ -83,14 +82,18 @@ public class Utils {
                         // Se establece la fecha seleccionada en el TextView
                         Calendar selectedDate = Calendar.getInstance();
                         selectedDate.set(selectedYear, selectedMonth, selectedDayOfMonth);
-                        FECHAFINAL[0] = selectedDate.getTime();
+                        Date fechaSeleccionada = selectedDate.getTime();
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String formattedDate = dateFormat.format(FECHAFINAL[0]);
+                        String formattedDate = dateFormat.format(fechaSeleccionada);
                         fechaLecturaTV.setText(formattedDate);
+                        listener.onDateSelected(fechaSeleccionada);
                     }
-                }, year, month, dayOfMonth);
+                }, anio, mes, diaMes);
         // Mostrar el diálogo
         datePickerDialog.show();
     }
 
+    public interface OnDateSelectedListener {
+        void onDateSelected(Date selectedDate);
+    }
 }
