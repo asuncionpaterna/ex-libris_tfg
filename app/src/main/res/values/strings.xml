@@ -2,10 +2,12 @@
     <string name="app_name">Lecturas realizadas</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Ex-Libris</string>
+    <string name="nav_header_subtitle">Registra tus lecturas</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuración</string>
+    <string name="action_settings_2">Objetivo lectura</string>
+
 
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Lecturas</string>

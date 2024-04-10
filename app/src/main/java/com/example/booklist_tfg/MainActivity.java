@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 // Realiza la navegación al destino seleccionado en el menú
                 boolean handled = NavigationUI.onNavDestinationSelected(item, navController);
                 //Se verifica si la navegación se maneja correctamente
-                if(handled){
+                if (handled) {
                     drawer.closeDrawer(GravityCompat.START);
                 }
                 return handled;
@@ -103,5 +103,16 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_settings:
+//                //Lo que quiero que haga, botón configuración
+//
+//            case R.id.action_settings_2:
+//                //Lo que quiero que haga, botón objetivo
+//
+//        }
+//
+//    }
 }
