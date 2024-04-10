@@ -3,6 +3,7 @@ package com.example.booklist_tfg.ddbb;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
@@ -24,7 +25,12 @@ public interface LibroDAO {
     @Query("SELECT * FROM libros WHERE fecha_lectura LIKE :anio || '%'")
     List<Libro>getByAnio(String anio);
 
-    @Insert
+    @Query("SELECT * FROM libros WHERE favorito = true")
+    List<Libro>getbyFavorito();
+
+    @Query("SELECT * FROM libros WHERE es_papel = :formato")
+    List<Libro>getbyFormato(boolean formato);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Libro libro);
 
     @Update

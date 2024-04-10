@@ -1,4 +1,4 @@
-package com.example.booklist_tfg.ui.listado;
+package com.example.booklist_tfg.ui.listadoHome;
 
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
@@ -23,8 +23,6 @@ import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
 import com.example.booklist_tfg.ui.Utils;
-import com.example.booklist_tfg.ui.anadir.BookDetails;
-import com.example.booklist_tfg.ui.anadir.GuardarLibroAsinc;
 import com.example.booklist_tfg.ui.home.HomeFragment;
 import com.squareup.picasso.Picasso;
 

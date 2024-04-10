@@ -43,7 +43,7 @@ public class AnadirFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_anadir, container, false);
         floatingBTN.hide();
 
-        // initializing our views.
+        // inicializando las vistas.
         progressBar = view.findViewById(R.id.idLoadingPB);
         buscarET =  view.findViewById(R.id.idEdtSearchBooks);
         buscarBTN =  view.findViewById(R.id.idBtnSearch);
@@ -56,16 +56,13 @@ public class AnadirFragment extends Fragment {
 
                 // checking if our edittext field is empty or not.
                 if (buscarET.getText().toString().isEmpty()) {
-                    buscarET.setError("Please enter search query");
+                    buscarET.setError("Introduce los datos de búsqueda");
                     return;
                 }
-                // if the search query is not empty then we are
-                // calling get book info method to load all
-                // the books from the API.
+
                 getBooksInfo(buscarET.getText().toString());
             }
         });
-
         return view;
     }
     private void getBooksInfo(String query) {

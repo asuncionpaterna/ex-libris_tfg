@@ -1,4 +1,4 @@
-package com.example.booklist_tfg.ui.listado;
+package com.example.booklist_tfg.ui.listadoHome;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -35,7 +35,7 @@ public class BookAdapterList extends RecyclerView.Adapter<BookAdapterList.BookVi
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-// inflating our layout for item of recycler view item.
+        // inflating our layout for item of recycler view item.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_rv_item_personal, parent, false);
         return new BookAdapterList.BookViewHolder(view);    }
 

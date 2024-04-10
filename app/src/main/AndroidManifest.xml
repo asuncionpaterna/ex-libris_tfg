@@ -30,7 +30,7 @@
             android:label="Añadir libro"
             />
         <activity
-            android:name="com.example.booklist_tfg.ui.listado.BookDetailsList"
+            android:name="com.example.booklist_tfg.ui.listadoHome.BookDetailsList"
             android:label="Detalles del libro"
             />
     </application>

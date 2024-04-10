@@ -95,7 +95,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         public BookViewHolder(View itemView) { // Esto es lo que sale al buscar, las tarjetas
             super(itemView);
             nameTV = itemView.findViewById(R.id.idTVBookTitle);
-            publisherTV = itemView.findViewById(R.id.idTVpublisher);
+            publisherTV = itemView.findViewById(R.id.idTVEditorialBookDetails);
             pageCountTV = itemView.findViewById(R.id.idTVPageCount);
             dateTV = itemView.findViewById(R.id.idTVDate);
             bookIV = itemView.findViewById(R.id.idIVPortadaList);

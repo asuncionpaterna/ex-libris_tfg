@@ -1,65 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fondo"
-    android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/idTvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Añadir lectura"
-        android:textColor="@color/purple_700"
-        android:textSize="20dp"
-        android:layout_marginBottom="20dp"/>
-
-    <!-- Linear Layout para el EditText y el botón -->
-    <LinearLayout
-        android:id="@+id/idLLsearch"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo_txt1" />
 
-        <!-- EditText para la búsqueda de libros -->
-        <EditText
-            android:id="@+id/idEdtSearchBooks"
-            android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/idTvTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="Doris Lessing"
-            android:hint="Introduce tu búsqueda" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="Añadir lectura"
+            android:textColor="@color/purple_700"
+            android:textSize="20dp" />
 
-        <!-- Botón de búsqueda -->
-        <Button
-            android:id="@+id/idBtnSearch"
-            android:layout_width="0dp"
+        <!-- Linear Layout para el EditText y el botón -->
+        <LinearLayout
+            android:id="@+id/idLLsearch"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Buscar Libro"/>
+            android:orientation="horizontal"
+            android:paddingTop="50dp">
 
-    </LinearLayout>
+            <!-- EditText para la búsqueda de libros -->
+            <EditText
+                android:id="@+id/idEdtSearchBooks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="Introduce tu búsqueda"
+                android:text="" />
 
-    <!--recycler view for displaying our list of books-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVBooks"
-        android:layout_width="385dp"
-        android:layout_height="485dp"
-        android:layout_below="@id/idLLsearch"
-        android:layout_marginTop="50dp" />
+            <!-- Botón de búsqueda -->
+            <Button
+                android:id="@+id/idBtnSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Buscar Libro" />
 
-    <!--progressbar for displaying our loading indicator-->
-    <ProgressBar
-        android:id="@+id/idLoadingPB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        </LinearLayout>
 
-</RelativeLayout>
+        <!--recycler view for displaying our list of books-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRVBooks"
+            android:layout_width="385dp"
+            android:layout_height="485dp"
+            android:layout_below="@id/idLLsearch"
+            android:layout_marginTop="50dp" />
+
+        <!--progressbar for displaying our loading indicator-->
+        <ProgressBar
+            android:id="@+id/idLoadingPB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,220 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:src="@drawable/fondo_txt1"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/idTVTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Titulo"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/idIVPortada"
-                android:layout_width="130dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical"
-            android:paddingLeft="15dp">
-
-
-            <TextView
-                android:id="@+id/idTVAutoria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:padding="5dp"
-                android:text="Autoria"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/idTVEditorial"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:padding="5dp"
-                android:text="Editorial"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/idTVGenero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:padding="5dp"
-                android:text="Genero literario"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-
-                android:weightSum="2">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/idTVTitulo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:text="Fecha Lectura: "
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Titulo"
                     android:textColor="@color/black"
-                    android:padding="5dp"
-                    android:textSize="15sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/idTVFechaLectura"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:text="Hoy"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content" />
-
-                <ImageButton
-                    android:id="@+id/idBtnFechaDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:contentDescription="Icono de modificar fecha"
-                    android:src="@drawable/ic_edit_calendar"
-                    android:text="Cambiar" />
-
-
+                <ImageView
+                    android:id="@+id/idIVPortada"
+                    android:layout_width="130dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="10dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:background="#80FFFFFF"
+                android:paddingLeft="15dp">
+
+
+                <TextView
+                    android:id="@+id/idTVAutoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:padding="5dp"
+                    android:text="Autoria"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/idTVEditorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:padding="5dp"
+                    android:text="Editorial"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/idTVGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:padding="5dp"
+                    android:text="Genero literario"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:paddingTop="4dp"
+                        android:text="Fecha Lectura: "
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/idTVFechaLecturaBookDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Hoy"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageButton
+                        android:id="@+id/idBtnFechaDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:contentDescription="Icono de modificar fecha"
+                        android:src="@drawable/ic_edit_calendar"
+                        android:text="Cambiar" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <CheckBox
+                        android:id="@+id/idCBFavorito"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/checkbox_selector_favorite"
+                        android:checked="true"
+                        android:enabled="true"
+                        android:padding="4dp"
+                        android:text="Favorito"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <CheckBox
+                        android:id="@+id/idCBesPapel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/checkbox_selector_book_digital"
+                        android:checked="false"
+                        android:enabled="true"
+                        android:padding="4dp"
+                        android:text="Digital"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <Space
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!--button for displaying book preview-->
+
+                <!--button for opening buying page of the book-->
+                <Button
+                    android:id="@+id/idBtnEliminar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Eliminar"
+                    android:textAllCaps="false" />
 
-                <CheckBox
-                    android:id="@+id/idCBFavorito"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector_favorite"
-                    android:checked="true"
-                    android:enabled="true"
-                    android:padding="4dp"
-                    android:text="Favorito"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
-
-                <CheckBox
-                    android:id="@+id/idCBesPapel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector_book_digital"
-                    android:checked="false"
-                    android:enabled="true"
-                    android:padding="4dp"
-                    android:text="Formato"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <Space
+                <Button
+                    android:id="@+id/idBtnModificar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Actualizar"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="2">
 
         </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <!--button for displaying book preview-->
-
-            <!--button for opening buying page of the book-->
-            <Button
-                android:id="@+id/idBtnEliminar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="Eliminar"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/idBtnModificar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="Modificar"
-                android:textAllCaps="false" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</FrameLayout>

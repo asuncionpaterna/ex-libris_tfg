@@ -20,8 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
-import com.example.booklist_tfg.ui.anadir.BookAdapter;
-import com.example.booklist_tfg.ui.listado.BookAdapterList;
+import com.example.booklist_tfg.ui.listadoHome.BookAdapterList;
 
 
 import java.time.Year;
