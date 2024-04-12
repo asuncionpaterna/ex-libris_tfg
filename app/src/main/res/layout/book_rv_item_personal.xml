@@ -25,7 +25,7 @@
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Título"
-            android:textColor="@color/black"
+
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -38,7 +38,6 @@
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Autoria"
-            android:textColor="@color/black"
             android:textSize="11sp"
             android:textStyle="italic" />
 
@@ -51,7 +50,7 @@
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Editorial"
-            android:textColor="@color/black"
+
             android:textSize="11sp" />
 
         <TextView
@@ -62,8 +61,6 @@
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
-            android:text="Género Literario"
-            android:textColor="@color/black"
             android:textSize="11sp" />
 
         <TextView
@@ -76,7 +73,7 @@
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Fecha Lectura"
-            android:textColor="@color/black"
+
             android:textSize="11sp" />
 
         <LinearLayout
@@ -101,7 +98,7 @@
                 android:checked="true"
                 android:enabled="false"
                 android:padding="3dp"
-                android:textColor="@color/black"
+
                 android:textSize="11sp" />
             <Space
                 android:layout_width="20dp"
@@ -113,7 +110,7 @@
                 android:button="@drawable/checkbox_selector_book_digital"
                 android:checked="false"
                 android:enabled="false"
-                android:textColor="@color/black"
+
                 android:textSize="11sp" />
 
             <Space

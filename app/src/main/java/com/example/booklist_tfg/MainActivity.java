@@ -1,9 +1,7 @@
 package com.example.booklist_tfg;
 
-import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
-
-import android.graphics.Color;
-import android.os.AsyncTask;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,16 +9,14 @@ import android.view.Menu;
 
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.ddbb.AppDatabase;
-import com.example.booklist_tfg.ddbb.LibroDAO;
+import com.example.booklist_tfg.ui.dialog.DialogoConfiguracion;
+import com.example.booklist_tfg.ui.dialog.DialogoObjetivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -42,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     public static AppDatabase database;
     public static List<Libro> listaLibros = new ArrayList<>();
 
+    public static int objetivoLectura =0;
+    public static SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 AppDatabase.class, "BaseDatos").build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        sharedPreferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        objetivoLectura = sharedPreferences.getInt("objetivo_lectura", 0);
 
         floatingBTN = binding.appBarMain.fabAnadir;
 
@@ -103,16 +107,22 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                //Lo que quiero que haga, botón configuración
-//
-//            case R.id.action_settings_2:
-//                //Lo que quiero que haga, botón objetivo
-//
-//        }
-//
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu_configuracion) {
+            DialogoConfiguracion dialogoConfiguracion = new DialogoConfiguracion(this);
+            dialogoConfiguracion.showDialog();
+            return true;
+        } else if (id == R.id.menu_objetivo) {
+            DialogoObjetivo dialogoObjetivo = new DialogoObjetivo(this);
+            dialogoObjetivo.showDialog();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

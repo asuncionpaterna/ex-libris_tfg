@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
-import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
-import static com.example.booklist_tfg.ui.Utils.formateoFecha;
-import static com.example.booklist_tfg.ui.Utils.verificarDatos;
+import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
+import static com.example.booklist_tfg.utils.Utils.formateoFecha;
+import static com.example.booklist_tfg.utils.Utils.verificarDatos;
 
 import com.squareup.picasso.Picasso;
 

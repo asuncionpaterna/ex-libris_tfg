@@ -1,16 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.BookList_TFG" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_700</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#1c2a45</item> <!-- Define el color principal de la barra superior -->
+
+        <item name="colorPrimaryVariant">#1c2a45</item> <!-- Define el color de la barra de menú -->
+
+        <item name="colorOnPrimary">@color/white</item> <!-- Define el color del texto en los botones -->
+        <item name="android:textColor">@color/white</item>
+
+        <!-- Color secundario de la marca. -->
+        <item name="colorSecondary">@color/teal_200</item> <!-- Define el color secundario de la marca -->
+        <item name="colorSecondaryVariant">@color/teal_200</item> <!-- Define la variante de color secundario -->
+        <item name="colorOnSecondary">@color/black</item> <!-- Define el color del texto sobre el color secundario -->
+
+        <!-- Color de la barra de estado. -->
+        <item name="android:statusBarColor">#1c2a45</item> <!-- Define el color de la barra de estado del sistema -->
+
+        <!-- Fondo -->
+        <item name="android:windowBackground">@drawable/fondo_txt_oscuro</item> <!-- Define el fondo de la ventana de la aplicación -->
     </style>
 </resources>

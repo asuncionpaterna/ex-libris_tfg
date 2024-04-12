@@ -2,14 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/bookDetailsListFL"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/fondo_txt1"
-        android:scaleType="centerCrop" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +30,6 @@
                     android:gravity="center"
                     android:padding="4dp"
                     android:text="Titulo"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -70,7 +64,6 @@
                     android:layout_marginTop="4dp"
                     android:padding="5dp"
                     android:text="Autoria"
-                    android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="italic" />
 
@@ -81,7 +74,6 @@
                     android:layout_marginTop="4dp"
                     android:padding="5dp"
                     android:text="Editorial"
-                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
@@ -91,7 +83,6 @@
                     android:layout_marginTop="4dp"
                     android:padding="5dp"
                     android:text="Genero literario"
-                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <LinearLayout
@@ -109,7 +100,6 @@
                         android:padding="5dp"
                         android:paddingTop="4dp"
                         android:text="Fecha Lectura: "
-                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
 
@@ -119,7 +109,6 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="4dp"
                         android:text="Hoy"
-                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <Space
@@ -160,7 +149,6 @@
                         android:enabled="true"
                         android:padding="4dp"
                         android:text="Favorito"
-                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <Space
@@ -176,7 +164,6 @@
                         android:enabled="true"
                         android:padding="4dp"
                         android:text="Digital"
-                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <Space

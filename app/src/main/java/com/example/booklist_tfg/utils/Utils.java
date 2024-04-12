@@ -1,9 +1,13 @@
-package com.example.booklist_tfg.ui;
+package com.example.booklist_tfg.utils;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.example.booklist_tfg.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +28,6 @@ public class Utils {
         }
         return datos;
     }
-
 
     public static String verificarGeneroLiterario(String generoLiterario) {
         if (generoLiterario == null || generoLiterario.isEmpty()) {
@@ -95,5 +98,13 @@ public class Utils {
 
     public interface OnDateSelectedListener {
         void onDateSelected(Date selectedDate);
+    }
+
+    public static void establecerTema(int uiMode, FrameLayout frameLayout) {
+        if (uiMode == Configuration.UI_MODE_NIGHT_YES) {
+            frameLayout.setBackgroundResource(R.drawable.fondo_txt_oscuro);
+        } else {
+            frameLayout.setBackgroundResource(R.drawable.fondo_txt1);
+        }
     }
 }

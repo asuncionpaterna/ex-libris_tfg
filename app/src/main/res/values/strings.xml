@@ -12,4 +12,11 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Lecturas</string>
     <string name="menu_anadir">Añadir</string>
+
+    <string-array name="idiomas_array">
+        <item>Castellano</item>
+        <item>Catalán</item>
+        <item>Gallego</item>
+        <item>Euskera</item>
+    </string-array>
 </resources>

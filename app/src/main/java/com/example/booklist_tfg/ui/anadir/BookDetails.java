@@ -1,23 +1,27 @@
 package com.example.booklist_tfg.ui.anadir;
 
-import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
-import static com.example.booklist_tfg.ui.Utils.formateoFechaString;
-import static com.example.booklist_tfg.ui.Utils.showDatePicker;
-import static com.example.booklist_tfg.ui.Utils.verificarDatos;
-import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
+import static com.example.booklist_tfg.utils.Utils.establecerTema;
+import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
+import static com.example.booklist_tfg.utils.Utils.formateoFechaString;
+import static com.example.booklist_tfg.utils.Utils.showDatePicker;
+import static com.example.booklist_tfg.utils.Utils.verificarDatos;
+import static com.example.booklist_tfg.utils.Utils.verificarGeneroLiterario;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
-import com.example.booklist_tfg.ui.Utils;
+import com.example.booklist_tfg.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -32,7 +36,7 @@ public class BookDetails extends AppCompatActivity {
     Libro libro;
     int paginasBD;
     private ArrayList<String> autoriaListBD;
-
+    FrameLayout bookDetailsFL;
     TextView tituloTV, autoriaTV, editorialTV, descripcionTV, paginasTV, anioPublicacionTV, fechaLecturaTV, generoLiterarioTV;
 
     ImageButton anadirBtn, fechaBtn;
@@ -49,6 +53,7 @@ public class BookDetails extends AppCompatActivity {
         setContentView(R.layout.activity_book_details);
 
         // Inicializando las vistas
+        bookDetailsFL = findViewById(R.id.idFLBookDetails);
         tituloTV = findViewById(R.id.idTVTituloBookDetails);
         autoriaTV = findViewById(R.id.idTVAutoriaBookDetails);
         editorialTV = findViewById(R.id.idTVEditorialBookDetails);
@@ -63,6 +68,8 @@ public class BookDetails extends AppCompatActivity {
         favoritoCB = findViewById(R.id.idCBFavoritoBookDetails);
         esPapelCB = findViewById(R.id.idCBesPapelBookDetails);
 
+        int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        establecerTema(modoOscuro,bookDetailsFL);
 
         // Se recogen los datos que se pasan con la clase BookAdapter
         libro = (Libro) getIntent().getSerializableExtra("libro");

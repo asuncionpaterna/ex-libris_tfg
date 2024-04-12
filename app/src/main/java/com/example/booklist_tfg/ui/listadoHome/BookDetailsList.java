@@ -1,18 +1,21 @@
 package com.example.booklist_tfg.ui.listadoHome;
 
 import static com.example.booklist_tfg.MainActivity.database;
-import static com.example.booklist_tfg.ui.Utils.formateoAutoria;
-import static com.example.booklist_tfg.ui.Utils.formateoFecha;
-import static com.example.booklist_tfg.ui.Utils.showDatePicker;
-import static com.example.booklist_tfg.ui.Utils.verificarDatos;
-import static com.example.booklist_tfg.ui.Utils.verificarGeneroLiterario;
+import static com.example.booklist_tfg.utils.Utils.establecerTema;
+import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
+import static com.example.booklist_tfg.utils.Utils.formateoFecha;
+import static com.example.booklist_tfg.utils.Utils.showDatePicker;
+import static com.example.booklist_tfg.utils.Utils.verificarDatos;
+import static com.example.booklist_tfg.utils.Utils.verificarGeneroLiterario;
 import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
-import com.example.booklist_tfg.ui.Utils;
+import com.example.booklist_tfg.utils.Utils;
 import com.example.booklist_tfg.ui.home.HomeFragment;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +45,7 @@ public class BookDetailsList extends AppCompatActivity {
 
     private ImageView portadaIV;
     TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV;
-
+    FrameLayout bookDetailsListFL;
     CheckBox favoritoCB, esPapelCB;
     Button eliminarBtn, modificarBtn;
     Date[] fechas = new Date[1];
@@ -55,6 +58,8 @@ public class BookDetailsList extends AppCompatActivity {
 
 
         //Inicializando los elementos
+
+        bookDetailsListFL = findViewById(R.id.bookDetailsListFL);
         tituloTV = findViewById(R.id.idTVTitulo);
         autoriaTV = findViewById(R.id.idTVAutoria);
         editorialTV = findViewById(R.id.idTVEditorial);
@@ -69,6 +74,9 @@ public class BookDetailsList extends AppCompatActivity {
         modificarBtn = findViewById(R.id.idBtnModificar);
         fechaBtn = findViewById(R.id.idBtnFechaDetails);
         fechas[0] = fecha;
+
+        int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        establecerTema(modoOscuro, bookDetailsListFL);
         //Almacenando los datos en las variables
         libro = (Libro) getIntent().getSerializableExtra("libro");
         titulo = libro.getTitulo();

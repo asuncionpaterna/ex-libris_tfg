@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listadoLecturasFL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/fondo_txt1" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -28,6 +23,7 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,10 +50,10 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="8dp"
-            android:orientation="horizontal"
-            android:padding="5dp"
             android:background="#80FFFFFF"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <CheckBox
                 android:id="@+id/idCBFavoritoLL"
@@ -96,7 +92,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="Año:"
-                android:textColor="@color/black"
                 android:textSize="15dp" />
 
             <EditText
@@ -109,8 +104,8 @@
                 android:id="@+id/idBtnAnio"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_edit_calendar"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_edit_calendar" />
 
         </LinearLayout>
 

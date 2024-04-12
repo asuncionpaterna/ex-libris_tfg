@@ -1,13 +1,16 @@
 package com.example.booklist_tfg.ui.anadir;
 
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
+import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -34,10 +37,12 @@ import java.util.ArrayList;
 public class AnadirFragment extends Fragment {
     private RequestQueue mRequestQueue;
     private ArrayList<Libro> libroInfoArrayList;
+    FrameLayout anadirFL;
     private ProgressBar progressBar;
     private EditText buscarET;
     private Button buscarBTN;
     RecyclerView mRecyclerView;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_anadir, container, false);
@@ -45,8 +50,11 @@ public class AnadirFragment extends Fragment {
 
         // inicializando las vistas.
         progressBar = view.findViewById(R.id.idLoadingPB);
-        buscarET =  view.findViewById(R.id.idEdtSearchBooks);
-        buscarBTN =  view.findViewById(R.id.idBtnSearch);
+        anadirFL = view.findViewById(R.id.anadirFL);
+        int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        establecerTema(modoOscuro,anadirFL);
+        buscarET = view.findViewById(R.id.idEdtSearchBooks);
+        buscarBTN = view.findViewById(R.id.idBtnSearch);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.idRVBooks);
 
         buscarBTN.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +73,7 @@ public class AnadirFragment extends Fragment {
         });
         return view;
     }
+
     private void getBooksInfo(String query) {
 
         // creating a new array list.
@@ -114,13 +123,12 @@ public class AnadirFragment extends Fragment {
                             // after extracting all the data we are
                             // saving this data in our modal class.
 
-                          // below line is use to ---st."-
-                            Libro bookInfo = new Libro(titulo,authorsArrayList,editorial,genero,anioPublicacion,paginas,portada);
+                            // below line is use to ---st."-
+                            Libro bookInfo = new Libro(titulo, authorsArrayList, editorial, genero, anioPublicacion, paginas, portada);
                             libroInfoArrayList.add(bookInfo);
 
 
-
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 

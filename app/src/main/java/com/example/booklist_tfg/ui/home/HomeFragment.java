@@ -3,13 +3,16 @@ package com.example.booklist_tfg.ui.home;
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
+import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,15 +35,21 @@ public class HomeFragment extends Fragment {
 
     static RecyclerView mRecyclerView;
     TextView tituloTV;
+    FrameLayout homeFL;
     static Year anio = Year.parse(Year.now().toString());
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         if (floatingBTN != null) {
             floatingBTN.show();
         }
+        int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        homeFL = view.findViewById(R.id.homeFL);
+        establecerTema(modoOscuro,homeFL);
         mRecyclerView = view.findViewById(R.id.idRVMostrarLista);
         tituloTV = view.findViewById(R.id.idTvTitulo);
         tituloTV.setText("Lecturas del " + anio);

@@ -2,7 +2,10 @@ package com.example.booklist_tfg.ui.listadoLecturas;
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
+import static com.example.booklist_tfg.utils.Utils.establecerTema;
+
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ import java.util.List;
 public class ListadoLecturas extends Fragment {
 
     static RecyclerView mRecyclerView;
+    FrameLayout listadoLecturasFL;
     TextView tituloTV;
     private static ProgressBar progressBar;
     CheckBox favoritoCB, papelCB, digitalCB;
@@ -42,7 +47,10 @@ public class ListadoLecturas extends Fragment {
         if (floatingBTN != null) {
             floatingBTN.show();
         }
+        int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
         mRecyclerView = view.findViewById(R.id.idRVMostrarListaLL);
+        listadoLecturasFL = view.findViewById(R.id.listadoLecturasFL);
         tituloTV = view.findViewById(R.id.idTVTituloLL);
         tituloTV.setText("Lecturas realizadas");
         favoritoCB = view.findViewById(R.id.idCBFavoritoLL);
@@ -51,6 +59,8 @@ public class ListadoLecturas extends Fragment {
         anioET = view.findViewById(R.id.idEdtAnio);
         anioBtn = view.findViewById(R.id.idBtnAnio);
         progressBar = view.findViewById(R.id.idCargaPB);
+
+        establecerTema(modoOscuro,listadoLecturasFL);
 
         favoritoCB.setOnClickListener(new View.OnClickListener() {
             @Override

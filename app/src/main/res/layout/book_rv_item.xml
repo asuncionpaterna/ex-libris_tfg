@@ -27,7 +27,6 @@
             android:padding="3dp"
             android:text="Titulo"
             android:textStyle="bold"
-            android:textColor="@color/black"
             android:textSize="13sp" />
 
         <TextView
@@ -40,7 +39,6 @@
             android:padding="3dp"
             android:text="Autoria"
             android:textStyle="italic"
-            android:textColor="@color/black"
             android:textSize="11sp" />
 
         <TextView
@@ -52,7 +50,6 @@
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Editorial"
-            android:textColor="@color/black"
             android:textSize="11sp" />
         <TextView
             android:id="@+id/idTVPageCount"
@@ -63,7 +60,6 @@
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"
             android:text="Num Paginas"
-            android:textColor="@color/black"
             android:textSize="11sp" />
 
         <TextView
@@ -75,7 +71,6 @@
             android:layout_marginEnd="5dp"
             android:padding="3dp"
             android:text="FechaPublicacion"
-            android:textColor="@color/black"
             android:textSize="11sp" />
 
     </RelativeLayout>
