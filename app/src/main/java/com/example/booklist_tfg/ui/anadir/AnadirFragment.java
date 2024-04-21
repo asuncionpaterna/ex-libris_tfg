@@ -62,7 +62,6 @@ public class AnadirFragment extends Fragment {
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
 
-                // checking if our edittext field is empty or not.
                 if (buscarET.getText().toString().isEmpty()) {
                     buscarET.setError("Introduce los datos de búsqueda");
                     return;

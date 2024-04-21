@@ -20,7 +20,7 @@ public class DialogoConfiguracion {
         this.context = context;
     }
 
-    CheckBox modoCB;
+    CheckBox modoCB, sistemaModoCB, sistemaIdiomaCB;
     Spinner idiomasSP;
 
     public void showDialog() {
@@ -31,23 +31,40 @@ public class DialogoConfiguracion {
         builder.setView(view);
 
         modoCB = view.findViewById(R.id.idCBModo);
+        sistemaModoCB = view.findViewById(R.id.idCBSistemaModo);
+        sistemaIdiomaCB = view.findViewById(R.id.idCBSistemaIdiom);
         idiomasSP = view.findViewById(R.id.idSPIdiomas);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.idiomas_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         idiomasSP.setAdapter(adapter);
 
+        modoCB.setEnabled(false);
+        sistemaModoCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Habilitar o deshabilitar el CheckBox modoCB según el estado de sistemaModoCB
+                modoCB.setEnabled(!isChecked);
+            }
+        });
+        sistemaIdiomaCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                idiomasSP.setEnabled(!isChecked);
+            }
+        });
+
+
         modoCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // Cambiar el tema de la aplicación al modo oscuro si el CheckBox está marcado
                 if (isChecked) {
-                    modoCB.setText("OSCUROOOO");
-                    context.getResources().getConfiguration().uiMode |= Configuration.UI_MODE_NIGHT_YES;
+                    context.getResources().getConfiguration().uiMode = Configuration.UI_MODE_NIGHT_YES;
+
                 } else {
-                    modoCB.setText("CLAROOO");
                     // Restablecer el tema a modo claro si el CheckBox está desmarcado
-                    context.getResources().getConfiguration().uiMode &= ~Configuration.UI_MODE_NIGHT_YES;
+                    context.getResources().getConfiguration().uiMode = ~Configuration.UI_MODE_NIGHT_YES;
                 }
                 // Notificar al sistema que el tema ha cambiado
                 context.getResources().updateConfiguration(context.getResources().getConfiguration(), null);

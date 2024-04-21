@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="10dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -9,10 +9,21 @@
         android:orientation="vertical"
         android:padding="5dp">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/idCBSistemaModo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -38,7 +49,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/idCBSistemaIdiom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema" />
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,6 +66,7 @@
                 android:gravity="center_vertical"
                 android:text="Idioma seleccionado:"
                 android:textSize="15dp" />
+
             <Space
                 android:layout_width="20dp"
                 android:layout_height="match_parent" />
@@ -55,8 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_vertical"/>
-
+                android:gravity="center_vertical" />
 
         </LinearLayout>
 
