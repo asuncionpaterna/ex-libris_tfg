@@ -23,13 +23,17 @@ public interface LibroDAO {
 
 
     @Query("SELECT * FROM libros WHERE fecha_lectura LIKE :anio || '%'")
-    List<Libro>getByAnio(String anio);
+    List<Libro> getByAnio(String anio);
 
     @Query("SELECT * FROM libros WHERE favorito = true")
-    List<Libro>getbyFavorito();
+    List<Libro> getbyFavorito();
 
     @Query("SELECT * FROM libros WHERE es_papel = :formato")
-    List<Libro>getbyFormato(boolean formato);
+    List<Libro> getbyFormato(boolean formato);
+
+    @Query("SELECT COUNT(*) FROM libros WHERE fecha_lectura like :anioActual || '%'")
+    int getCountLecturabyAnio(String anioActual);
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Libro libro);
 

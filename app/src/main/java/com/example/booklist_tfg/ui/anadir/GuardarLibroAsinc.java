@@ -1,5 +1,7 @@
 package com.example.booklist_tfg.ui.anadir;
 
+import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -30,5 +32,6 @@ public class GuardarLibroAsinc extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid){
         Toast.makeText(context, "Se ha añadido libro", Toast.LENGTH_LONG);
+        porcentajeLectura();
     }
 }

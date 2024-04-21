@@ -1,6 +1,7 @@
 package com.example.booklist_tfg.ui.listadoHome;
 
 import static com.example.booklist_tfg.MainActivity.database;
+import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
 import static com.example.booklist_tfg.utils.Utils.formateoFecha;
@@ -125,6 +126,7 @@ public class BookDetailsList extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     mostrarLibros(mcontext);
+                                    porcentajeLectura();
                                     finish();
                                 }
                             });

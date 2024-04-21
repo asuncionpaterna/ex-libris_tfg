@@ -1,5 +1,7 @@
 package com.example.booklist_tfg.ui.dialog;
 
+import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -43,6 +45,7 @@ public class DialogoObjetivo {
                 SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
                 editor.putInt("objetivo_lectura", MainActivity.objetivoLectura);
                 editor.apply();
+                porcentajeLectura();
                 dialog.dismiss();
             }
         });

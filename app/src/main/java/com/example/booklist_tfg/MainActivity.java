@@ -9,6 +9,7 @@ import android.view.Menu;
 
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.ddbb.AppDatabase;
+import com.example.booklist_tfg.ddbb.LibroDAO;
 import com.example.booklist_tfg.ui.dialog.DialogoConfiguracion;
 import com.example.booklist_tfg.ui.dialog.DialogoObjetivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,6 +27,7 @@ import androidx.room.Room;
 
 import com.example.booklist_tfg.databinding.ActivityMainBinding;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,23 +40,26 @@ public class MainActivity extends AppCompatActivity {
     public static AppDatabase database;
     public static List<Libro> listaLibros = new ArrayList<>();
 
-    public static int objetivoLectura =0;
+    public static int objetivoLectura = 0;
     public static SharedPreferences sharedPreferences;
+
+    static Year anioActual =Year.parse(Year.now().toString());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+
         database = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "BaseDatos").build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sharedPreferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        objetivoLectura = sharedPreferences.getInt("objetivo_lectura", 0);
-
         floatingBTN = binding.appBarMain.fabAnadir;
+
 
         setSupportActionBar(binding.appBarMain.toolbar);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -74,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
         floatingBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //el problema radica aqui
                 navController.navigate(R.id.nav_anadir);
             }
         });
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -124,5 +129,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }
