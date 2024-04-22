@@ -4,11 +4,17 @@
     <item
         android:id="@+id/menu_configuracion"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_configuracion"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_objetivo"
         android:orderInCategory="100"
-        android:title="@string/action_settings_2"
+        android:title="@string/action_objetivo_lectura"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_busqueda_avanzada"
+        android:orderInCategory="100"
+        android:title="@string/action_busqueda_avanzada"
         app:showAsAction="never" />
 </menu>
