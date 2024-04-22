@@ -22,4 +22,9 @@
         android:name="com.example.booklist_tfg.ui.anadir.AnadirFragment"
         android:label="@string/menu_anadir"
         tools:layout="@layout/fragment_anadir" />
+    <fragment
+        android:id="@+id/nav_estadisticas"
+        android:name="com.example.booklist_tfg.ui.estadisticas.EstadisticasFragment"
+        android:label="@string/menu_estadisticas"
+        tools:layout="@layout/fragment_estadisticas" />
 </navigation>

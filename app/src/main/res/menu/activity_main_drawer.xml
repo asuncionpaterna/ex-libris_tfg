@@ -16,5 +16,9 @@
             android:id="@+id/nav_anadir"
             android:icon="@drawable/ic_add_circle"
             android:title="@string/menu_anadir" />
+        <item
+            android:id="@+id/nav_estadisticas"
+            android:icon="@drawable/ic_add_circle"
+            android:title="@string/menu_estadisticas" />
     </group>
 </menu>

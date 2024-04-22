@@ -12,6 +12,7 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Lecturas</string>
     <string name="menu_anadir">Añadir</string>
+    <string name="menu_estadisticas">Estadísticas</string>
 
     <string-array name="idiomas_array">
         <item>Castellano</item>
@@ -19,4 +20,6 @@
         <item>Gallego</item>
         <item>Euskera</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

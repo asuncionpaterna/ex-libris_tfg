@@ -2,13 +2,24 @@ package com.example.booklist_tfg.utils;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.core.content.FileProvider;
+
 import com.example.booklist_tfg.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -106,5 +117,25 @@ public class Utils {
         } else {
             frameLayout.setBackgroundResource(R.drawable.fondo_txt1);
         }
+    }
+
+    public static void shareImage(Bitmap image, Context context) {
+
+// Convertir el Bitmap en un ByteArray
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+
+// Crear un Intent con la acción ACTION_SEND
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+
+// Establecer el tipo de datos que se compartirá (imagen PNG en este caso)
+        shareIntent.setType("image/png");
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), image, "Title", null);
+// Añadir el ByteArray como un extra al Intent
+        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(path));
+
+// Iniciar la actividad para compartir
+        context.startActivity(Intent.createChooser(shareIntent, "Share Chart"));
+
     }
 }

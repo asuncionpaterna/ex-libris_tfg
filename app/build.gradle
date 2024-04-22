@@ -36,7 +36,6 @@ android {
 }
 
 dependencies {
-
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout
@@ -58,4 +57,4 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'com.google.code.gson:gson:2.10.1'
-}
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.5'}

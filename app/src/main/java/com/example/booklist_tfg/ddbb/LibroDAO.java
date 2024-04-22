@@ -3,6 +3,7 @@ package com.example.booklist_tfg.ddbb;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.MapInfo;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
@@ -10,7 +11,9 @@ import androidx.room.Update;
 
 import com.example.booklist_tfg.Model.Libro;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Dao
 public interface LibroDAO {
@@ -33,6 +36,14 @@ public interface LibroDAO {
 
     @Query("SELECT COUNT(*) FROM libros WHERE fecha_lectura like :anioActual || '%'")
     int getCountLecturabyAnio(String anioActual);
+
+    @Query("SELECT COUNT(*) FROM libros WHERE fecha_lectura LIKE '%-' || :mes || '-%'")
+    int getCountLecturabyMes(String mes);
+
+    @MapInfo(keyColumn = "genero", valueColumn = "count")
+    @Query("SELECT genero, COUNT(*) as count FROM libros GROUP BY genero ORDER BY count desc")
+    Map<String, Integer> getGeneros();
+
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Libro libro);
