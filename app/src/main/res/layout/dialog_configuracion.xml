@@ -9,43 +9,6 @@
         android:orientation="vertical"
         android:padding="5dp">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/idCBSistemaModo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sistema" />
-
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Modo oscuro:"
-                android:textSize="15dp" />
-
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="match_parent" />
-
-            <CheckBox
-                android:id="@+id/idCBModo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/checkbox_selector_mode"
-                android:checked="true"
-                android:enabled="true"
-                android:padding="4dp"
-                android:textSize="15sp" />
-        </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
