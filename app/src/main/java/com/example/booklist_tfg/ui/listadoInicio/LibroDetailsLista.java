@@ -1,14 +1,14 @@
-package com.example.booklist_tfg.ui.listadoHome;
+package com.example.booklist_tfg.ui.listadoInicio;
 
 import static com.example.booklist_tfg.MainActivity.database;
-import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
+import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
 import static com.example.booklist_tfg.utils.Utils.formateoFecha;
 import static com.example.booklist_tfg.utils.Utils.showDatePicker;
 import static com.example.booklist_tfg.utils.Utils.verificarDatos;
 import static com.example.booklist_tfg.utils.Utils.verificarGeneroLiterario;
-import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
+import static com.example.booklist_tfg.ui.Inicio.InicioFragment.mostrarLibros;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -27,7 +27,7 @@ import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
 import com.example.booklist_tfg.utils.Utils;
-import com.example.booklist_tfg.ui.home.HomeFragment;
+import com.example.booklist_tfg.ui.Inicio.InicioFragment;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +36,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.Executors;
 
-public class BookDetailsList extends AppCompatActivity {
+public class LibroDetailsLista extends AppCompatActivity {
 
     String titulo, editorial, generoLiterario, portada, fechaLectura;
     private ArrayList<String> autoriaList;
@@ -119,7 +119,7 @@ public class BookDetailsList extends AppCompatActivity {
 
                             //Mediante una estructura de control Try&Catch se elimina el libro utilizando el DAO
                             libroDAO.delete(libro);
-                            new HomeFragment.RecogerLibrosDB(mcontext).execute();
+                            new InicioFragment.RecogerLibrosDB(mcontext).execute();
 
                             //Tras eliminar el libro se finaliza la actividad
                             runOnUiThread(new Runnable() {
@@ -155,7 +155,7 @@ public class BookDetailsList extends AppCompatActivity {
                         try {
                             LibroDAO libroDAO = database.libroDAO();
                             libroDAO.update(libro);
-                            new HomeFragment.RecogerLibrosDB(mcontext).execute();
+                            new InicioFragment.RecogerLibrosDB(mcontext).execute();
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -175,7 +175,7 @@ public class BookDetailsList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Llamar a showDatePicker pasando un OnDateSelectedListener
-                showDatePicker(BookDetailsList.this, fechaLecturaTV, fecha, new Utils.OnDateSelectedListener() {
+                showDatePicker(LibroDetailsLista.this, fechaLecturaTV, fecha, new Utils.OnDateSelectedListener() {
                     @Override
                     public void onDateSelected(Date selectedDate) {
                         // Manejar la fecha seleccionada aquí

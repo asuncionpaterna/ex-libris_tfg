@@ -1,4 +1,4 @@
-package com.example.booklist_tfg.ui.listadoHome;
+package com.example.booklist_tfg.ui.listadoInicio;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,12 +21,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class BookAdapterList extends RecyclerView.Adapter<BookAdapterList.BookViewHolder> {
+public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.BookViewHolder> {
     private ArrayList<Libro> bookInfoArrayList;
     private Context mcontext;
 
     // creating constructor for array list and context.
-    public BookAdapterList(ArrayList<Libro> bookInfoArrayList, Context mcontext) {
+    public LibroAdapterLista(ArrayList<Libro> bookInfoArrayList, Context mcontext) {
         this.bookInfoArrayList = bookInfoArrayList;
         this.mcontext = mcontext;
     }
@@ -37,10 +37,10 @@ public class BookAdapterList extends RecyclerView.Adapter<BookAdapterList.BookVi
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflating our layout for item of recycler view item.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_rv_item_personal, parent, false);
-        return new BookAdapterList.BookViewHolder(view);    }
+        return new LibroAdapterLista.BookViewHolder(view);    }
 
     @Override
-    public void onBindViewHolder(@NonNull BookAdapterList.BookViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LibroAdapterLista.BookViewHolder holder, int position) {
         // inside on bind view holder method we are
         // setting our data to each UI component.
         Libro libroInfo = bookInfoArrayList.get(position);
@@ -60,7 +60,7 @@ public class BookAdapterList extends RecyclerView.Adapter<BookAdapterList.BookVi
             public void onClick(View v) {
                 // inside on click listener method we are calling a new activity
                 // La informacióin que se pasa a los detalles del libro
-                Intent i = new Intent(mcontext, BookDetailsList.class);
+                Intent i = new Intent(mcontext, LibroDetailsLista.class);
                 i.putExtra("title", libroInfo.getTitulo());
 
                 i.putExtra("authors", libroInfo.getNombreAutoria());

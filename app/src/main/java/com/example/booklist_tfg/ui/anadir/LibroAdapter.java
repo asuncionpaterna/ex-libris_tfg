@@ -15,14 +15,14 @@ import com.example.booklist_tfg.R;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHolder> {
 
     // creating variables for arraylist and context.
     private ArrayList<Libro> bookInfoArrayList;
     private Context mcontext;
 
     // creating constructor for array list and context.
-    public BookAdapter(ArrayList<Libro> bookInfoArrayList, Context mcontext) {
+    public LibroAdapter(ArrayList<Libro> bookInfoArrayList, Context mcontext) {
         this.bookInfoArrayList = bookInfoArrayList;
         this.mcontext = mcontext;
     }
@@ -60,7 +60,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             public void onClick(View v) {
                 // inside on click listener method we are calling a new activity
                 // La informacióin que se pasa a los detalles del libro
-                Intent i = new Intent(mcontext, BookDetails.class);
+                Intent i = new Intent(mcontext, LibroDetalles.class);
                 i.putExtra("title", bookInfo.getTitulo());
 
                 i.putExtra("authors", bookInfo.getNombreAutoria());

@@ -1,6 +1,6 @@
 package com.example.booklist_tfg.ui.anadir;
 
-import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
+import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
 
 import android.content.Context;
 import android.os.AsyncTask;

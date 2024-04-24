@@ -14,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class BookDetails extends AppCompatActivity {
+public class LibroDetalles extends AppCompatActivity {
 
     // creating variables for strings,text view, image views and button.
     String tituloBD, editorialBD, fechaPublicacionBD, descripcionBD, portadaBD, generoLiterarioBD;
@@ -113,7 +112,7 @@ public class BookDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Llamar a showDatePicker pasando un OnDateSelectedListener
-                showDatePicker(BookDetails.this, fechaLecturaTV, fechaBD, new Utils.OnDateSelectedListener() {
+                showDatePicker(LibroDetalles.this, fechaLecturaTV, fechaBD, new Utils.OnDateSelectedListener() {
                     @Override
                     public void onDateSelected(Date selectedDate) {
                         // Manejar la fecha seleccionada aquí

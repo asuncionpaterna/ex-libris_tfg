@@ -9,17 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Autoria:"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Autoria:" />
 
         <EditText
             android:id="@+id/idETAutoria"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <ImageButton
             android:id="@+id/idBtnBuscarAutoria"
@@ -38,8 +38,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Género literario:"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Género literario:" />
 
         <EditText
             android:id="@+id/idETGenero"
@@ -56,5 +56,30 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Editorial:" />
+
+        <EditText
+            android:id="@+id/idETEditorial"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="" />
+
+        <ImageButton
+            android:id="@+id/idBtnBuscarEditorial"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_buscar" />
+
+    </LinearLayout>
 
 </LinearLayout>

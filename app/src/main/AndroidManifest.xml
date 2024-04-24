@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.booklist_tfg.ui.anadir.BookDetails"
+            android:name="com.example.booklist_tfg.ui.anadir.LibroDetalles"
             android:label="Añadir libro"
             />
         <activity
-            android:name="com.example.booklist_tfg.ui.listadoHome.BookDetailsList"
+            android:name="com.example.booklist_tfg.ui.listadoInicio.LibroDetailsLista"
             android:label="Detalles del libro"
             />
         <activity

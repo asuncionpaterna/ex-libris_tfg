@@ -1,6 +1,6 @@
 package com.example.booklist_tfg.ui.dialog;
 
-import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
+import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
 
 import android.app.AlertDialog;
 import android.content.Context;

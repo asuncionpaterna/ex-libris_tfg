@@ -1,7 +1,9 @@
 package com.example.booklist_tfg.ui.listadoLecturas;
+
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
+import static com.example.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.Context;
@@ -19,14 +21,20 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
-import com.example.booklist_tfg.ui.listadoHome.BookAdapterList;
+import com.example.booklist_tfg.ui.dialog.DialogoBusquedaAvanzada;
+import com.example.booklist_tfg.ui.listadoInicio.LibroAdapterLista;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,17 +46,17 @@ public class ListadoLecturas extends Fragment {
     private static ProgressBar progressBar;
     CheckBox favoritoCB, papelCB, digitalCB;
     EditText anioET;
+    ImageButton anioBtn;
 
-    ImageButton  anioBtn;
 
-
-    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listadolecturas, container, false);
         if (floatingBTN != null) {
             floatingBTN.show();
         }
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
+        mostrarBusquedaAvanzada = true;
+        requireActivity().invalidateOptionsMenu();
         mRecyclerView = view.findViewById(R.id.idRVMostrarListaLL);
         listadoLecturasFL = view.findViewById(R.id.listadoLecturasFL);
         tituloTV = view.findViewById(R.id.idTVTituloLL);
@@ -60,7 +68,7 @@ public class ListadoLecturas extends Fragment {
         anioBtn = view.findViewById(R.id.idBtnAnio);
         progressBar = view.findViewById(R.id.idCargaPB);
 
-        establecerTema(modoOscuro,listadoLecturasFL);
+        establecerTema(modoOscuro, listadoLecturasFL);
 
         favoritoCB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,12 +116,12 @@ public class ListadoLecturas extends Fragment {
             public void onClick(View view) {
                 String anio = anioET.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
-                if(anio.isEmpty()){
+                if (anio.isEmpty()) {
                     anioET.setError("Introduce año");
                     return;
-                }else{
-                progressBar.setVisibility(View.VISIBLE);
-                new RecogerLibrosAnioDB(getContext()).execute(anio);
+                } else {
+                    progressBar.setVisibility(View.VISIBLE);
+                    new RecogerLibrosAnioDB(getContext()).execute(anio);
                 }
             }
         });
@@ -128,7 +136,7 @@ public class ListadoLecturas extends Fragment {
         List<Libro> listaMostrar = new ArrayList<>();
         // below line is use to pass our
         // array list in adapter class.
-        BookAdapterList adapter = new BookAdapterList((ArrayList<Libro>) listaLibros, context);
+        LibroAdapterLista adapter = new LibroAdapterLista((ArrayList<Libro>) listaLibros, context);
         // below line is use to add linear layout
         // manager for our recycler view.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
@@ -229,7 +237,76 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(List<Libro> libros) {
-            listaLibros =libros;
+            listaLibros = libros;
+            mostrarLibros(context);
+        }
+    }
+
+    public static class RecogerLibrosAutoriaDB extends AsyncTask<Void, Void, Void> {
+        Context context;
+        String autoria;
+
+        public RecogerLibrosAutoriaDB(Context context, String autoria) {
+            this.context = context;
+            this.autoria = autoria;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            LibroDAO libroDAO = database.libroDAO();
+            listaLibros = libroDAO.getByAutoria(autoria);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            mostrarLibros(context);
+        }
+    }
+
+    public static class RecogerLibrosGeneroDB extends AsyncTask<Void, Void, Void> {
+        Context context;
+        String genero;
+
+        public RecogerLibrosGeneroDB(Context context, String genero) {
+            this.context = context;
+            this.genero = genero;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            LibroDAO libroDAO = database.libroDAO();
+            listaLibros = libroDAO.getByGenero(genero);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            mostrarLibros(context);
+        }
+    }
+
+    public static class RecogerLibrosEditorialDB extends AsyncTask<Void, Void, Void> {
+        Context context;
+        String editorial;
+
+        public RecogerLibrosEditorialDB(Context context, String editorial) {
+            this.context = context;
+            this.editorial = editorial;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            LibroDAO libroDAO = database.libroDAO();
+            listaLibros = libroDAO.getByEditorial(editorial);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
             mostrarLibros(context);
         }
     }

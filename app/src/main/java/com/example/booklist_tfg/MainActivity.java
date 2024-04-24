@@ -10,6 +10,7 @@ import android.view.Menu;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.ddbb.AppDatabase;
 import com.example.booklist_tfg.ddbb.LibroDAO;
+import com.example.booklist_tfg.ui.dialog.DialogoBusquedaAvanzada;
 import com.example.booklist_tfg.ui.dialog.DialogoConfiguracion;
 import com.example.booklist_tfg.ui.dialog.DialogoObjetivo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,7 +18,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -40,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
     public static AppDatabase database;
     public static List<Libro> listaLibros = new ArrayList<>();
 
+    public static boolean mostrarBusquedaAvanzada;
     public static int objetivoLectura = 0;
     public static SharedPreferences sharedPreferences;
-
-    static Year anioActual =Year.parse(Year.now().toString());
+    private NavController navController;
+    static Year anioActual = Year.parse(Year.now().toString());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
 
         floatingBTN = binding.appBarMain.fabAnadir;
 
@@ -102,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        //Aqui para ocul
+        // Ocultar un elemento específico
+        MenuItem itemBusquedaAvanzada = menu.findItem(R.id.menu_busqueda_avanzada);
+        if (itemBusquedaAvanzada != null) {
+            itemBusquedaAvanzada.setVisible(mostrarBusquedaAvanzada ? true : false); // Oculta el item
+        }
         return true;
     }
 
@@ -123,6 +133,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.menu_objetivo) {
             DialogoObjetivo dialogoObjetivo = new DialogoObjetivo(this);
             dialogoObjetivo.showDialog();
+
+            return true;
+        } else if (id == R.id.menu_busqueda_avanzada) {
+            DialogoBusquedaAvanzada dialogoBusquedaAvanzada = new DialogoBusquedaAvanzada(this);
+            dialogoBusquedaAvanzada.showDialog();
 
             return true;
         }

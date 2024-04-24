@@ -23,7 +23,7 @@
         android:id="@+id/compartirBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_add_circle"
+        android:drawableLeft="@drawable/ic_share"
         tools:ignore="MissingConstraints"></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

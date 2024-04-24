@@ -1,13 +1,9 @@
 package com.example.booklist_tfg.ui.estadisticas;
 
 import static com.example.booklist_tfg.MainActivity.database;
-import static com.example.booklist_tfg.MainActivity.objetivoLectura;
-import static com.example.booklist_tfg.ui.home.HomeFragment.mostrarLibros;
-import static com.example.booklist_tfg.ui.home.HomeFragment.porcentajeLectura;
 import static com.example.booklist_tfg.utils.Utils.shareImage;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +21,6 @@ import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
-import com.example.booklist_tfg.MainActivity;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
 

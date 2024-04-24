@@ -1,16 +1,15 @@
-package com.example.booklist_tfg.ui.home;
+package com.example.booklist_tfg.ui.Inicio;
 
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
+import static com.example.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.example.booklist_tfg.MainActivity.objetivoLectura;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,8 +29,7 @@ import com.example.booklist_tfg.MainActivity;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
-import com.example.booklist_tfg.ui.listadoHome.BookAdapterList;
-import com.google.android.material.button.MaterialButton$InspectionCompanion;
+import com.example.booklist_tfg.ui.listadoInicio.LibroAdapterLista;
 
 
 import java.time.Year;
@@ -38,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HomeFragment extends Fragment {
+public class InicioFragment extends Fragment {
 
     static RecyclerView mRecyclerView;
     TextView tituloTV;
@@ -46,7 +45,6 @@ public class HomeFragment extends Fragment {
 
     static ProgressBar objetivoLecturaPB;
     static Year anio = Year.parse(Year.now().toString());
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +54,8 @@ public class HomeFragment extends Fragment {
         if (floatingBTN != null) {
             floatingBTN.show();
         }
+        mostrarBusquedaAvanzada = false;
+        requireActivity().invalidateOptionsMenu();
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         homeFL = view.findViewById(R.id.homeFL);
         establecerTema(modoOscuro, homeFL);
@@ -103,7 +103,7 @@ public class HomeFragment extends Fragment {
         List<Libro> listaMostrar = new ArrayList<>();
         // below line is use to pass our
         // array list in adapter class.
-        BookAdapterList adapter = new BookAdapterList((ArrayList<Libro>) listaLibros, context);
+        LibroAdapterLista adapter = new LibroAdapterLista((ArrayList<Libro>) listaLibros, context);
         // below line is use to add linear layout
         // manager for our recycler view.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
