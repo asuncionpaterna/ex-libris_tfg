@@ -4,9 +4,11 @@ import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
 import static com.example.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
+import static com.example.booklist_tfg.MainActivity.objetivoLectura;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.booklist_tfg.MainActivity;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
@@ -47,7 +50,7 @@ public class ListadoLecturas extends Fragment {
     CheckBox favoritoCB, papelCB, digitalCB;
     EditText anioET;
     ImageButton anioBtn;
-
+    boolean filtroFavorito, filtroEsPapel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listadolecturas, container, false);
@@ -68,6 +71,9 @@ public class ListadoLecturas extends Fragment {
         anioBtn = view.findViewById(R.id.idBtnAnio);
         progressBar = view.findViewById(R.id.idCargaPB);
 
+        filtroFavorito = MainActivity.sharedPreferences.getBoolean("filtro_favorito", false);
+        filtroEsPapel = MainActivity.sharedPreferences.getBoolean("filtro_espapel", false);
+
         establecerTema(modoOscuro, listadoLecturasFL);
 
         favoritoCB.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +81,18 @@ public class ListadoLecturas extends Fragment {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 if (favoritoCB.isChecked()) {
-                    new RecogerLibrosFavoritosDB(getContext()).execute();
+                    SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
+                    if (papelCB.isChecked()) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(true);
+                        digitalCB.setChecked(false);
+                    } else if (papelCB.isChecked()) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(false);
+                        papelCB.setChecked(false);
+                    } else {
+                        new RecogerLibrosFavoritosDB(getContext()).execute();
+                    }
                 } else {
                     new RecogerTodosLibrosDB(getContext()).execute();
                 }
@@ -86,9 +103,15 @@ public class ListadoLecturas extends Fragment {
             @Override
             public void onClick(View view) {
                 if (papelCB.isChecked()) {
-                    progressBar.setVisibility(View.VISIBLE);
-                    new RecogerLibrosFormatoDB(getContext()).execute(true);
-                    digitalCB.setChecked(false);
+                    if (favoritoCB.isChecked()) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(true);
+                        digitalCB.setChecked(false);
+                    } else {
+                        progressBar.setVisibility(View.VISIBLE);
+                        new RecogerLibrosFormatoDB(getContext()).execute(true);
+                        digitalCB.setChecked(false);
+                    }
                 } else {
                     new RecogerTodosLibrosDB(getContext()).execute();
                 }
@@ -101,8 +124,14 @@ public class ListadoLecturas extends Fragment {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 if (digitalCB.isChecked()) {
-                    new RecogerLibrosFormatoDB(getContext()).execute(false); // false para libros en formato digital
-                    papelCB.setChecked(false);
+                    if (favoritoCB.isChecked()) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(false);
+                        papelCB.setChecked(false);
+                    } else {
+                        new RecogerLibrosFormatoDB(getContext()).execute(false); // false para libros en formato digital
+                        papelCB.setChecked(false);
+                    }
                 } else {
                     new RecogerTodosLibrosDB(getContext()).execute();
                 }
@@ -302,6 +331,27 @@ public class ListadoLecturas extends Fragment {
 
             LibroDAO libroDAO = database.libroDAO();
             listaLibros = libroDAO.getByEditorial(editorial);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            mostrarLibros(context);
+        }
+    }
+
+    public static class RecogerLibrosFavoritoFormatoDB extends AsyncTask<Boolean, Void, Void> {
+        Context context;
+
+        public RecogerLibrosFavoritoFormatoDB(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Boolean... booleans) {
+            boolean formato = booleans[0];
+            LibroDAO libroDAO = database.libroDAO();
+            listaLibros = libroDAO.getByFavoritoFormato(formato);
             return null;
         }
 

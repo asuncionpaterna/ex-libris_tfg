@@ -38,17 +38,19 @@ public interface LibroDAO {
     int getCountLecturabyAnio(String anioActual);
 
     @Query("SELECT * FROM libros WHERE nombreAutoria LIKE '%'|| :autoriaET ||'%'")
-    List<Libro>getByAutoria(String autoriaET);
+    List<Libro> getByAutoria(String autoriaET);
 
     @Query("SELECT * FROM libros WHERE genero LIKE '%'|| :generoET ||'%'")
-    List<Libro>getByGenero(String generoET);
+    List<Libro> getByGenero(String generoET);
 
     @Query("SELECT * FROM libros WHERE editorial LIKE '%'|| :editorialET ||'%'")
-    List<Libro>getByEditorial(String editorialET);
+    List<Libro> getByEditorial(String editorialET);
 
     @Query("SELECT COUNT(*) FROM libros WHERE fecha_lectura LIKE '%-' || :mes || '-%'")
     int getCountLecturabyMes(String mes);
 
+    @Query("SELECT * FROM libros WHERE favorito = true AND  es_papel = :formato")
+    List<Libro> getByFavoritoFormato(boolean formato);
 
     @MapInfo(keyColumn = "genero", valueColumn = "count")
     @Query("SELECT genero, COUNT(*) as count FROM libros GROUP BY genero ORDER BY count desc")
