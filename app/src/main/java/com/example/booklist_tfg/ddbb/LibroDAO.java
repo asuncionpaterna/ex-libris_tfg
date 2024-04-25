@@ -56,6 +56,8 @@ public interface LibroDAO {
     @Query("SELECT genero, COUNT(*) as count FROM libros GROUP BY genero ORDER BY count desc")
     Map<String, Integer> getGeneros();
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertListaLibros(List<Libro> libros);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Libro libro);

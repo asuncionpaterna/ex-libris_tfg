@@ -1,6 +1,7 @@
 package com.example.booklist_tfg.ui.estadisticas;
 
 import static com.example.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
+import static com.example.booklist_tfg.MainActivity.mostrarListaPeq;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.res.Configuration;
@@ -33,6 +34,8 @@ public class EstadisticasFragment extends Fragment {
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         establecerTema(modoOscuro, mEstadisticasFL);
         mostrarBusquedaAvanzada = false;
+        mostrarListaPeq = false;
+
         requireActivity().invalidateOptionsMenu();
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

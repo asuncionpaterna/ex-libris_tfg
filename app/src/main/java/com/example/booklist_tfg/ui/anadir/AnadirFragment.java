@@ -2,6 +2,7 @@ package com.example.booklist_tfg.ui.anadir;
 
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
 import static com.example.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
+import static com.example.booklist_tfg.MainActivity.mostrarListaPeq;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.res.Configuration;
@@ -49,6 +50,8 @@ public class AnadirFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_anadir, container, false);
         floatingBTN.hide();
         mostrarBusquedaAvanzada = false;
+        mostrarListaPeq = false;
+
         requireActivity().invalidateOptionsMenu();
         // inicializando las vistas.
         progressBar = view.findViewById(R.id.idLoadingPB);

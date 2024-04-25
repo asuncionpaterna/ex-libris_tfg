@@ -14,11 +14,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/idCBSistemaIdiom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sistema" />
+
             <Space
                 android:layout_width="20dp"
                 android:layout_height="match_parent" />
@@ -43,6 +45,17 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/idBackupBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Backup" />
+
+        <Button
+            android:id="@+id/idRestoreBTM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restaurar" />
     </LinearLayout>
 
 </LinearLayout>

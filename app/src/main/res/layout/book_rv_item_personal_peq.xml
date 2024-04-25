@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/idIVPortadaList"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/idTVTituloList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/idIVPortadaList"
+            android:layout_toStartOf="@id/idCBFavorito"
+            android:layout_marginTop="10dp"
+            android:padding="3dp"
+            android:text="Título"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/idTVAutoriaList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idTVTituloList"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@id/idIVPortadaList"
+            android:layout_toStartOf="@id/idCBFavorito"
+            android:padding="3dp"
+            android:text="Autoria"
+            android:textSize="11sp"
+            android:textStyle="italic" />
+
+        <CheckBox
+            android:id="@+id/idCBFavorito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:button="@drawable/checkbox_selector_favorite"
+            android:enabled="false"
+            android:padding="3dp"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

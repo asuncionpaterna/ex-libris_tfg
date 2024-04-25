@@ -2,9 +2,11 @@ package com.example.booklist_tfg.ui.listadoLecturas;
 
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.MainActivity.floatingBTN;
+import static com.example.booklist_tfg.MainActivity.inicio;
 import static com.example.booklist_tfg.MainActivity.listaLibros;
 import static com.example.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
-import static com.example.booklist_tfg.MainActivity.objetivoLectura;
+import static com.example.booklist_tfg.MainActivity.mostrarListaPeq;
+import static com.example.booklist_tfg.MainActivity.peq;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.Context;
@@ -26,8 +28,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,8 +35,8 @@ import com.example.booklist_tfg.MainActivity;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ddbb.LibroDAO;
-import com.example.booklist_tfg.ui.dialog.DialogoBusquedaAvanzada;
-import com.example.booklist_tfg.ui.listadoInicio.LibroAdapterLista;
+import com.example.booklist_tfg.ui.listadoLibros.LibroAdapterLista;
+import com.example.booklist_tfg.ui.listadoLibros.LibroAdapterListaPeq;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,11 @@ public class ListadoLecturas extends Fragment {
         if (floatingBTN != null) {
             floatingBTN.show();
         }
+        inicio = false;
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         mostrarBusquedaAvanzada = true;
+        mostrarListaPeq = true;
+
         requireActivity().invalidateOptionsMenu();
         mRecyclerView = view.findViewById(R.id.idRVMostrarListaLL);
         listadoLecturasFL = view.findViewById(R.id.listadoLecturasFL);
@@ -159,13 +162,10 @@ public class ListadoLecturas extends Fragment {
         return view;
     }
 
-    public static void mostrarLibros(Context context) {
+    public static void mostrarLibrosLecturas(Context context) {
 
         progressBar.setVisibility(View.GONE);
-        List<Libro> listaMostrar = new ArrayList<>();
-        // below line is use to pass our
-        // array list in adapter class.
-        LibroAdapterLista adapter = new LibroAdapterLista((ArrayList<Libro>) listaLibros, context);
+
         // below line is use to add linear layout
         // manager for our recycler view.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
@@ -173,7 +173,16 @@ public class ListadoLecturas extends Fragment {
         // in below line we are setting layout manager and
         // adapter to our recycler view.
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(adapter);
+
+        // below line is use to pass our
+        // array list in adapter class.
+        if (!peq) {
+            LibroAdapterLista adapter = new LibroAdapterLista((ArrayList<Libro>) listaLibros, context);
+            mRecyclerView.setAdapter(adapter);
+        } else {
+            LibroAdapterListaPeq adapter = new LibroAdapterListaPeq((ArrayList<Libro>) listaLibros, context);
+            mRecyclerView.setAdapter(adapter);
+        }
     }
 
     public static class RecogerTodosLibrosDB extends AsyncTask<Void, Void, Void> {
@@ -193,7 +202,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -214,7 +223,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -235,7 +244,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -267,7 +276,7 @@ public class ListadoLecturas extends Fragment {
         @Override
         protected void onPostExecute(List<Libro> libros) {
             listaLibros = libros;
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -290,7 +299,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -313,7 +322,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -336,7 +345,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 
@@ -357,7 +366,7 @@ public class ListadoLecturas extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mostrarLibros(context);
+            mostrarLibrosLecturas(context);
         }
     }
 }

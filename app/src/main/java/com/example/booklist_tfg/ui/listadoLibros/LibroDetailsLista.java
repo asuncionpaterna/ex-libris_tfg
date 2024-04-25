@@ -1,4 +1,4 @@
-package com.example.booklist_tfg.ui.listadoInicio;
+package com.example.booklist_tfg.ui.listadoLibros;
 
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
@@ -8,7 +8,7 @@ import static com.example.booklist_tfg.utils.Utils.formateoFecha;
 import static com.example.booklist_tfg.utils.Utils.showDatePicker;
 import static com.example.booklist_tfg.utils.Utils.verificarDatos;
 import static com.example.booklist_tfg.utils.Utils.verificarGeneroLiterario;
-import static com.example.booklist_tfg.ui.Inicio.InicioFragment.mostrarLibros;
+import static com.example.booklist_tfg.ui.Inicio.InicioFragment.mostrarLibrosInicio;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -125,7 +125,7 @@ public class LibroDetailsLista extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mostrarLibros(mcontext);
+                                    mostrarLibrosInicio(mcontext);
                                     porcentajeLectura();
                                     finish();
                                 }
@@ -159,7 +159,7 @@ public class LibroDetailsLista extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mostrarLibros(mcontext);
+                                    mostrarLibrosInicio(mcontext);
                                     finish();
                                 }
                             });

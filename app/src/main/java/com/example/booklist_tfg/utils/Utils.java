@@ -1,13 +1,18 @@
 package com.example.booklist_tfg.utils;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -137,5 +142,40 @@ public class Utils {
 // Iniciar la actividad para compartir
         context.startActivity(Intent.createChooser(shareIntent, "Share Chart"));
 
+    }
+
+    @SuppressLint("Range")
+    public static String obtenerRutaRealDeUri(Context context, Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+
+    public static void restartApplication(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+        ComponentName componentName = intent.getComponent();
+        Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+        // Required for API 34 and later
+        // Ref: https://developer.android.com/about/versions/14/behavior-changes-14#safer-intents
+        mainIntent.setPackage(context.getPackageName());
+        context.startActivity(mainIntent);
+        Runtime.getRuntime().exit(0);
     }
 }
