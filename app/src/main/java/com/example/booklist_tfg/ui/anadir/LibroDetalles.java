@@ -131,7 +131,6 @@ public class LibroDetalles extends AppCompatActivity {
         esPapelCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(esPapelCB.getText());
                 if (esPapelCB.isChecked()) {
                     esPapelCB.setText("Papel");
                 } else {
