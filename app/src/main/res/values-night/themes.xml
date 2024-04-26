@@ -20,6 +20,6 @@
         <item name="android:statusBarColor">#1c2a45</item> <!-- Define el color de la barra de estado del sistema -->
 
         <!-- Fondo -->
-        <item name="android:windowBackground">@drawable/fondo_txt_oscuro</item> <!-- Define el fondo de la ventana de la aplicación -->
+        <item name="android:windowBackground">@drawable/fondo_oscuro</item> <!-- Define el fondo de la ventana de la aplicación -->
     </style>
 </resources>

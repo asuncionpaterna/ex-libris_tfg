@@ -2,6 +2,7 @@ package com.example.booklist_tfg.ui.listadoLibros;
 
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
+import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturas.mostrarLibrosLecturas;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
 import static com.example.booklist_tfg.utils.Utils.formateoFecha;
@@ -48,7 +49,7 @@ public class LibroDetailsLista extends AppCompatActivity {
     TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV;
     FrameLayout bookDetailsListFL;
     CheckBox favoritoCB, esPapelCB;
-    Button eliminarBtn, modificarBtn;
+    Button eliminarBtn, actualizarBtn;
     Date[] fechas = new Date[1];
     ImageButton fechaBtn;
 
@@ -72,7 +73,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         esPapelCB = findViewById(R.id.idCBesPapel);
 
         eliminarBtn = findViewById(R.id.idBtnEliminar);
-        modificarBtn = findViewById(R.id.idBtnModificar);
+        actualizarBtn = findViewById(R.id.idBtnModificar);
         fechaBtn = findViewById(R.id.idBtnFechaDetails);
         fechas[0] = fecha;
 
@@ -126,6 +127,7 @@ public class LibroDetailsLista extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     mostrarLibrosInicio(mcontext);
+                                    mostrarLibrosLecturas(mcontext);
                                     porcentajeLectura();
                                     finish();
                                 }
@@ -139,16 +141,12 @@ public class LibroDetailsLista extends AppCompatActivity {
             }
         });
 
-        modificarBtn.setOnClickListener(new View.OnClickListener() {
+        actualizarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 libro.setFechaLectura(fecha);
                 libro.setFavorito(favoritoCB.isChecked());
                 libro.setEsPapel(esPapelCB.isChecked());
-                System.out.println(libro.getFechaLectura());
-                System.out.println(libro.getFavorito());
-                System.out.println(libro.getEsPapel());
-
                 Executors.newSingleThreadExecutor().execute(new Runnable() {
                     @Override
                     public void run() {

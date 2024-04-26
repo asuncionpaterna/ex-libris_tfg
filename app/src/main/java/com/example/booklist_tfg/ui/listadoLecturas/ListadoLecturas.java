@@ -249,8 +249,18 @@ public class ListadoLecturas extends Fragment {
     }
 
     public class ValidacionNumeros implements InputFilter {
+        // Método para filtrar caracteres no deseados (letras y simbolos)
+        private static final int TAMANO_MAX = 4;
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            // Recorremos la parte de 'source' que se intenta añadir al campo de texto
+            int tamanoActual = dest.length();
+            int nuevoTamano = (dend-dstart) + (end-start);
+
+            if(tamanoActual + nuevoTamano > TAMANO_MAX){
+                return "";
+            }
             for (int i = start; i < end; i++) {
+                // Si algún carácter no es un número, se devuelve una cadena vacía.
                 if (!Character.isDigit(source.charAt(i))) {
                     return "";
                 }

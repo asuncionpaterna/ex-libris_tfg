@@ -118,9 +118,9 @@ public class Utils {
 
     public static void establecerTema(int uiMode, FrameLayout frameLayout) {
         if (uiMode == Configuration.UI_MODE_NIGHT_YES) {
-            frameLayout.setBackgroundResource(R.drawable.fondo_txt_oscuro);
+            frameLayout.setBackgroundResource(R.drawable.fondo_oscuro);
         } else {
-            frameLayout.setBackgroundResource(R.drawable.fondo_txt1);
+            frameLayout.setBackgroundResource(R.drawable.fondo_dia);
         }
     }
 
