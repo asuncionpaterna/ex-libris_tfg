@@ -10,7 +10,6 @@ import static com.example.booklist_tfg.MainActivity.peq;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,6 +29,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.sqlite.db.SimpleSQLiteQuery;
+import androidx.sqlite.db.SupportSQLiteQuery;
 
 import com.example.booklist_tfg.MainActivity;
 import com.example.booklist_tfg.Model.Libro;
@@ -39,7 +40,6 @@ import com.example.booklist_tfg.ui.listadoLibros.LibroAdapterLista;
 import com.example.booklist_tfg.ui.listadoLibros.LibroAdapterListaPeq;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListadoLecturas extends Fragment {
 
@@ -83,22 +83,8 @@ public class ListadoLecturas extends Fragment {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                if (favoritoCB.isChecked()) {
-                    SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
-                    if (papelCB.isChecked()) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(true);
-                        digitalCB.setChecked(false);
-                    } else if (papelCB.isChecked()) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(false);
-                        papelCB.setChecked(false);
-                    } else {
-                        new RecogerLibrosFavoritosDB(getContext()).execute();
-                    }
-                } else {
-                    new RecogerTodosLibrosDB(getContext()).execute();
-                }
+
+                filtrarLibros();
             }
         });
 
@@ -106,18 +92,11 @@ public class ListadoLecturas extends Fragment {
             @Override
             public void onClick(View view) {
                 if (papelCB.isChecked()) {
-                    if (favoritoCB.isChecked()) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(true);
-                        digitalCB.setChecked(false);
-                    } else {
-                        progressBar.setVisibility(View.VISIBLE);
-                        new RecogerLibrosFormatoDB(getContext()).execute(true);
-                        digitalCB.setChecked(false);
-                    }
-                } else {
-                    new RecogerTodosLibrosDB(getContext()).execute();
+                    digitalCB.setChecked(false);
                 }
+                progressBar.setVisibility(View.VISIBLE);
+
+                filtrarLibros();
             }
         });
 
@@ -125,19 +104,13 @@ public class ListadoLecturas extends Fragment {
         digitalCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
                 if (digitalCB.isChecked()) {
-                    if (favoritoCB.isChecked()) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        new RecogerLibrosFavoritoFormatoDB(getContext()).execute(false);
-                        papelCB.setChecked(false);
-                    } else {
-                        new RecogerLibrosFormatoDB(getContext()).execute(false); // false para libros en formato digital
-                        papelCB.setChecked(false);
-                    }
-                } else {
-                    new RecogerTodosLibrosDB(getContext()).execute();
+                    papelCB.setChecked(false);
                 }
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                filtrarLibros();
             }
         });
 
@@ -146,20 +119,74 @@ public class ListadoLecturas extends Fragment {
         anioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String anio = anioET.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
-                if (anio.isEmpty()) {
-                    anioET.setError("Introduce año");
-                    return;
-                } else {
-                    progressBar.setVisibility(View.VISIBLE);
-                    new RecogerLibrosAnioDB(getContext()).execute(anio);
-                }
+
+                filtrarLibros();
             }
         });
 
         new RecogerTodosLibrosDB(getContext()).execute();
         return view;
+    }
+
+
+    private void filtrarLibros() {
+
+        Thread thread = new Thread(() -> {
+            LibroDAO libroDAO = MainActivity.database.libroDAO();
+            StringBuilder consulta = new StringBuilder("SELECT * FROM libros ");
+            boolean wherebool = false;
+
+            if (favoritoCB.isChecked()) {
+                if (!wherebool) {
+                    consulta.append("WHERE ");
+                    wherebool = true;
+                } else {
+                    consulta.append(" AND ");
+                }
+                consulta.append("favorito = true");
+            }
+            if (papelCB.isChecked() && !digitalCB.isChecked()) {
+                if (!wherebool) {
+                    consulta.append("WHERE ");
+                    wherebool = true;
+                } else {
+                    consulta.append(" AND ");
+                }
+                consulta.append(" es_papel = true ");
+            } else if (!papelCB.isChecked() && digitalCB.isChecked()) {
+                if (!wherebool) {
+                    consulta.append("WHERE ");
+                    wherebool = true;
+                } else {
+                    consulta.append(" AND ");
+                }
+                consulta.append(" es_papel = false ");
+            }
+
+            if(!(anioET.getText().toString()).isEmpty()){
+                String anio = anioET.getText().toString();
+                if (!wherebool) {
+                    consulta.append("WHERE ");
+                    wherebool = true;
+                } else {
+                    consulta.append(" AND ");
+                }
+                consulta.append(" fecha_lectura like "+anio+" || '%' ");
+            }
+
+            SupportSQLiteQuery sqlq = new SimpleSQLiteQuery(consulta.toString());
+            listaLibros = libroDAO.getLibrosFiltro(sqlq);
+
+            System.out.println(consulta.toString());
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mostrarLibrosLecturas(getContext());
+                }
+            });
+        });
+        thread.start();
     }
 
     public static void mostrarLibrosLecturas(Context context) {
@@ -206,57 +233,16 @@ public class ListadoLecturas extends Fragment {
         }
     }
 
-    public static class RecogerLibrosFavoritosDB extends AsyncTask<Void, Void, Void> {
-        Context context;
-
-        public RecogerLibrosFavoritosDB(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            LibroDAO libroDAO = database.libroDAO();
-            listaLibros = libroDAO.getbyFavorito();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            mostrarLibrosLecturas(context);
-        }
-    }
-
-    public static class RecogerLibrosFormatoDB extends AsyncTask<Boolean, Void, Void> {
-        Context context;
-
-        public RecogerLibrosFormatoDB(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected Void doInBackground(Boolean... booleans) {
-            boolean formato = booleans[0];
-            LibroDAO libroDAO = database.libroDAO();
-            listaLibros = libroDAO.getbyFormato(formato);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            mostrarLibrosLecturas(context);
-        }
-    }
-
     public class ValidacionNumeros implements InputFilter {
         // Método para filtrar caracteres no deseados (letras y simbolos)
         private static final int TAMANO_MAX = 4;
+
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
             // Recorremos la parte de 'source' que se intenta añadir al campo de texto
             int tamanoActual = dest.length();
-            int nuevoTamano = (dend-dstart) + (end-start);
+            int nuevoTamano = (dend - dstart) + (end - start);
 
-            if(tamanoActual + nuevoTamano > TAMANO_MAX){
+            if (tamanoActual + nuevoTamano > TAMANO_MAX) {
                 return "";
             }
             for (int i = start; i < end; i++) {
@@ -266,27 +252,6 @@ public class ListadoLecturas extends Fragment {
                 }
             }
             return null;
-        }
-    }
-
-    public static class RecogerLibrosAnioDB extends AsyncTask<String, Void, List<Libro>> {
-        Context context;
-
-        public RecogerLibrosAnioDB(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected List<Libro> doInBackground(String... strings) {
-            String anio = strings[0];
-            LibroDAO libroDAO = database.libroDAO();
-            return libroDAO.getByAnio(anio);
-        }
-
-        @Override
-        protected void onPostExecute(List<Libro> libros) {
-            listaLibros = libros;
-            mostrarLibrosLecturas(context);
         }
     }
 
@@ -359,24 +324,4 @@ public class ListadoLecturas extends Fragment {
         }
     }
 
-    public static class RecogerLibrosFavoritoFormatoDB extends AsyncTask<Boolean, Void, Void> {
-        Context context;
-
-        public RecogerLibrosFavoritoFormatoDB(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected Void doInBackground(Boolean... booleans) {
-            boolean formato = booleans[0];
-            LibroDAO libroDAO = database.libroDAO();
-            listaLibros = libroDAO.getByFavoritoFormato(formato);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            mostrarLibrosLecturas(context);
-        }
-    }
 }

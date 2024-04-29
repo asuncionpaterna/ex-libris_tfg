@@ -21,4 +21,8 @@
         <item>Euskera</item>
     </string-array>
 
+
+    <!--Strings estadisticas-->
+    <string name="titulo_barras">Géneros literarios</string>
+
 </resources>

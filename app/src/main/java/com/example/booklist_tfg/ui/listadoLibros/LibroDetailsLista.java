@@ -47,7 +47,7 @@ public class LibroDetailsLista extends AppCompatActivity {
 
     private ImageView portadaIV;
     TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV;
-    FrameLayout bookDetailsListFL;
+    FrameLayout libroDetallesFL;
     CheckBox favoritoCB, esPapelCB;
     Button eliminarBtn, actualizarBtn;
     Date[] fechas = new Date[1];
@@ -56,12 +56,12 @@ public class LibroDetailsLista extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_details_list);
+        setContentView(R.layout.activity_libro_detalles_lista);
 
 
         //Inicializando los elementos
 
-        bookDetailsListFL = findViewById(R.id.bookDetailsListFL);
+        libroDetallesFL = findViewById(R.id.idFLLibroDetallesLista);
         tituloTV = findViewById(R.id.idTVTitulo);
         autoriaTV = findViewById(R.id.idTVAutoria);
         editorialTV = findViewById(R.id.idTVEditorial);
@@ -76,10 +76,10 @@ public class LibroDetailsLista extends AppCompatActivity {
         actualizarBtn = findViewById(R.id.idBtnModificar);
         fechaBtn = findViewById(R.id.idBtnFechaDetails);
         fechas[0] = fecha;
-
+        //Se comprueba el tema del terminal y se
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        establecerTema(modoOscuro, bookDetailsListFL);
-        //Almacenando los datos en las variables
+        establecerTema(modoOscuro, libroDetallesFL);
+        //Almacenando los datos en las variables y se crea el contexto
         libro = (Libro) getIntent().getSerializableExtra("libro");
         titulo = libro.getTitulo();
         autoriaList = libro.getNombreAutoria();
@@ -158,6 +158,7 @@ public class LibroDetailsLista extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     mostrarLibrosInicio(mcontext);
+                                    mostrarLibrosLecturas((mcontext));
                                     finish();
                                 }
                             });

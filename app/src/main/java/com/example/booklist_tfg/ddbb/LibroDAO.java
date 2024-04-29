@@ -6,8 +6,10 @@ import androidx.room.Insert;
 import androidx.room.MapInfo;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.RawQuery;
 import androidx.room.Transaction;
 import androidx.room.Update;
+import androidx.sqlite.db.SupportSQLiteQuery;
 
 import com.example.booklist_tfg.Model.Libro;
 
@@ -45,6 +47,8 @@ public interface LibroDAO {
 
     @Query("SELECT * FROM libros WHERE editorial LIKE '%'|| :editorialET ||'%'")
     List<Libro> getByEditorial(String editorialET);
+    @RawQuery
+    List<Libro> getLibrosFiltro(SupportSQLiteQuery query);
 
     @Query("SELECT COUNT(*) FROM libros WHERE fecha_lectura LIKE '%-' || :mes || '-%'")
     int getCountLecturabyMes(String mes);
