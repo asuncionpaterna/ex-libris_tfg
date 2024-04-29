@@ -15,32 +15,33 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+//Se define la tabla de base de datos en Room llamada 'libros'
 @Entity(tableName = "libros")
 @Setter
 @Getter
 @ToString
+//Clase del objeto Libro
 public class Libro implements Serializable {
-    //
+    //Clave primaria autogenerada para la columna id
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    //Info sacada de la API GOOGLE
+    //La columna que almacena el título del libro, no puede ser nula
     @NonNull
     @ColumnInfo(name = "titulo")
     private String titulo;
 
+    //Columnas de los atributos del libro
     private ArrayList<String> nombreAutoria;
-
     private String editorial;
     private String genero;
+
     @ColumnInfo(name = "anio_publicacion")
     private String anioPublicacion;
 
     private int paginas;
     private String portada;
 
-
-    //Añadido por Usuario
     private Boolean favorito;
     @NonNull
     @ColumnInfo(name = "fecha_lectura")
@@ -49,6 +50,7 @@ public class Libro implements Serializable {
     @ColumnInfo(name = "es_papel")
     private Boolean esPapel;
 
+    //Constructor que inicializa un objeto Libro con los detalles básicos
     public Libro(@NonNull String titulo, ArrayList<String> nombreAutoria, String editorial, String genero, String anioPublicacion, int paginas, String portada) {
         this.titulo = titulo;
         this.nombreAutoria = nombreAutoria;
@@ -58,7 +60,7 @@ public class Libro implements Serializable {
         this.paginas = paginas;
         this.portada = portada;
     }
-
+    //Métodos para acceder a los elementos del libro
     public int getId() {
         return id;
     }
@@ -69,7 +71,6 @@ public class Libro implements Serializable {
     }
 
     public ArrayList<String> getNombreAutoria() {
-
         return new ArrayList<>(nombreAutoria);
     }
 
@@ -106,6 +107,4 @@ public class Libro implements Serializable {
     public Boolean getEsPapel() {
         return esPapel;
     }
-
-
 }

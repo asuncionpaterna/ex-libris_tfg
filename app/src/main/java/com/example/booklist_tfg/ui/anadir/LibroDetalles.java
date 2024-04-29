@@ -28,14 +28,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+    //Clase para dar funcionalidad y mostrar los detalles de un libro seleccionado
 public class LibroDetalles extends AppCompatActivity {
-
-    // creating variables for strings,text view, image views and button.
-    String tituloBD, editorialBD, fechaPublicacionBD, descripcionBD, portadaBD, generoLiterarioBD;
+    // Se crean las variables para almacenar información del libro e inicializar los elementos de la pantalla
+    String tituloLD, editorialLD, fechaPublicacionLD, descripcionLD, portadaLD, generoLiterarioLD;
     Libro libro;
-    int paginasBD;
-    private ArrayList<String> autoriaListBD;
-    FrameLayout bookDetailsFL;
+    int paginasLD;
+    private ArrayList<String> autoriaListLD;
+    FrameLayout libroDetallesFL;
     TextView tituloTV, autoriaTV, editorialTV, descripcionTV, paginasTV, anioPublicacionTV, fechaLecturaTV, generoLiterarioTV;
 
     ImageButton anadirBtn, fechaBtn;
@@ -43,91 +43,93 @@ public class LibroDetalles extends AppCompatActivity {
     CheckBox favoritoCB, esPapelCB;
     private ImageView imagenLibroIV;
     boolean favorito, esPapel;
-
     public Date fechaBD;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
 
-        // Inicializando las vistas
-        bookDetailsFL = findViewById(R.id.idFLBookDetails);
-        tituloTV = findViewById(R.id.idTVTituloBookDetails);
-        autoriaTV = findViewById(R.id.idTVAutoriaBookDetails);
-        editorialTV = findViewById(R.id.idTVEditorialBookDetails);
-        descripcionTV = findViewById(R.id.idTVDescripcionBookDetails);
-        paginasTV = findViewById(R.id.idTVPaginasBookDetails);
-        anioPublicacionTV = findViewById(R.id.idTVFechaPublicacionBookDetails);
+        // Se inicializan los elementos de la pantalla
+        libroDetallesFL = findViewById(R.id.idFLLibroDetalles);
+        tituloTV = findViewById(R.id.idTVTituloLibroDetalles);
+        autoriaTV = findViewById(R.id.idTVAutoriaLibroDetalles);
+        editorialTV = findViewById(R.id.idTVEditorialLibroDetalles);
+        descripcionTV = findViewById(R.id.idTVDescripcionLibroDetalles);
+        paginasTV = findViewById(R.id.idTVPaginasLibroDetalles);
+        anioPublicacionTV = findViewById(R.id.idTVFechaPublicacionLibroDetalles);
         anadirBtn = findViewById(R.id.idBtnAnadir);
         imagenLibroIV = findViewById(R.id.idIVPortadaList);
-        fechaBtn = findViewById(R.id.idBtnFechaBookDetails);
-        fechaLecturaTV = findViewById(R.id.idTVFechaLecturaBookDetails);
-        generoLiterarioTV = findViewById(R.id.idTVgeneroLiterarioBookDetails);
-        favoritoCB = findViewById(R.id.idCBFavoritoBookDetails);
-        esPapelCB = findViewById(R.id.idCBesPapelBookDetails);
+        fechaBtn = findViewById(R.id.idBtnFechaLibroDetalles);
+        fechaLecturaTV = findViewById(R.id.idTVFechaLecturaLibroDetalles);
+        generoLiterarioTV = findViewById(R.id.idTVgeneroLiterarioLibroDetalles);
+        favoritoCB = findViewById(R.id.idCBFavoritoLibroDetalles);
+        esPapelCB = findViewById(R.id.idCBesPapelLibroDetalles);
 
+        //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        establecerTema(modoOscuro,bookDetailsFL);
+        establecerTema(modoOscuro, libroDetallesFL);
 
-        // Se recogen los datos que se pasan con la clase BookAdapter
+        // Se recogen los datos que se pasan con la clase BookAdapter, del Intent
         libro = (Libro) getIntent().getSerializableExtra("libro");
-        tituloBD = libro.getTitulo();
-        autoriaListBD = libro.getNombreAutoria();
-        editorialBD = libro.getEditorial();
-        fechaPublicacionBD = libro.getAnioPublicacion();
-        paginasBD = libro.getPaginas();
-        generoLiterarioBD = libro.getGenero();
-        descripcionBD = getIntent().getStringExtra("description");
-        portadaBD = getIntent().getStringExtra("thumbnail");
+        tituloLD = libro.getTitulo();
+        autoriaListLD = libro.getNombreAutoria();
+        editorialLD = libro.getEditorial();
+        fechaPublicacionLD = libro.getAnioPublicacion();
+        paginasLD = libro.getPaginas();
+        generoLiterarioLD = libro.getGenero();
+        descripcionLD = getIntent().getStringExtra("description");
+        portadaLD = getIntent().getStringExtra("thumbnail");
 
-        // after getting the data we are setting
-        // that data to our text views and image view.
-        tituloTV.setText(tituloBD);
-        autoriaTV.setText(formateoAutoria(autoriaListBD));
-        generoLiterarioTV.setText(verificarGeneroLiterario(generoLiterarioBD));
-        editorialTV.setText("Editorial: " + verificarDatos(editorialBD));
-        anioPublicacionTV.setText(formateoFechaString(fechaPublicacionBD));
-        descripcionTV.setText(verificarDatos(descripcionBD));
-        paginasTV.setText("" + paginasBD);
+        // Se establecen los datos
+        tituloTV.setText(tituloLD);
+        autoriaTV.setText(formateoAutoria(autoriaListLD));
+        generoLiterarioTV.setText(verificarGeneroLiterario(generoLiterarioLD));
+        editorialTV.setText("Editorial: " + verificarDatos(editorialLD));
+        anioPublicacionTV.setText(formateoFechaString(fechaPublicacionLD));
+        descripcionTV.setText(verificarDatos(descripcionLD));
+        paginasTV.setText("" + paginasLD);
 
-        Picasso.get().load(portadaBD).into(imagenLibroIV);
+        //Se carga la imagen de la portada usando Picasso.
+        Picasso.get().load(portadaLD).into(imagenLibroIV);
 
-
-        // Funcionalidad botón AÑADIR
+        // Se configura la funcionalidad del botón Añadir
         anadirBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Se obtiene el estado de los CheckBox y establece los valores en el Libro
                 favorito = favoritoCB.isChecked();
                 esPapel = esPapelCB.isChecked();
                 libro.setFechaLectura(fechaBD);
                 libro.setFavorito(favorito);
                 libro.setEsPapel(esPapel);
+                //Se guarda el libro empleando el método asíncrono GuardarLibroAsinc
                 new GuardarLibroAsinc(libro, getBaseContext()).execute();
                 finish();
             }
         });
-
+        // Se configura la funcionalidad del botón de fecha de lectura
         fechaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Llamar a showDatePicker pasando un OnDateSelectedListener
+                // Se muestra el selector de fecha y obtener la fecha seleccionar
                 showDatePicker(LibroDetalles.this, fechaLecturaTV, fechaBD, new Utils.OnDateSelectedListener() {
                     @Override
                     public void onDateSelected(Date selectedDate) {
-                        // Manejar la fecha seleccionada aquí
+                        // Se establece la fecha seleccionada como la fecha de lectura
                         fechaBD = selectedDate;
                     }
                 });
             }
         });
 
-
+        // Se configura la fecha de lectura por defecto al día actual
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         fechaBD = new Date();
         fechaLecturaTV.setText(sdf.format(fechaBD));
 
-
+        //Se configura la funcionalidad del checkbox del formato del libro
         esPapelCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,6 +141,4 @@ public class LibroDetalles extends AppCompatActivity {
             }
         });
     }
-
-
 }

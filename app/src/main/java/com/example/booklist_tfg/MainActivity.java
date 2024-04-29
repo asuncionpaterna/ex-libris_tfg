@@ -4,6 +4,8 @@ import static com.example.booklist_tfg.ui.Inicio.InicioFragment.mostrarLibrosIni
 import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturas.mostrarLibrosLecturas;
 import static com.example.booklist_tfg.utils.Json.gestionarJson;
 
+import com.example.booklist_tfg.databinding.ActivityMainBinding;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -40,9 +42,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.example.booklist_tfg.databinding.ActivityMainBinding;
 
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 

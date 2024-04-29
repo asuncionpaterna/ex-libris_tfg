@@ -31,6 +31,7 @@ public class EstadisticasFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_estadisticas, container, false);
         mEstadisticasFL = view.findViewById(R.id.estadisticasFL);
+        //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         establecerTema(modoOscuro, mEstadisticasFL);
         mostrarBusquedaAvanzada = false;

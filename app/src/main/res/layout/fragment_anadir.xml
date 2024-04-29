@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
+            android:textStyle="bold"
             android:text="Añadir lectura"
-            android:textColor="@color/purple_700"
             android:textSize="20dp" />
 
         <!-- Linear Layout para el EditText y el botón -->

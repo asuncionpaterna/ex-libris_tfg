@@ -66,7 +66,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         autoriaTV = findViewById(R.id.idTVAutoria);
         editorialTV = findViewById(R.id.idTVEditorial);
         generoLiterarioTV = findViewById(R.id.idTVGenero);
-        fechaLecturaTV = findViewById(R.id.idTVFechaLecturaBookDetails);
+        fechaLecturaTV = findViewById(R.id.idTVFechaLecturaLibroDetalles);
 
         portadaIV = findViewById(R.id.idIVPortada);
         favoritoCB = findViewById(R.id.idCBFavorito);
@@ -76,7 +76,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         actualizarBtn = findViewById(R.id.idBtnModificar);
         fechaBtn = findViewById(R.id.idBtnFechaDetails);
         fechas[0] = fecha;
-        //Se comprueba el tema del terminal y se
+        //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         establecerTema(modoOscuro, libroDetallesFL);
         //Almacenando los datos en las variables y se crea el contexto

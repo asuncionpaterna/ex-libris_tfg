@@ -58,6 +58,7 @@ public class ListadoLecturas extends Fragment {
             floatingBTN.show();
         }
         inicio = false;
+        //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         mostrarBusquedaAvanzada = true;
         mostrarListaPeq = true;

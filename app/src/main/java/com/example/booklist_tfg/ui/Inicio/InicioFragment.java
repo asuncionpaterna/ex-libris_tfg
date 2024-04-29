@@ -62,6 +62,7 @@ public class InicioFragment extends Fragment {
         mostrarListaPeq = true;
 
         requireActivity().invalidateOptionsMenu();
+        //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         homeFL = view.findViewById(R.id.homeFL);
         establecerTema(modoOscuro, homeFL);

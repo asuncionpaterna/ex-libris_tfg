@@ -42,7 +42,7 @@
             android:textSize="11sp" />
 
         <TextView
-            android:id="@+id/idTVEditorialBookDetails"
+            android:id="@+id/idTVEditorialLibroDetalles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVautoria"
@@ -55,7 +55,7 @@
             android:id="@+id/idTVPageCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVEditorialBookDetails"
+            android:layout_below="@id/idTVEditorialLibroDetalles"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/idIVPortadaList"
             android:padding="3dp"

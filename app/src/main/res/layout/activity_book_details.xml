@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/idFLBookDetails">
+    android:id="@+id/idFLLibroDetalles">
 
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -39,7 +39,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/idTVTituloBookDetails"
+                    android:id="@+id/idTVTituloLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -49,7 +49,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/idTVAutoriaBookDetails"
+                    android:id="@+id/idTVAutoriaLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -59,7 +59,7 @@
                     android:textStyle="italic" />
                 <!--Text view for displaying book publisher-->
                 <TextView
-                    android:id="@+id/idTVEditorialBookDetails"
+                    android:id="@+id/idTVEditorialLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -68,7 +68,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/idTVgeneroLiterarioBookDetails"
+                    android:id="@+id/idTVgeneroLiterarioLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -102,7 +102,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/idTVFechaPublicacionBookDetails"
+                    android:id="@+id/idTVFechaPublicacionLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
@@ -125,7 +125,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/idTVPaginasBookDetails"
+                    android:id="@+id/idTVPaginasLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
@@ -149,7 +149,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/idTVDescripcionBookDetails"
+                    android:id="@+id/idTVDescripcionLibroDetalles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
@@ -193,7 +193,7 @@
 
 
                 <TextView
-                    android:id="@+id/idTVFechaLecturaBookDetails"
+                    android:id="@+id/idTVFechaLecturaLibroDetalles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -208,7 +208,7 @@
                    />
 
                 <ImageButton
-                    android:id="@+id/idBtnFechaBookDetails"
+                    android:id="@+id/idBtnFechaLibroDetalles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -236,7 +236,7 @@
                     android:layout_weight="1" />
 
                 <CheckBox
-                    android:id="@+id/idCBFavoritoBookDetails"
+                    android:id="@+id/idCBFavoritoLibroDetalles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/checkbox_selector_favorite"
@@ -250,7 +250,7 @@
                     android:layout_height="wrap_content" />
 
                 <CheckBox
-                    android:id="@+id/idCBesPapelBookDetails"
+                    android:id="@+id/idCBesPapelLibroDetalles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/checkbox_selector_book_digital"
