@@ -34,7 +34,7 @@ public class LibroAdapterListaPeq extends RecyclerView.Adapter<LibroAdapterLista
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflating our layout for item of recycler view item.
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_rv_item_personal_peq, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.libro_lista_rv_item_peq, parent, false);
         return new LibroAdapterListaPeq.BookViewHolder(view);    }
 
 

@@ -3,12 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="5dp"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/compartirBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_share"
+        android:text="Compartir"
+        tools:ignore="MissingConstraints" />
 
     <com.anychart.AnyChartView
         android:id="@+id/any_chart_view"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -19,11 +33,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/compartirBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_share"
-        tools:ignore="MissingConstraints"></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
