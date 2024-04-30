@@ -74,7 +74,7 @@ public class AnadirFragment extends Fragment {
                 //Se comprueba que el edit text tenga datos mediante una estructura de control if/else
                 if (buscarET.getText().toString().isEmpty()) {
                     //Si está vacio se notifica mediante un error
-                    buscarET.setError("Introduce los datos de búsqueda");
+                    buscarET.setError(getString(R.string.error_campo_vacio_busqueda));
                     return;
                 }
                 //Se llama al método getLibrosInfo con los datos introducidos por el usuario
@@ -145,14 +145,14 @@ public class AnadirFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     // Se captura la excepción en caso de error al procesar el JSON y se muestra
-                    Toast.makeText(getContext(), "No se han encontrado datos" + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_no_datos) + e, Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Se muestran y manejan errores de la petición
-                Toast.makeText(getContext(), "Error found is " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_encontrado)+ error, Toast.LENGTH_SHORT).show();
             }
         });
         // Se añade la solicitud a la cola para su posterior ejecución

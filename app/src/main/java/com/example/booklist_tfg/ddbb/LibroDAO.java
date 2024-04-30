@@ -20,14 +20,13 @@ import java.util.Map;
 @Dao
 public interface LibroDAO {
 
-    @Query("SELECT * FROM libros")
+    @Query("SELECT * FROM libros ORDER BY fecha_lectura DESC")
     List<Libro> getAll();
 
     @Query("SELECT * FROM libros WHERE id = :id")
     Libro getById(int id);
 
-
-    @Query("SELECT * FROM libros WHERE fecha_lectura LIKE :anio || '%'")
+    @Query("SELECT * FROM libros WHERE fecha_lectura LIKE :anio || '%' ORDER BY fecha_lectura DESC")
     List<Libro> getByAnio(String anio);
 
     @Query("SELECT * FROM libros WHERE favorito = true")

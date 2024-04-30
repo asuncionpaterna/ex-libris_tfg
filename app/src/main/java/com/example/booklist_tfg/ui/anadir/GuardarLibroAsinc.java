@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.booklist_tfg.MainActivity;
 import com.example.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.ddbb.LibroDAO;
+import com.example.booklist_tfg.R;
 
     //Clase para guardar un lubro de forma asíncrona, se utiliza AsyncTask
 public class GuardarLibroAsinc extends AsyncTask<Void, Void, Void> {
@@ -35,7 +36,7 @@ public class GuardarLibroAsinc extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid){
         //Se muestra un mensaje de éxito al usuario
-        Toast.makeText(context, "Se ha añadido libro", Toast.LENGTH_LONG);
+        Toast.makeText(context, context.getString(R.string.anadir_exito), Toast.LENGTH_LONG);
         //Se llama a la función porcentajeLectura para actualizar el estado del porcentaje
         porcentajeLectura();
     }

@@ -99,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:paddingTop="4dp"
-                        android:text="Fecha Lectura: "
+                        android:text="@string/label_fecha_lectura"
                         android:textSize="15sp" />
 
 
@@ -148,7 +148,7 @@
                         android:checked="true"
                         android:enabled="true"
                         android:padding="4dp"
-                        android:text="Favorito"
+                        android:text="@string/label_favorito"
                         android:textSize="15sp" />
 
                     <Space
@@ -163,7 +163,7 @@
                         android:checked="false"
                         android:enabled="true"
                         android:padding="4dp"
-                        android:text="Digital"
+                        android:text="@string/label_papel"
                         android:textSize="15sp" />
 
                     <Space
@@ -202,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:text="Eliminar"
+                    android:text="@string/label_eliminar"
                     android:textAllCaps="false" />
 
                 <Button
@@ -211,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:text="Actualizar"
+                    android:text="@string/label_actualizar"
                     android:textAllCaps="false" />
 
             </LinearLayout>

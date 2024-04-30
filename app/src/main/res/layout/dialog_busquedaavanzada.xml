@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Autoria:" />
+            android:text="@string/label_autoria"
+            />
 
         <EditText
             android:id="@+id/idETAutoria"
@@ -39,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Género literario:" />
+            android:text="@string/label_genero_literario" />
 
         <EditText
             android:id="@+id/idETGenero"
@@ -65,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Editorial:" />
+            android:text="@string/label_editorial" />
 
         <EditText
             android:id="@+id/idETEditorial"

@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Fecha publicación:"
+                    android:text="@string/label_fecha_publicacion"
                     android:textSize="12sp" />
 
                 <TextView
@@ -121,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Número de páginas:"
+                    android:text="@string/label_num_paginas"
                     android:textSize="12sp" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Descripción:"
+                    android:text="@string/label_descripcion"
                     android:textSize="12sp" />
 
                 <TextView
@@ -188,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Fecha Lectura:"
+                    android:text="@string/label_fecha_lectura"
                     android:textSize="15sp" />
 
 
@@ -256,7 +256,7 @@
                     android:button="@drawable/checkbox_selector_book_digital"
                     android:checked="true"
                     android:padding="4dp"
-                    android:text="Papel"
+                    android:text="@string/label_papel"
                     android:textSize="15sp" />
 
                 <Space

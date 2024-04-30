@@ -44,7 +44,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
         holder.tituloTV.setText(libroInfo.getTitulo());
         holder.editorialTV.setText(libroInfo.getEditorial());
         holder.fechaTV.setText("" + libroInfo.getAnioPublicacion());
-        holder.paginasTV.setText("Páginas: " + libroInfo.getPaginas());
+        holder.paginasTV.setText(mcontext.getString(R.string.label_paginas) + libroInfo.getPaginas());
         // below line is use to set image from URL in our image view.
         Picasso.get().load(libroInfo.getPortada()).into(holder.portadaIV);
         // below line is use to add on click listener for our item of recycler view.
@@ -54,7 +54,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
                 sb.append(autores.get(i));
                 sb.append(i < autores.size() - 1 ? ", " : "");
         }
-        holder.autoriaTV.setText("Autoria: " + sb);
+        holder.autoriaTV.setText(mcontext.getString(R.string.label_autoria) +" "+ sb);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

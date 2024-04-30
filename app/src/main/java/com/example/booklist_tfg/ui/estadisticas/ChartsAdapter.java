@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.booklist_tfg.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChartsAdapter extends RecyclerView.Adapter<ChartsAdapter.ViewHolder> {
@@ -33,7 +32,7 @@ public class ChartsAdapter extends RecyclerView.Adapter<ChartsAdapter.ViewHolder
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                Chart chart = chartList.get(position);
+                Graficos chart = chartList.get(position);
 
                 Intent intent = new Intent(context, chart.getActivityClass());
                 context.startActivity(intent);
@@ -41,9 +40,9 @@ public class ChartsAdapter extends RecyclerView.Adapter<ChartsAdapter.ViewHolder
         }
     }
 
-    private final List<Chart> chartList;
+    private final List<Graficos> chartList;
 
-    ChartsAdapter(List<Chart> chartList) {
+    ChartsAdapter(List<Graficos> chartList) {
         this.chartList = chartList;
     }
 
@@ -58,7 +57,7 @@ public class ChartsAdapter extends RecyclerView.Adapter<ChartsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ChartsAdapter.ViewHolder viewHolder, int position) {
-        Chart chart = chartList.get(position);
+        Graficos chart = chartList.get(position);
 
         TextView textView = viewHolder.tvName;
         textView.setText(chart.getName());

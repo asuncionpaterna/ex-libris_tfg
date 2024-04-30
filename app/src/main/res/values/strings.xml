@@ -14,6 +14,50 @@
     <string name="menu_anadir">Añadir</string>
     <string name="menu_estadisticas">Estadísticas</string>
 
+    <!--Añadir-->
+    <string name="error_campo_vacio_busqueda">Introduce los datos de búsqueda</string>
+    <string name="error_campo_vacio">Este campo no puede estar vacío</string>
+    <string name="error_no_datos">No se han encontrado datos</string>
+    <string name="error_encontrado">Error encontrado es  </string>
+
+    <!--Guardar libro asincrono-->
+    <string name="anadir_exito">Se ha añadido libro</string>
+
+    <!--Estadisticas-->
+    <string name="titulo_estadisticas_barras">Géneros literarios más leídos</string>
+    <string name="label_generos_literarios">Géneros literarios</string>
+    <string name="label_lecturas_mes">Lecturas por mes</string>
+    <string name="label_meses">Meses</string>
+    <string name="y_axis_label">Cantidad de Libros</string>
+    <string name="column_tooltip_format">{%Value|#,###}</string>
+    <string name="titulo_barras">Géneros literarios</string>
+
+    <!--Adaptador libro-->
+    <string name="label_paginas">Páginas: </string>
+
+    <!--Detalles lista-->
+    <string name="label_titulo">Título: </string>
+    <string name="label_autoria">Autoria: </string>
+    <string name="label_editorial">Editorial: </string>
+    <string name="label_genero_literario">Género literario: </string>
+    <string name="label_papel">Papel</string>
+    <string name="label_digital">Digital</string>
+
+    <!--Meses-->
+    <string name="mes_enero">Enero</string>
+    <string name="mes_febrero">Febrero</string>
+    <string name="mes_marzo">Marzo</string>
+    <string name="mes_abril">Abril</string>
+    <string name="mes_mayo">Mayo</string>
+    <string name="mes_junio">Junio</string>
+    <string name="mes_julio">Julio</string>
+    <string name="mes_agosto">Agosto</string>
+    <string name="mes_septiembre">Septiembre</string>
+    <string name="mes_octubre">Octubre</string>
+    <string name="mes_noviembre">Noviembre</string>
+    <string name="mes_diciembre">Diciembre</string>
+
+
     <string-array name="idiomas_array">
         <item>Castellano</item>
         <item>Catalán</item>
@@ -21,8 +65,44 @@
         <item>Euskera</item>
     </string-array>
 
+    <!--Etiqueta libro adapter list-->
+    <string name="label_fecha">Leído el: </string>
 
-    <!--Strings estadisticas-->
-    <string name="titulo_barras">Géneros literarios</string>
+    <!--Listado lecturas-->
+    <string name="titulo_lecturas">Lecturas realizadas</string>
+
+    <!--xml detalles libro añadir-->
+    <string name="label_fecha_publicacion">Fecha publicación: </string>
+    <string name="label_num_paginas">Número de páginas: </string>
+    <string name="label_descripcion">Descripción: </string>
+    <string name="label_fecha_lectura">Fecha Lectura: </string>
+    <string name="label_favorito">Favorito: </string>
+
+    <!--xml estadisticas-->
+    <string name="label_compartir">Compartir</string>
+
+    <!--xml detalles lista-->
+    <string name="label_eliminar">Eliminar</string>
+    <string name="label_actualizar">Actualizar</string>
+
+    <!--xml detalles lista-->
+    <string name="label_sistema">Sistema</string>
+    <string name="label_idioma_selector">Idioma seleccionado:</string>
+    <string name="label_restaurar">Restaurar</string>
+    <string name="label_backup">BackUp</string>
+
+    <!--xml dialogo objetivo lectura-->
+    <string name="label_guardar">Guardar</string>
+
+    <!--xml anadir-->
+    <string name="titulo_anadir_lectura">Añadir lectura</string>
+    <string name="hint_introduce">Introduce tu búsqueda</string>
+    <string name="label_buscar">Buscar libro</string>
+
+    <!--xml listado lecturas-->
+    <string name="label_filtros">Filtros</string>
+    <string name="label_favoritos">Favorito</string>
+    <string name="label_anio">Año: </string>
+
 
 </resources>

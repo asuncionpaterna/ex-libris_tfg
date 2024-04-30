@@ -38,7 +38,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Filtros"
+            android:text="@string/label_filtros"
             android:textAlignment="center"
             android:textSize="15sp" />
 
@@ -59,7 +59,7 @@
                 android:id="@+id/idCBFavoritoLL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Favorito" />
+                android:text="@string/label_favoritos"/>
 
             <Space
                 android:layout_width="15dp"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/ic_book"
-                android:text="Papel" />
+                android:text="@string/label_papel" />
 
             <Space
                 android:layout_width="15dp"
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/ic_digital"
-                android:text="Digital" />
+                android:text="@string/label_digital" />
 
             <Space
                 android:layout_width="15dp"
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Año:"
+                android:text="@string/label_anio"
                 android:textSize="15dp" />
 
             <EditText

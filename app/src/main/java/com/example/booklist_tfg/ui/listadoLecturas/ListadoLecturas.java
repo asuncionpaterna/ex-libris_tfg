@@ -67,7 +67,7 @@ public class ListadoLecturas extends Fragment {
         mRecyclerView = view.findViewById(R.id.idRVMostrarListaLL);
         listadoLecturasFL = view.findViewById(R.id.listadoLecturasFL);
         tituloTV = view.findViewById(R.id.idTVTituloLL);
-        tituloTV.setText("Lecturas realizadas");
+        tituloTV.setText(getString(R.string.titulo_lecturas));
         favoritoCB = view.findViewById(R.id.idCBFavoritoLL);
         papelCB = view.findViewById(R.id.idCBPapelLL);
         digitalCB = view.findViewById(R.id.idCBDigitalLL);

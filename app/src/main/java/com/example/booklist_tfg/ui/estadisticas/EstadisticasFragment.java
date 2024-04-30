@@ -7,7 +7,6 @@ import static com.example.booklist_tfg.utils.Utils.establecerTema;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,7 +40,7 @@ public class EstadisticasFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
-        List<Chart> chartList = Chart.createChartList(getResources());
+        List<Graficos> chartList = Graficos.createChartList(getResources());
         final ChartsAdapter adapter = new ChartsAdapter(chartList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

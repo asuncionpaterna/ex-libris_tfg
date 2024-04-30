@@ -58,9 +58,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_libro_detalles_lista);
 
-
         //Inicializando los elementos
-
         libroDetallesFL = findViewById(R.id.idFLLibroDetallesLista);
         tituloTV = findViewById(R.id.idTVTitulo);
         autoriaTV = findViewById(R.id.idTVAutoria);
@@ -92,10 +90,10 @@ public class LibroDetailsLista extends AppCompatActivity {
         Context mcontext = this;
 
         fechaLectura = formateoFecha(fecha);
-        tituloTV.setText("Título: " + titulo);
+        tituloTV.setText(getString(R.string.label_titulo) + titulo);
         autoriaTV.setText(formateoAutoria(autoriaList));
-        editorialTV.setText("Editorial: " + verificarDatos(editorial));
-        generoLiterarioTV.setText("Género literario: " + verificarGeneroLiterario(generoLiterario));
+        editorialTV.setText(getString(R.string.label_editorial) + verificarDatos(editorial));
+        generoLiterarioTV.setText(getString(R.string.label_genero_literario) + verificarGeneroLiterario(generoLiterario));
         fechaLecturaTV.setText(fechaLectura);
         esPapelCB.setChecked(esPapel);
         actualizarTextoFormato(esPapelCB);
@@ -190,18 +188,18 @@ public class LibroDetailsLista extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (esPapelCB.isChecked()) {
-                    esPapelCB.setText("Papel");
+                    esPapelCB.setText(getString(R.string.label_papel));
                 } else {
-                    esPapelCB.setText("Digital");
+                    esPapelCB.setText(getString(R.string.label_digital));
                 }
             }
         });
     }
     public void actualizarTextoFormato(CheckBox checkBox) {
         if (checkBox.isChecked()) {
-            checkBox.setText("Papel");
+            checkBox.setText(getString(R.string.label_papel));
         } else {
-            checkBox.setText("Digital");
+            checkBox.setText(getString(R.string.label_digital));
         }
     }
 }

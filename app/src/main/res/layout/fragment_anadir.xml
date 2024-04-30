@@ -21,7 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:textStyle="bold"
-            android:text="Añadir lectura"
+            android:text="@string/titulo_anadir_lectura"
             android:textSize="20dp" />
 
         <!-- Linear Layout para el EditText y el botón -->
@@ -38,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:hint="Introduce tu búsqueda"
+                android:hint="@string/hint_introduce"
                 android:text="" />
 
             <!-- Botón de búsqueda -->
@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Buscar Libro" />
+                android:text="@string/label_buscar" />
 
         </LinearLayout>
 
@@ -68,5 +68,4 @@
             android:visibility="gone" />
 
     </RelativeLayout>
-
 </FrameLayout>

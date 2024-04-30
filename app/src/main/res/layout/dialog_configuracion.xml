@@ -19,7 +19,7 @@
                 android:id="@+id/idCBSistemaIdiom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sistema" />
+                android:text="@string/label_sistema" />
 
             <Space
                 android:layout_width="20dp"
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="Idioma seleccionado:"
+                android:text="@string/label_idioma_selector"
                 android:textSize="15dp" />
 
             <Space
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Backup" />
+                android:text="@string/label_backup" />
 
             <Space
                 android:layout_width="20dp"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Restaurar" />
+                android:text="@string/label_restaurar" />
         </LinearLayout>
     </LinearLayout>
 

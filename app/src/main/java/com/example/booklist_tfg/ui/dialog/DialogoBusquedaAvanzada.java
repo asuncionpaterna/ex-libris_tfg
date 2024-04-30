@@ -12,7 +12,6 @@ import android.widget.ImageButton;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturas;
 
-import java.util.List;
 
 //Clase para dar funcionalidad al diálogo búsqueda avanzada del menú
 public class DialogoBusquedaAvanzada {
@@ -55,7 +54,7 @@ public class DialogoBusquedaAvanzada {
                 autoria = autoriaET.getText().toString();
                 ///Mediante una estructura de control if/else se valida si el campo de texto de autoria tiene texto
                 if (autoria.isEmpty()) {
-                    autoriaET.setError("Este campo no puede estar vacío");
+                    autoriaET.setError(context.getString(R.string.error_campo_vacio_busqueda));
                 } else {
                     new ListadoLecturas.RecogerLibrosAutoriaDB(context, autoria).execute();
                     //Se cierra el diálogo
@@ -70,7 +69,7 @@ public class DialogoBusquedaAvanzada {
                 genero = generoET.getText().toString();
                 ///Mediante una estructura de control if/else se valida si el campo de texto de género literario tiene texto
                 if (genero.isEmpty()) {
-                    generoET.setError("Este campo no puede estar vacío");
+                    generoET.setError(context.getString(R.string.error_campo_vacio_busqueda));
                 } else {
                     new ListadoLecturas.RecogerLibrosGeneroDB(context, genero).execute();
                     //Se cierra el diálogo
@@ -85,7 +84,7 @@ public class DialogoBusquedaAvanzada {
                 editorial = editorialET.getText().toString();
                 ///Mediante una estructura de control if/else se valida si el campo de texto de editorial tiene texto
                 if (editorial.isEmpty()) {
-                    editorialET.setError("Este campo no puede estar vacío");
+                    editorialET.setError(context.getString(R.string.error_campo_vacio_busqueda));
                 } else {
                     new ListadoLecturas.RecogerLibrosEditorialDB(context, editorial).execute();
                     //Se cierra el diálogo

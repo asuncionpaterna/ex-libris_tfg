@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.content.res.Resources;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +31,6 @@ public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.Bo
         this.mcontext = mcontext;
     }
 
-
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,10 +42,13 @@ public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.Bo
     public void onBindViewHolder(@NonNull LibroAdapterLista.BookViewHolder holder, int position) {
         // inside on bind view holder method we are
         // setting our data to each UI component.
+        Resources resources = mcontext.getResources(); // Asegúrate de que mcontext es una actividad
+        String labelFecha = resources.getString(R.string.label_fecha);
+
         Libro libroInfo = bookInfoArrayList.get(position);
         holder.tituloTV.setText(libroInfo.getTitulo());
         holder.editorialTV.setText(verificarDatos(libroInfo.getEditorial()));
-        holder.fechaLecturaTV.setText("Leído el: "+formateoFecha(libroInfo.getFechaLectura()));
+        holder.fechaLecturaTV.setText(labelFecha+formateoFecha(libroInfo.getFechaLectura()));
         holder.favoritoCB.setChecked(libroInfo.getFavorito());
         holder.esPapelCB.setChecked(libroInfo.getEsPapel());
 
@@ -58,22 +60,20 @@ public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.Bo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // inside on click listener method we are calling a new activity
+
                 // La informacióin que se pasa a los detalles del libro
-                Intent i = new Intent(mcontext, LibroDetailsLista.class);
-                i.putExtra("title", libroInfo.getTitulo());
-
-                i.putExtra("authors", libroInfo.getNombreAutoria());
-                i.putExtra("publisher", libroInfo.getEditorial());
-                i.putExtra("publishedDate", libroInfo.getAnioPublicacion());
-
-                i.putExtra("pageCount", libroInfo.getPaginas());
-                i.putExtra("thumbnail", libroInfo.getPortada());
-                i.putExtra("libro", libroInfo);
+                Intent intent = new Intent(mcontext, LibroDetailsLista.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("title", libroInfo.getTitulo());
+                intent.putExtra("authors", libroInfo.getNombreAutoria());
+                intent.putExtra("publisher", libroInfo.getEditorial());
+                intent.putExtra("publishedDate", libroInfo.getAnioPublicacion());
+                intent.putExtra("pageCount", libroInfo.getPaginas());
+                intent.putExtra("thumbnail", libroInfo.getPortada());
+                intent.putExtra("libro", libroInfo);
 
                 // after passing that data we are
-                // starting our new intent.
-                mcontext.startActivity(i);
+                mcontext.startActivity(intent);
             }
         });
     }
@@ -83,11 +83,9 @@ public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.Bo
         return bookInfoArrayList.size();    }
 
     public class BookViewHolder extends RecyclerView.ViewHolder {
-        // below line is use to initialize
         // our text view and image views.
         TextView tituloTV, editorialTV, generoTV, fechaLecturaTV, autoriaTV;
         ImageView portadaIV;
-
         CheckBox favoritoCB, esPapelCB;
         public BookViewHolder(View itemView) { // Esto es lo que sale al buscar, las tarjetas
             super(itemView);

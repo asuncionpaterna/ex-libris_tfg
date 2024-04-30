@@ -134,9 +134,9 @@ public class LibroDetalles extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (esPapelCB.isChecked()) {
-                    esPapelCB.setText("Papel");
+                    esPapelCB.setText(getString(R.string.label_papel));
                 } else {
-                    esPapelCB.setText("Digital");
+                    esPapelCB.setText(getString(R.string.label_digital));
                 }
             }
         });

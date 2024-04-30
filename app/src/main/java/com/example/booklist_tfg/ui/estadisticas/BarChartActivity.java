@@ -33,7 +33,6 @@ import java.util.Map;
 
 public class BarChartActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,18 +41,19 @@ public class BarChartActivity extends AppCompatActivity {
         AnyChartView anyChartView = findViewById(R.id.any_chart_view);
         anyChartView.setProgressBar(findViewById(R.id.progress_bar));
         Button compartirBTN = findViewById(R.id.compartirBTN);
+
         Context context = this;
+
         anyChartView.setDrawingCacheEnabled(true);
         anyChartView.buildDrawingCache(true);
         compartirBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bitmap chartBitmap = anyChartView.getDrawingCache();
-
                 shareImage(chartBitmap, context);
             }
         });
-        Cartesian cartesian = AnyChart.column();
+        Cartesian cartesianBarras = AnyChart.column();
         Thread thread = new Thread(() -> {
             LibroDAO libroDAO = database.libroDAO();
 
@@ -61,45 +61,45 @@ public class BarChartActivity extends AppCompatActivity {
             List<DataEntry> data = new ArrayList<>();
             int i = 0;
 
-            // Iterar sobre el HashMap y mostrar las claves y valores
+            // Se itera sobre el HashMap y se muestran las claves y valores
             for (Map.Entry<String, Integer> entry : mapaGeneros.entrySet()) {
-                String key = verificarGeneroLiterario(entry.getKey());  // Obtener la clave
-                Integer value = entry.getValue();  // Obtener el valor
+                String key = verificarGeneroLiterario(entry.getKey());  // Se obtiene la clave
+                Integer value = entry.getValue();  // Se obtiene el valor
                 data.add(new ValueDataEntry(key, value));
                 i++;
                 if (i == 5) break;
             }
 
-            Column column = cartesian.column(data);
-            LabelsFactory xAxisLabels = cartesian.xAxis(0).labels();
-            xAxisLabels.rotation(-90);
-            column.tooltip()
+            Column columna = cartesianBarras.column(data);
+            LabelsFactory xEtiquetasEje = cartesianBarras.xAxis(0).labels();
+            xEtiquetasEje.rotation(-90);
+            columna.tooltip()
                     .titleFormat("{%X}")
                     .position(Position.CENTER_BOTTOM)
                     .anchor(Anchor.CENTER_BOTTOM)
                     .offsetX(0d)
                     .offsetY(5d)
-                    .format("${%Value}{groupsSeparator: }");
+                    .format(getString(R.string.column_tooltip_format));
 
-            cartesian.animation(true);
-            cartesian.title("HOOLAAA");
+            cartesianBarras.animation(true);
+            cartesianBarras.title(getString(R.string.titulo_estadisticas_barras));
 
-            cartesian.yScale().minimum(0d);
+            cartesianBarras.yScale().minimum(0d);
 
-            cartesian.yAxis(0).labels().format("${%Value}{groupsSeparator: }");
+            cartesianBarras.yAxis(0).labels().format(getString(R.string.column_tooltip_format));
 
 
-            cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-            cartesian.interactivity().hoverMode(HoverMode.BY_X);
+            cartesianBarras.tooltip().positionMode(TooltipPositionMode.POINT);
+            cartesianBarras.interactivity().hoverMode(HoverMode.BY_X);
 
-            cartesian.xAxis(0).title("Product");
-            cartesian.yAxis(0).title("Revenue");
+            cartesianBarras.xAxis(0).title(getString(R.string.label_generos_literarios));
+            cartesianBarras.yAxis(0).title(getString(R.string.y_axis_label));
 
 
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    anyChartView.setChart(cartesian);
+                    anyChartView.setChart(cartesianBarras);
                 }
             });
         });
