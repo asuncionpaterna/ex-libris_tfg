@@ -1,0 +1,110 @@
+<resources>
+    <!-- Nom de l'aplicació -->
+    <string name="app_name">Lectures fetes</string>
+
+    <!-- Menú de navegació -->
+    <string name="navigation_drawer_open">Obrir</string>
+    <string name="navigation_drawer_close">Tancar</string>
+    <string name="nav_header_title">Ex-Libris</string>
+    <string name="nav_header_subtitle">Registra les teues lectures</string>
+    <string name="nav_header_desc">Capçalera de navegació</string>
+
+    <!-- Accions -->
+    <string name="action_configuracion">Configuració</string>
+    <string name="action_objetivo_lectura">Objectiu de lectura</string>
+    <string name="action_busqueda_avanzada">Cerca avançada</string>
+
+    <!-- Menú -->
+    <string name="menu_home">Inici</string>
+    <string name="menu_gallery">Lectures</string>
+    <string name="menu_anadir">Afegir</string>
+    <string name="menu_estadisticas">Estadístiques</string>
+
+    <!-- Errors i missatges -->
+    <string name="error_campo_vacio_busqueda">Introdueix les dades de cerca</string>
+    <string name="error_campo_vacio">Aquest camp no pot estar buit</string>
+    <string name="error_no_datos">No s'han trobat dades</string>
+    <string name="error_encontrado">Error trobat és </string>
+    <string name="anadir_exito">El llibre s'ha afegit</string>
+
+    <!-- Estadístiques -->
+    <string name="titulo_estadisticas_barras">Gèneres literaris més llegits</string>
+    <string name="label_generos_literarios">Gèneres literaris</string>
+    <string name="label_lecturas_mes">Lectures per mes</string>
+    <string name="label_meses">Mesos</string>
+    <string name="y_axis_label">Quantitat de llibres</string>
+    <string name="column_tooltip_format">{%Value|#,###}</string>
+    <string name="titulo_barras">Gèneres literaris</string>
+
+    <!-- Adaptador del llibre -->
+    <string name="label_paginas">Pàgines: </string>
+
+    <!-- Detalls de la llista -->
+    <string name="label_titulo">Títol: </string>
+    <string name="label_autoria">Autoria: </string>
+    <string name="label_editorial">Editorial: </string>
+    <string name="label_genero_literario">Gènere literari: </string>
+    <string name="label_papel">Paper</string>
+    <string name="label_digital">Digital</string>
+
+    <!-- Mesos -->
+    <string name="mes_enero">Gener</string>
+    <string name="mes_febrero">Febrer</string>
+    <string name="mes_marzo">Març</string>
+    <string name="mes_abril">Abril</string>
+    <string name="mes_mayo">Maig</string>
+    <string name="mes_junio">Juny</string>
+    <string name="mes_julio">Juliol</string>
+    <string name="mes_agosto">Agost</string>
+    <string name="mes_septiembre">Setembre</string>
+    <string name="mes_octubre">Octubre</string>
+    <string name="mes_noviembre">Novembre</string>
+    <string name="mes_diciembre">Desembre</string>
+
+    <!-- Idiomes -->
+    <string-array name="idiomas_array">
+        <item>Castellà</item>
+        <item>Català</item>
+        <item>Gallec</item>
+        <item>Euskera</item>
+    </string-array>
+
+    <!-- Etiqueta del llibre -->
+    <string name="label_fecha">Llegit el: </string>
+
+    <!-- Llistat de lectures -->
+    <string name="titulo_lecturas">Lectures fetes</string>
+
+    <!-- Detalls de llibre -->
+    <string name="label_fecha_publicacion">Data de publicació: </string>
+    <string name="label_num_paginas">Nombre de pàgines: </string>
+    <string name="label_descripcion">Descripció: </string>
+    <string name="label_fecha_lectura">Data de lectura: </string>
+    <string name="label_favorito">Favorit: </string>
+
+    <!-- Estadístiques -->
+    <string name="label_compartir">Compartir</string>
+
+    <!-- Opcions diverses -->
+    <string name="label_eliminar">Eliminar</string>
+    <string name="label_actualizar">Actualitzar</string>
+    <string name="label_sistema">Sistema</string>
+    <string name="label_idioma_selector">Idioma seleccionat:</string>
+    <string name="label_restaurar">Restaurar</string>
+    <string name="label_backup">Backup</string>
+
+    <!-- Objectiu de lectura -->
+    <string name="label_guardar">Guardar</string>
+
+    <!-- Afegeix lectura -->
+    <string name="titulo_anadir_lectura">Afegir lectura</string>
+    <string name="hint_introduce">Introdueix la teua cerca</string>
+    <string name="label_buscar">Cercar llibre</string>
+
+    <!-- Filtros -->
+    <string name="label_filtros">Filtres</string>
+    <string name="label_favoritos">Favorit</string>
+    <string name="label_anio">Any: </string>
+
+
+</resources>

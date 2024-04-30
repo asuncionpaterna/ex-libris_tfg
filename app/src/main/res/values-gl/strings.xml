@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Lecturas realizadas</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Pechar</string>
+    <string name="nav_header_title">Ex-Libris</string>
+    <string name="nav_header_subtitle">Rexistra as túas lecturas</string>
+    <string name="nav_header_desc">Cabeceira de navegación</string>
+    <string name="action_configuracion">Configuración</string>
+    <string name="action_objetivo_lectura">Obxectivo de lectura</string>
+    <string name="action_busqueda_avanzada">Busca avanzada</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_gallery">Lecturas</string>
+    <string name="menu_anadir">Engadir</string>
+    <string name="menu_estadisticas">Estatísticas</string>
+
+    <!-- Engadir -->
+    <string name="error_campo_vacio_busqueda">Introduce os datos da busca</string>
+    <string name="error_campo_vacio">Este campo non pode estar baleiro</string>
+    <string name="error_no_datos">Non se atoparon datos</string>
+    <string name="error_encontrado">Erro atopado é </string>
+
+    <!-- Gardar libro asincrónico -->
+    <string name="anadir_exito">O libro engadiuse</string>
+
+    <!-- Estatísticas -->
+    <string name="titulo_estadisticas_barras">Xéneros literarios máis lidos</string>
+    <string name="label_generos_literarios">Xéneros literarios</string>
+    <string name="label_lecturas_mes">Lecturas por mes</string>
+    <string name="label_meses">Meses</string>
+    <string name="y_axis_label">Cantidade de libros</string>
+    <string name="column_tooltip_format">{%Value|#,###}</string>
+    <string name="titulo_barras">Xéneros literarios</string>
+
+    <!-- Adaptador libro -->
+    <string name="label_paginas">Páxinas: </string>
+
+    <!-- Detalles lista -->
+    <string name="label_titulo">Título: </string>
+    <string name="label_autoria">Autoría: </string>
+    <string name="label_editorial">Editorial: </string>
+    <string name="label_genero_literario">Xénero literario: </string>
+    <string name="label_papel">Papel</string>
+    <string name="label_digital">Dixital</string>
+
+    <!-- Meses -->
+    <string name="mes_enero">Xaneiro</string>
+    <string name="mes_febrero">Febreiro</string>
+    <string name="mes_marzo">Marzo</string>
+    <string name="mes_abril">Abril</string>
+    <string name="mes_mayo">Maio</string>
+    <string name="mes_junio">Xuño</string>
+    <string name="mes_julio">Xullo</string>
+    <string name="mes_agosto">Agosto</string>
+    <string name="mes_septiembre">Setembro</string>
+    <string name="mes_octubre">Outubro</string>
+    <string name="mes_noviembre">Novembro</string>
+    <string name="mes_diciembre">Decembro</string>
+
+    <string-array name="idiomas_array">
+        <item>Castelán</item>
+        <item>Catalán</item>
+        <item>Galego</item>
+        <item>Eúscaro</item>
+    </string-array>
+
+    <!-- Etiqueta libro adaptador lista -->
+    <string name="label_fecha">Lido o: </string>
+
+    <!-- Listado lecturas -->
+    <string name="titulo_lecturas">Lecturas realizadas</string>
+
+    <!-- xml detalles libro engadir -->
+    <string name="label_fecha_publicacion">Data de publicación: </string>
+    <string name="label_num_paginas">Número de páxinas: </string>
+    <string name="label_descripcion">Descrición: </string>
+    <string name="label_fecha_lectura">Data de lectura: </string>
+    <string name="label_favorito">Favorito: </string>
+
+    <!-- xml estatísticas -->
+    <string name="label_compartir">Compartir</string>
+
+    <!-- xml detalles lista -->
+    <string name="label_eliminar">Eliminar</string>
+    <string name="label_actualizar">Actualizar</string>
+
+    <!-- xml detalles lista -->
+    <string name="label_sistema">Sistema</string>
+    <string name="label_idioma_selector">Idioma seleccionado:</string>
+    <string name="label_restaurar">Restaurar</string>
+    <string name="label_backup">BackUp</string>
+
+    <!-- xml diálogo obxectivo lectura -->
+    <string name="label_guardar">Gardar</string>
+
+    <!-- xml engadir -->
+    <string name="titulo_anadir_lectura">Engadir lectura</string>
+    <string name="hint_introduce">Introduce a túa busca</string>
+    <string name="label_buscar">Buscar libro</string>
+
+    <!-- xml listado lecturas -->
+    <string name="label_filtros">Filtros</string>
+    <string name="label_favoritos">Favorito</string>
+    <string name="label_anio">Ano: </string>
+
+
+
+</resources>

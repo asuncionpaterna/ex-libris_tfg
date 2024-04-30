@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">Egindako irakurketak</string>
+    <string name="navigation_drawer_open">Ireki</string>
+    <string name="navigation_drawer_close">Itxi</string>
+    <string name="nav_header_title">Ex-Libris</string>
+    <string name="nav_header_subtitle">Erregistratu zure irakurketak</string>
+    <string name="nav_header_desc">Nabigazio-burua</string>
+    <string name="action_configuracion">Konfigurazioa</string>
+    <string name="action_objetivo_lectura">Irakurketa helburua</string>
+    <string name="action_busqueda_avanzada">Bilaketa aurreratua</string>
+
+    <string name="menu_home">Hasiera</string>
+    <string name="menu_gallery">Irakurketak</string>
+    <string name="menu_anadir">Gehitu</string>
+    <string name="menu_estadisticas">Estatistikak</string>
+
+    <!-- Gehiatu -->
+    <string name="error_campo_vacio_busqueda">Sartu bilaketa-datuak</string>
+    <string name="error_campo_vacio">Eremu hau ezin da hutsa izan</string>
+    <string name="error_no_datos">Ez dira daturik aurkitu</string>
+    <string name="error_encontrado">Errorea aurkitua da </string>
+
+    <!-- Liburua asinkronoki gorde -->
+    <string name="anadir_exito">Liburua gehitu da</string>
+
+    <!-- Estatistikak -->
+    <string name="titulo_estadisticas_barras">Irakurrienak diren genero literarioak</string>
+    <string name="label_generos_literarios">Genero literarioak</string>
+    <string name="label_lecturas_mes">Irakurketak hilean</string>
+    <string name="label_meses">Hilabeteak</string>
+    <string name="y_axis_label">Liburu kopurua</string>
+    <string name="column_tooltip_format">{%Value|#,###}</string>
+    <string name="titulo_barras">Genero literarioak</string>
+
+    <!-- Liburua egokitu -->
+    <string name="label_paginas">Orrialdeak: </string>
+
+    <!-- Zerrenda xehetasunak -->
+    <string name="label_titulo">Izenburua: </string>
+    <string name="label_autoria">Autoretza: </string>
+    <string name="label_editorial">Argitaletxea: </string>
+    <string name="label_genero_literario">Genero literarioa: </string>
+    <string name="label_papel">Papera</string>
+    <string name="label_digital">Dijitala</string>
+
+    <!-- Hilabeteak -->
+    <string name="mes_enero">Urtarrila</string>
+    <string name="mes_febrero">Otsaila</string>
+    <string name="mes_marzo">Martxoa</string>
+    <string name="mes_abril">Apirila</string>
+    <string name="mes_mayo">Maiatza</string>
+    <string name="mes_junio">Ekaina</string>
+    <string name="mes_julio">Uztaila</string>
+    <string name="mes_agosto">Abuztua</string>
+    <string name="mes_septiembre">Iraila</string>
+    <string name="mes_octubre">Urria</string>
+    <string name="mes_noviembre">Azaroa</string>
+    <string name="mes_diciembre">Abendua</string>
+
+    <string-array name="idiomas_array">
+        <item>Kastilera</item>
+        <item>Katalana</item>
+        <item>Galegoa</item>
+        <item>Euskara</item>
+    </string-array>
+
+    <!-- Liburua egokitu zerrenda -->
+    <string name="label_fecha">Irakurri: </string>
+
+    <!-- Irakurketa zerrenda -->
+    <string name="titulo_lecturas">Egindako irakurketak</string>
+
+    <!-- xml liburua gehitu xehetasunak -->
+    <string name="label_fecha_publicacion">Argitalpen data: </string>
+    <string name="label_num_paginas">Orrialde kopurua: </string>
+    <string name="label_descripcion">Deskribapena: </string>
+    <string name="label_fecha_lectura">Irakurketa data: </string>
+    <string name="label_favorito">Gogokoena: </string>
+
+    <!-- xml estatistikak -->
+    <string name="label_compartir">Partekatu</string>
+
+    <!-- xml zerrenda xehetasunak -->
+    <string name="label_eliminar">Ezabatu</string>
+    <string name="label_actualizar">Eguneratu</string>
+
+    <!-- xml zerrenda xehetasunak -->
+    <string name="label_sistema">Sistema</string>
+    <string name="label_idioma_selector">Hautatutako hizkuntza:</string>
+    <string name="label_restaurar">Berreskuratu</string>
+    <string name="label_backup">Backup</string>
+
+    <!-- xml irakurketa helburua -->
+    <string name="label_guardar">Gorde</string>
+
+    <!-- xml gehitu -->
+    <string name="titulo_anadir_lectura">Irakurketak gehitu</string>
+    <string name="hint_introduce">Sartu zure bilaketa</string>
+    <string name="label_buscar">Bilatu liburua</string>
+
+    <!-- xml irakurketen zerrenda -->
+    <string name="label_filtros">Iragazkiak</string>
+    <string name="label_favoritos">Gogokoena</string>
+    <string name="label_anio">Urtea: </string>
+
+
+</resources>
