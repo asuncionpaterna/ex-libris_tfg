@@ -53,9 +53,9 @@ public class PieChartActivity extends AppCompatActivity {
             }
         });
 
-        Pie pie = AnyChart.pie();
+        Pie graficoSectores = AnyChart.pie();
 
-        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
+        graficoSectores.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
             @Override
             public void onClick(Event event) {
                 Toast.makeText(PieChartActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
@@ -65,7 +65,7 @@ public class PieChartActivity extends AppCompatActivity {
         Thread thread = new Thread(() -> {
             Resources resources = getResources();
             LibroDAO libroDAO = database.libroDAO();
-            List<DataEntry> data = new ArrayList<>();
+            List<DataEntry> datos = new ArrayList<>();
 
             int[] etiquetasMes = {
                     R.string.mes_enero,
@@ -83,22 +83,22 @@ public class PieChartActivity extends AppCompatActivity {
             };
 
             for (int i = 0; i < 12; i++) {
-                String monthName = resources.getString(etiquetasMes[i]);
-                String monthNumber = String.format("%02d", i + 1); // Para obtener "01", "02", ..., "12"
-                int count = libroDAO.getCountLecturabyMes(monthNumber);
-                data.add(new ValueDataEntry(monthName, count));
+                String nombreMes = resources.getString(etiquetasMes[i]);
+                String numeroMes = String.format("%02d", i + 1); // Para obtener "01", "02", ..., "12"
+                int count = libroDAO.getCountLecturabyMes(numeroMes);
+                datos.add(new ValueDataEntry(nombreMes, count));
             }
 
-            pie.data(data);
+            graficoSectores.data(datos);
 
-            pie.title(getString(R.string.label_lecturas_mes));
-            pie.labels().position("outside");
-            pie.legend().title().enabled(true);
-            pie.legend().title()
+            graficoSectores.title(getString(R.string.label_lecturas_mes));
+            graficoSectores.labels().position("outside");
+            graficoSectores.legend().title().enabled(true);
+            graficoSectores.legend().title()
                     .text(getString(R.string.label_meses))
                     .padding(0d, 0d, 10d, 0d);
 
-            pie.legend()
+            graficoSectores.legend()
                     .position("center-bottom")
                     .itemsLayout(LegendLayout.HORIZONTAL)
                     .align(Align.CENTER);
@@ -106,7 +106,7 @@ public class PieChartActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    anyChartView.setChart(pie);
+                    anyChartView.setChart(graficoSectores);
                 }
             });
         });

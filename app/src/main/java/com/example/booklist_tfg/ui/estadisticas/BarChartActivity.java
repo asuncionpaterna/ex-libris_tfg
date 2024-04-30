@@ -53,25 +53,25 @@ public class BarChartActivity extends AppCompatActivity {
                 shareImage(chartBitmap, context);
             }
         });
-        Cartesian cartesianBarras = AnyChart.column();
+        Cartesian graficoBarras = AnyChart.column();
         Thread thread = new Thread(() -> {
             LibroDAO libroDAO = database.libroDAO();
 
             Map<String, Integer> mapaGeneros = libroDAO.getGeneros();
-            List<DataEntry> data = new ArrayList<>();
+            List<DataEntry> datos = new ArrayList<>();
             int i = 0;
 
             // Se itera sobre el HashMap y se muestran las claves y valores
             for (Map.Entry<String, Integer> entry : mapaGeneros.entrySet()) {
-                String key = verificarGeneroLiterario(entry.getKey());  // Se obtiene la clave
-                Integer value = entry.getValue();  // Se obtiene el valor
-                data.add(new ValueDataEntry(key, value));
+                String clave = verificarGeneroLiterario(entry.getKey());  // Se obtiene la clave
+                Integer valor = entry.getValue();  // Se obtiene el valor
+                datos.add(new ValueDataEntry(clave, valor));
                 i++;
                 if (i == 5) break;
             }
 
-            Column columna = cartesianBarras.column(data);
-            LabelsFactory xEtiquetasEje = cartesianBarras.xAxis(0).labels();
+            Column columna = graficoBarras.column(datos);
+            LabelsFactory xEtiquetasEje = graficoBarras.xAxis(0).labels();
             xEtiquetasEje.rotation(-90);
             columna.tooltip()
                     .titleFormat("{%X}")
@@ -81,25 +81,25 @@ public class BarChartActivity extends AppCompatActivity {
                     .offsetY(5d)
                     .format(getString(R.string.column_tooltip_format));
 
-            cartesianBarras.animation(true);
-            cartesianBarras.title(getString(R.string.titulo_estadisticas_barras));
+            graficoBarras.animation(true);
+            graficoBarras.title(getString(R.string.titulo_estadisticas_barras));
 
-            cartesianBarras.yScale().minimum(0d);
+            graficoBarras.yScale().minimum(0d);
 
-            cartesianBarras.yAxis(0).labels().format(getString(R.string.column_tooltip_format));
+            graficoBarras.yAxis(0).labels().format(getString(R.string.column_tooltip_format));
 
 
-            cartesianBarras.tooltip().positionMode(TooltipPositionMode.POINT);
-            cartesianBarras.interactivity().hoverMode(HoverMode.BY_X);
+            graficoBarras.tooltip().positionMode(TooltipPositionMode.POINT);
+            graficoBarras.interactivity().hoverMode(HoverMode.BY_X);
 
-            cartesianBarras.xAxis(0).title(getString(R.string.label_generos_literarios));
-            cartesianBarras.yAxis(0).title(getString(R.string.y_axis_label));
+            graficoBarras.xAxis(0).title(getString(R.string.label_generos_literarios));
+            graficoBarras.yAxis(0).title(getString(R.string.y_axis_label));
 
 
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    anyChartView.setChart(cartesianBarras);
+                    anyChartView.setChart(graficoBarras);
                 }
             });
         });
