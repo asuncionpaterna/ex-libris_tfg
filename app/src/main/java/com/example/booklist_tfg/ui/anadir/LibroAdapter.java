@@ -1,6 +1,8 @@
 package com.example.booklist_tfg.ui.anadir;
 
 
+import static com.example.booklist_tfg.utils.Utils.formateoFechaString;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -43,6 +45,8 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
         Libro libroInfo = libroInfoArrayList.get(position);
         holder.tituloTV.setText(libroInfo.getTitulo());
         holder.editorialTV.setText(libroInfo.getEditorial());
+        String fechaPublicacion = ""+libroInfo.getAnioPublicacion();
+        formateoFechaString(fechaPublicacion);
         holder.fechaTV.setText("" + libroInfo.getAnioPublicacion());
         holder.paginasTV.setText(mcontext.getString(R.string.label_paginas) + libroInfo.getPaginas());
         // below line is use to set image from URL in our image view.
@@ -65,7 +69,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
 
                 i.putExtra("authors", libroInfo.getNombreAutoria());
                 i.putExtra("publisher", libroInfo.getEditorial());
-                i.putExtra("publishedDate", libroInfo.getAnioPublicacion());
+                i.putExtra("publishedDate", formateoFechaString(libroInfo.getAnioPublicacion()));
 
                 i.putExtra("pageCount", libroInfo.getPaginas());
                 i.putExtra("thumbnail", libroInfo.getPortada());

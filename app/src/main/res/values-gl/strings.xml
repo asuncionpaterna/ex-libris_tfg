@@ -14,6 +14,9 @@
     <string name="menu_anadir">Engadir</string>
     <string name="menu_estadisticas">Estatísticas</string>
 
+    <!--Inici-->
+    <string name="titulo_lecturas_inicio">Lecturas do</string>
+
     <!-- Engadir -->
     <string name="error_campo_vacio_busqueda">Introduce os datos da busca</string>
     <string name="error_campo_vacio">Este campo non pode estar baleiro</string>
@@ -57,12 +60,7 @@
     <string name="mes_noviembre">Novembro</string>
     <string name="mes_diciembre">Decembro</string>
 
-    <string-array name="idiomas_array">
-        <item>Castelán</item>
-        <item>Catalán</item>
-        <item>Galego</item>
-        <item>Eúscaro</item>
-    </string-array>
+
 
     <!-- Etiqueta libro adaptador lista -->
     <string name="label_fecha">Lido o: </string>
@@ -85,7 +83,6 @@
     <string name="label_actualizar">Actualizar</string>
 
     <!-- xml detalles lista -->
-    <string name="label_sistema">Sistema</string>
     <string name="label_idioma_selector">Idioma seleccionado:</string>
     <string name="label_restaurar">Restaurar</string>
     <string name="label_backup">BackUp</string>

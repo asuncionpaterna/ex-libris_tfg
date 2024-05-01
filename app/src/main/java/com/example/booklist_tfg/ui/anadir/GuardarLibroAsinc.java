@@ -36,7 +36,8 @@ public class GuardarLibroAsinc extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid){
         //Se muestra un mensaje de éxito al usuario
-        Toast.makeText(context, context.getString(R.string.anadir_exito), Toast.LENGTH_LONG);
+        String mensaje = ""+(context.getString(R.string.anadir_exito));
+        Toast.makeText(context, mensaje, Toast.LENGTH_LONG);
         //Se llama a la función porcentajeLectura para actualizar el estado del porcentaje
         porcentajeLectura();
     }

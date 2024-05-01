@@ -14,6 +14,9 @@
     <string name="menu_anadir">Gehitu</string>
     <string name="menu_estadisticas">Estatistikak</string>
 
+    <!--Inici-->
+    <string name="titulo_lecturas_inicio">Irakurketa honen</string>
+
     <!-- Gehiatu -->
     <string name="error_campo_vacio_busqueda">Sartu bilaketa-datuak</string>
     <string name="error_campo_vacio">Eremu hau ezin da hutsa izan</string>
@@ -57,12 +60,6 @@
     <string name="mes_noviembre">Azaroa</string>
     <string name="mes_diciembre">Abendua</string>
 
-    <string-array name="idiomas_array">
-        <item>Kastilera</item>
-        <item>Katalana</item>
-        <item>Galegoa</item>
-        <item>Euskara</item>
-    </string-array>
 
     <!-- Liburua egokitu zerrenda -->
     <string name="label_fecha">Irakurri: </string>
@@ -85,7 +82,6 @@
     <string name="label_actualizar">Eguneratu</string>
 
     <!-- xml zerrenda xehetasunak -->
-    <string name="label_sistema">Sistema</string>
     <string name="label_idioma_selector">Hautatutako hizkuntza:</string>
     <string name="label_restaurar">Berreskuratu</string>
     <string name="label_backup">Backup</string>

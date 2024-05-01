@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +47,8 @@ import androidx.room.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.SplittableRandom;
 
 public class MainActivity extends AppCompatActivity {
     public static boolean peq = false;
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static AppDatabase database;
     public static List<Libro> listaLibros = new ArrayList<>();
-
+    public  static String codigoIdioma = "es";
     public static boolean mostrarBusquedaAvanzada;
     public static boolean mostrarListaPeq;
     public static int objetivoLectura = 0;
@@ -71,14 +75,24 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         database = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "BaseDatos").build();
+
+        Resources resources = getResources();
+
+        codigoIdioma = sharedPreferences.getString("idioma", codigoIdioma);
+        Locale locale = new Locale(codigoIdioma);
+        Locale.setDefault(locale);
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(locale);
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
 
         floatingBTN = binding.appBarMain.fabAnadir;
         activity = this;
+
 
 
         setSupportActionBar(binding.appBarMain.toolbar);
@@ -199,5 +213,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
 
 }

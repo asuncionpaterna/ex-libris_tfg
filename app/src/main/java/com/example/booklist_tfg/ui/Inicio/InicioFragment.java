@@ -68,7 +68,8 @@ public class InicioFragment extends Fragment {
         establecerTema(modoOscuro, homeFL);
         mRecyclerView = view.findViewById(R.id.idRVMostrarLista);
         tituloTV = view.findViewById(R.id.idTvTitulo);
-        tituloTV.setText("Lecturas del " + anio);
+
+        tituloTV.setText(getResources().getString(R.string.titulo_lecturas_inicio) +" "+ anio);
         objetivoLecturaPB = view.findViewById(R.id.idObjetivoLectura);
 
         porcentajeLectura();

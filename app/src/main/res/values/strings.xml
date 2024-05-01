@@ -14,6 +14,9 @@
     <string name="menu_anadir">Añadir</string>
     <string name="menu_estadisticas">Estadísticas</string>
 
+    <!--Inici-->
+    <string name="titulo_lecturas_inicio">Lecturas del</string>
+
     <!--Añadir-->
     <string name="error_campo_vacio_busqueda">Introduce los datos de búsqueda</string>
     <string name="error_campo_vacio">Este campo no puede estar vacío</string>
@@ -60,9 +63,9 @@
 
     <string-array name="idiomas_array">
         <item>Castellano</item>
-        <item>Catalán</item>
-        <item>Gallego</item>
-        <item>Euskera</item>
+        <item>Català</item>
+        <item>Galego</item>
+        <item>Euskara</item>
     </string-array>
 
     <!--Etiqueta libro adapter list-->
@@ -86,7 +89,6 @@
     <string name="label_actualizar">Actualizar</string>
 
     <!--xml detalles lista-->
-    <string name="label_sistema">Sistema</string>
     <string name="label_idioma_selector">Idioma seleccionado:</string>
     <string name="label_restaurar">Restaurar</string>
     <string name="label_backup">BackUp</string>
