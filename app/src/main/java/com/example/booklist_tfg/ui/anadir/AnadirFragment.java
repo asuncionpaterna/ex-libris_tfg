@@ -126,9 +126,10 @@ public class AnadirFragment extends Fragment {
                             int paginas = volumeObj.optInt("pageCount");
                             JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
                             String portada = imageLinks.optString("thumbnail");
-
+                            String descripcion = volumeObj.optString("description");
                             // Una vez almacenados los datos se crea un libro y se almacena en el array list
-                            Libro libroInfo = new Libro(titulo, autoresArrayList, editorial, genero, anioPublicacion, paginas, portada);
+                            Libro libroInfo = new Libro(titulo, autoresArrayList, editorial, genero, descripcion, anioPublicacion, paginas, portada);
+
                             libroInfoArrayList.add(libroInfo);
 
 

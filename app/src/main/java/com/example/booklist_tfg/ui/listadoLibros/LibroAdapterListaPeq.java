@@ -60,7 +60,7 @@ public class LibroAdapterListaPeq extends RecyclerView.Adapter<LibroAdapterLista
 
                 i.putExtra("authors", libroInfo.getNombreAutoria());
                 i.putExtra("publisher", libroInfo.getEditorial());
-                i.putExtra("publishedDate", libroInfo.getAnioPublicacion());
+                i.putExtra("publishedDate", libroInfo.getFechaPublicacion());
 
                 i.putExtra("pageCount", libroInfo.getPaginas());
                 i.putExtra("thumbnail", libroInfo.getPortada());

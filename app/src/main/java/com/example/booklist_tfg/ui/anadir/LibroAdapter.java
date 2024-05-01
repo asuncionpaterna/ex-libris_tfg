@@ -1,8 +1,6 @@
 package com.example.booklist_tfg.ui.anadir;
 
 
-import static com.example.booklist_tfg.utils.Utils.formateoFechaString;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -45,9 +43,9 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
         Libro libroInfo = libroInfoArrayList.get(position);
         holder.tituloTV.setText(libroInfo.getTitulo());
         holder.editorialTV.setText(libroInfo.getEditorial());
-        String fechaPublicacion = ""+libroInfo.getAnioPublicacion();
-        formateoFechaString(fechaPublicacion);
-        holder.fechaTV.setText("" + libroInfo.getAnioPublicacion());
+        String fechaPublicacion =libroInfo.getFechaPublicacion();
+//        formateoFechaString(fechaPublicacion);
+        holder.fechaTV.setText(fechaPublicacion);
         holder.paginasTV.setText(mcontext.getString(R.string.label_paginas) + libroInfo.getPaginas());
         // below line is use to set image from URL in our image view.
         Picasso.get().load(libroInfo.getPortada()).into(holder.portadaIV);
@@ -65,14 +63,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
                 // inside on click listener method we are calling a new activity
                 // La informacióin que se pasa a los detalles del libro
                 Intent i = new Intent(mcontext, LibroDetalles.class);
-                i.putExtra("title", libroInfo.getTitulo());
 
-                i.putExtra("authors", libroInfo.getNombreAutoria());
-                i.putExtra("publisher", libroInfo.getEditorial());
-                i.putExtra("publishedDate", formateoFechaString(libroInfo.getAnioPublicacion()));
-
-                i.putExtra("pageCount", libroInfo.getPaginas());
-                i.putExtra("thumbnail", libroInfo.getPortada());
                 i.putExtra("libro", libroInfo);
 
 

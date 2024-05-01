@@ -1,6 +1,7 @@
 package com.example.booklist_tfg.ui.listadoLibros;
 
 import static com.example.booklist_tfg.MainActivity.database;
+import static com.example.booklist_tfg.MainActivity.inicio;
 import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
 import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturasFragment.mostrarLibrosLecturas;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
@@ -12,7 +13,9 @@ import static com.example.booklist_tfg.utils.Utils.verificarGeneroLiterario;
 import static com.example.booklist_tfg.ui.Inicio.InicioFragment.mostrarLibrosInicio;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booklist_tfg.Model.Libro;
@@ -39,14 +43,15 @@ import java.util.concurrent.Executors;
 
 public class LibroDetailsLista extends AppCompatActivity {
 
-    String titulo, editorial, generoLiterario, portada, fechaLectura;
+    String titulo, editorial, generoLiterario, portada, fechaLectura, descripcion;
     private ArrayList<String> autoriaList;
     boolean favorito, esPapel;
     Libro libro;
     private Date fecha;
+    Context mcontext = this;
 
     private ImageView portadaIV;
-    TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV;
+    TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV, descripcionTV;
     FrameLayout libroDetallesFL;
     CheckBox favoritoCB, esPapelCB;
     Button eliminarBtn, actualizarBtn;
@@ -65,6 +70,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         editorialTV = findViewById(R.id.idTVEditorial);
         generoLiterarioTV = findViewById(R.id.idTVGenero);
         fechaLecturaTV = findViewById(R.id.idTVFechaLecturaLibroDetalles);
+        descripcionTV = findViewById(R.id.idTVDescripcion);
 
         portadaIV = findViewById(R.id.idIVPortada);
         favoritoCB = findViewById(R.id.idCBFavorito);
@@ -87,13 +93,37 @@ public class LibroDetailsLista extends AppCompatActivity {
         favorito = libro.getFavorito();
         esPapel = libro.getEsPapel();
         portada = libro.getPortada();
-        Context mcontext = this;
+        descripcion = libro.getDescripcion();
+
+        final boolean[] desc = {false};
+        descripcionTV.setText(mcontext.getString(R.string.label_descripcion) + " [...]");
+
+        if (descripcion != null && !descripcion.isEmpty() && descripcion.length() > 0) {
+
+            descripcionTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (desc[0]) {
+                        desc[0] = false;
+                        descripcionTV.setText(mcontext.getString(R.string.label_descripcion) + " [...]");
+
+                    } else {
+                        desc[0] = true;
+                        descripcionTV.setText(mcontext.getString(R.string.label_descripcion) + "\n" + descripcion);
+                    }
+                }
+            });
+
+        } else {
+            descripcionTV.setText(mcontext.getString(R.string.label_descripcion) + " " + mcontext.getString(R.string.error_no_datos));
+        }
+
 
         fechaLectura = formateoFecha(fecha);
         tituloTV.setText(getString(R.string.label_titulo) + titulo);
         autoriaTV.setText(formateoAutoria(autoriaList));
-        editorialTV.setText(getString(R.string.label_editorial) + verificarDatos(editorial));
-        generoLiterarioTV.setText(getString(R.string.label_genero_literario) + verificarGeneroLiterario(generoLiterario));
+        editorialTV.setText(getString(R.string.label_editorial) + " " + verificarDatos(editorial, getBaseContext()));
+        generoLiterarioTV.setText(getString(R.string.label_genero_literario) + " " + verificarGeneroLiterario(generoLiterario, getBaseContext()));
         fechaLecturaTV.setText(fechaLectura);
         esPapelCB.setChecked(esPapel);
         actualizarTextoFormato(esPapelCB);
@@ -109,33 +139,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         eliminarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Se ejecuta la eliminación del libro en un hilo secundario
-                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            LibroDAO libroDAO = database.libroDAO();
-
-                            //Mediante una estructura de control Try&Catch se elimina el libro utilizando el DAO
-                            libroDAO.delete(libro);
-                            new InicioFragment.RecogerLibrosDB(mcontext).execute();
-
-                            //Tras eliminar el libro se finaliza la actividad
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mostrarLibrosInicio(mcontext);
-                                    mostrarLibrosLecturas(mcontext);
-                                    porcentajeLectura();
-                                    finish();
-                                }
-                            });
-                        } catch (Exception exception) {
-                            //Si ocurre alguna excepción se notifica por consola
-                            exception.printStackTrace();
-                        }
-                    }
-                });
+                mostrarDialogoBorrar();
             }
         });
 
@@ -195,6 +199,79 @@ public class LibroDetailsLista extends AppCompatActivity {
             }
         });
     }
+
+    public void mostrarDialogoBorrar() {
+        // Crea un AlertDialog.Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(mcontext);
+
+        // Establece el título del diálogo
+        builder.setTitle(mcontext.getString(R.string.dialogo_titulo) + " " + libro.getTitulo() + "?");
+
+        // Crea un ImageView programáticamente y establece la imagen
+        ImageView imageView = new ImageView(mcontext);
+        imageView.setPadding(16, 16, 16, 16); // Ajusta el padding si es necesario
+
+        Picasso.get().load(libro.getPortada()).into(imageView);
+
+        // Agrega el ImageView al diálogo
+        builder.setView(imageView);
+
+        // Establece el botón de aceptar
+        builder.setPositiveButton(mcontext.getString(R.string.dialogo_borrar), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                borrarLibro();
+                dialog.dismiss();
+            }
+        });
+
+        // Establece el botón de cancelar
+        builder.setNegativeButton(mcontext.getString(R.string.dialogo_cancelar), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Acción cuando se pulsa "Cancelar"
+                dialog.dismiss();
+            }
+        });
+
+        // Crea y muestra el diálogo
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void borrarLibro() {
+        // Se ejecuta la eliminación del libro en un hilo secundario
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    LibroDAO libroDAO = database.libroDAO();
+
+                    //Mediante una estructura de control Try&Catch se elimina el libro utilizando el DAO
+                    libroDAO.delete(libro);
+                    new InicioFragment.RecogerLibrosDB(mcontext).execute();
+
+                    //Tras eliminar el libro se finaliza la actividad
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (inicio) {
+                                mostrarLibrosInicio(mcontext);
+                            } else {
+                                mostrarLibrosLecturas(mcontext);
+                            }
+                            porcentajeLectura();
+                            finish();
+                        }
+                    });
+                } catch (Exception exception) {
+                    //Si ocurre alguna excepción se notifica por consola
+                    exception.printStackTrace();
+                }
+            }
+        });
+    }
+
     public void actualizarTextoFormato(CheckBox checkBox) {
         if (checkBox.isChecked()) {
             checkBox.setText(getString(R.string.label_papel));

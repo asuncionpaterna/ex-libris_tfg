@@ -63,7 +63,7 @@ public class BarChartActivity extends AppCompatActivity {
 
             // Se itera sobre el HashMap y se muestran las claves y valores
             for (Map.Entry<String, Integer> entry : mapaGeneros.entrySet()) {
-                String clave = verificarGeneroLiterario(entry.getKey());  // Se obtiene la clave
+                String clave = verificarGeneroLiterario(entry.getKey(), context);  // Se obtiene la clave
                 Integer valor = entry.getValue();  // Se obtiene el valor
                 datos.add(new ValueDataEntry(clave, valor));
                 i++;

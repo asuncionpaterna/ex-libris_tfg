@@ -47,7 +47,7 @@ public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.Bo
 
         Libro libroInfo = bookInfoArrayList.get(position);
         holder.tituloTV.setText(libroInfo.getTitulo());
-        holder.editorialTV.setText(verificarDatos(libroInfo.getEditorial()));
+        holder.editorialTV.setText(verificarDatos(libroInfo.getEditorial(),mcontext));
         holder.fechaLecturaTV.setText(labelFecha+formateoFecha(libroInfo.getFechaLectura()));
         holder.favoritoCB.setChecked(libroInfo.getFavorito());
         holder.esPapelCB.setChecked(libroInfo.getEsPapel());
@@ -67,7 +67,7 @@ public class LibroAdapterLista extends RecyclerView.Adapter<LibroAdapterLista.Bo
                 intent.putExtra("title", libroInfo.getTitulo());
                 intent.putExtra("authors", libroInfo.getNombreAutoria());
                 intent.putExtra("publisher", libroInfo.getEditorial());
-                intent.putExtra("publishedDate", libroInfo.getAnioPublicacion());
+                intent.putExtra("publishedDate", libroInfo.getFechaPublicacion());
                 intent.putExtra("pageCount", libroInfo.getPaginas());
                 intent.putExtra("thumbnail", libroInfo.getPortada());
                 intent.putExtra("libro", libroInfo);

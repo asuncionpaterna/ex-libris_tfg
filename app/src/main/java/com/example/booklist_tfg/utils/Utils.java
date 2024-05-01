@@ -35,16 +35,16 @@ public class Utils {
 
     ArrayList<String> generosLiterarios;
 
-    public static String verificarDatos(String datos) {
+    public static String verificarDatos(String datos, Context context) {
         if (datos == null || datos.isEmpty()) {
-            datos = "No hay datos disponibles.";
+            datos =context.getString(R.string.error_no_datos);
         }
         return datos;
     }
 
-    public static String verificarGeneroLiterario(String generoLiterario) {
+    public static String verificarGeneroLiterario(String generoLiterario, Context context) {
         if (generoLiterario == null || generoLiterario.isEmpty()) {
-            return "No hay datos disponibles.";
+            return context.getString(R.string.error_no_datos);
         } else {
             String regex = ".*[\\[\\]\"].*"; // Para comprobar si tiene corchetes o comillas dobles
             Pattern pattern = Pattern.compile(regex);
@@ -61,39 +61,6 @@ public class Utils {
     public static String formateoFecha(Date fecha) {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         return formatoFecha.format(fecha);
-    }
-
-    public static String formateoFechaString(String fechaStr) { //No funciona este método
-        if(fechaStr.contains("T")){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy", Locale.ENGLISH);            String[]fechaDividida = fechaStr.split("T");
-            LocalDate date = LocalDate.parse(fechaDividida[0]);
-            date.format(formatter);
-
-        }
-
-        if (fechaStr.length() < 10) {
-            try {
-                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-                Date fechaDate = formatoFecha.parse(fechaStr);
-                return formateoFecha(fechaDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                return "No hay datos disponibles.";
-            }
-
-        } else if(fechaStr.contains("T")) {
-            SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-mm-dd'T'HH:mm:ss");
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                Date fechaDate = isoFormat.parse(fechaStr); // El resultado es un Date
-                return outputFormat.format(fechaDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                return "No hay datos disponibles.";
-            }
-        }else{
-            return "";
-        }
     }
 
     public static StringBuilder formateoAutoria(ArrayList<String> autoriaLista) {

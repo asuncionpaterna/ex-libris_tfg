@@ -47,7 +47,8 @@ public class Json {
                     libroObj.put("Autoria", new JSONArray(libro.getNombreAutoria()));
                     libroObj.put("Editorial", libro.getEditorial());
                     libroObj.put("Genero", libro.getGenero());
-                    libroObj.put("Año publicacion", libro.getAnioPublicacion());
+                    libroObj.put("Descripcion", libro.getDescripcion());
+                    libroObj.put("Año publicacion", libro.getFechaPublicacion());
                     libroObj.put("Portada", libro.getPortada());
                     libroObj.put("Paginas", libro.getPaginas());
                     libroObj.put("Favorito", libro.getFavorito());
@@ -111,6 +112,7 @@ public class Json {
                         }
                         String editorial = libroObj.getString("Editorial");
                         String genero = libroObj.getString("Genero");
+                        String descripcion = libroObj.getString("Descripcion");
                         String anioPub = libroObj.getString("Año publicacion");
                         String portada = libroObj.getString("Portada");
                         int paginas = libroObj.getInt("Paginas");
@@ -118,7 +120,7 @@ public class Json {
                         boolean esPapel = libroObj.getBoolean("Es papel");
                         Date fechaLectura = new Date(libroObj.getString("Fecha lectura"));
 
-                        Libro libro = new Libro(titulo, autoriaLista, editorial, genero, anioPub, paginas, portada);
+                        Libro libro = new Libro(titulo, autoriaLista, editorial, genero, descripcion, anioPub, paginas, portada);
                         libro.setFechaLectura(fechaLectura);
                         libro.setFavorito(favorito);
                         libro.setEsPapel(esPapel);

@@ -2,7 +2,6 @@ package com.example.booklist_tfg.ui.anadir;
 
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
-import static com.example.booklist_tfg.utils.Utils.formateoFechaString;
 import static com.example.booklist_tfg.utils.Utils.showDatePicker;
 import static com.example.booklist_tfg.utils.Utils.verificarDatos;
 import static com.example.booklist_tfg.utils.Utils.verificarGeneroLiterario;
@@ -49,7 +48,7 @@ public class LibroDetalles extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_details);
+        setContentView(R.layout.activity_libro_detalles);
 
         // Se inicializan los elementos de la pantalla
         libroDetallesFL = findViewById(R.id.idFLLibroDetalles);
@@ -76,19 +75,19 @@ public class LibroDetalles extends AppCompatActivity {
         tituloLD = libro.getTitulo();
         autoriaListLD = libro.getNombreAutoria();
         editorialLD = libro.getEditorial();
-        fechaPublicacionLD = libro.getAnioPublicacion();
+        fechaPublicacionLD = libro.getFechaPublicacion();
         paginasLD = libro.getPaginas();
         generoLiterarioLD = libro.getGenero();
-        descripcionLD = getIntent().getStringExtra("description");
-        portadaLD = getIntent().getStringExtra("thumbnail");
+        descripcionLD = libro.getDescripcion();
+        portadaLD = libro.getPortada();
 
         // Se establecen los datos
         tituloTV.setText(tituloLD);
         autoriaTV.setText(formateoAutoria(autoriaListLD));
-        generoLiterarioTV.setText(verificarGeneroLiterario(generoLiterarioLD));
-        editorialTV.setText("Editorial: " + verificarDatos(editorialLD));
-        anioPublicacionTV.setText(formateoFechaString(fechaPublicacionLD));
-        descripcionTV.setText(verificarDatos(descripcionLD));
+        generoLiterarioTV.setText(verificarGeneroLiterario(generoLiterarioLD, getBaseContext()));
+        editorialTV.setText("Editorial: " + verificarDatos(editorialLD, getBaseContext()));
+        anioPublicacionTV.setText(fechaPublicacionLD);
+        descripcionTV.setText(verificarDatos(descripcionLD, getBaseContext()));
         paginasTV.setText("" + paginasLD);
 
         //Se carga la imagen de la portada usando Picasso.

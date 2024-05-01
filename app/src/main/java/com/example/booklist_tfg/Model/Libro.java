@@ -35,9 +35,10 @@ public class Libro implements Serializable {
     private ArrayList<String> nombreAutoria;
     private String editorial;
     private String genero;
+    private String descripcion;
 
-    @ColumnInfo(name = "anio_publicacion")
-    private String anioPublicacion;
+    @ColumnInfo(name = "fecha_publicacion")
+    private String fechaPublicacion;
 
     private int paginas;
     private String portada;
@@ -51,12 +52,13 @@ public class Libro implements Serializable {
     private Boolean esPapel;
 
     //Constructor que inicializa un objeto Libro con los detalles básicos
-    public Libro(@NonNull String titulo, ArrayList<String> nombreAutoria, String editorial, String genero, String anioPublicacion, int paginas, String portada) {
+    public Libro(@NonNull String titulo, ArrayList<String> nombreAutoria, String editorial, String genero, String descripcion, String fechaPublicacion, int paginas, String portada) {
         this.titulo = titulo;
         this.nombreAutoria = nombreAutoria;
         this.editorial = editorial;
         this.genero = genero;
-        this.anioPublicacion = anioPublicacion;
+        this.descripcion = descripcion;
+        this.fechaPublicacion = fechaPublicacion;
         this.paginas = paginas;
         this.portada = portada;
     }
@@ -82,9 +84,6 @@ public class Libro implements Serializable {
         return genero;
     }
 
-    public String getAnioPublicacion() {
-        return anioPublicacion;
-    }
 
     public int getPaginas() {
         return paginas;
