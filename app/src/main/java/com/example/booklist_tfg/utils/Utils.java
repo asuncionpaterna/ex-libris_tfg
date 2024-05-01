@@ -17,16 +17,13 @@ import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.core.content.FileProvider;
-
 import com.example.booklist_tfg.R;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -66,15 +63,37 @@ public class Utils {
         return formatoFecha.format(fecha);
     }
 
-    public static String formateoFechaString(String fecha) {
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date fechaDate = formatoFecha.parse(fecha);
-            formateoFecha(fechaDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public static String formateoFechaString(String fechaStr) { //No funciona este método
+        if(fechaStr.contains("T")){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy", Locale.ENGLISH);            String[]fechaDividida = fechaStr.split("T");
+            LocalDate date = LocalDate.parse(fechaDividida[0]);
+            date.format(formatter);
+
         }
-        return "No hay datos disponibles.";
+
+        if (fechaStr.length() < 10) {
+            try {
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                Date fechaDate = formatoFecha.parse(fechaStr);
+                return formateoFecha(fechaDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return "No hay datos disponibles.";
+            }
+
+        } else if(fechaStr.contains("T")) {
+            SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-mm-dd'T'HH:mm:ss");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date fechaDate = isoFormat.parse(fechaStr); // El resultado es un Date
+                return outputFormat.format(fechaDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return "No hay datos disponibles.";
+            }
+        }else{
+            return "";
+        }
     }
 
     public static StringBuilder formateoAutoria(ArrayList<String> autoriaLista) {

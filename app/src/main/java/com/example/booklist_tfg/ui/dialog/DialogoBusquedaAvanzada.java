@@ -1,7 +1,5 @@
 package com.example.booklist_tfg.ui.dialog;
 
-import static com.example.booklist_tfg.MainActivity.database;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.booklist_tfg.R;
-import com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturas;
+import com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturasFragment;
 
 
 //Clase para dar funcionalidad al diálogo búsqueda avanzada del menú
@@ -56,7 +54,7 @@ public class DialogoBusquedaAvanzada {
                 if (autoria.isEmpty()) {
                     autoriaET.setError(context.getString(R.string.error_campo_vacio_busqueda));
                 } else {
-                    new ListadoLecturas.RecogerLibrosAutoriaDB(context, autoria).execute();
+                    new ListadoLecturasFragment.RecogerLibrosAutoriaDB(context, autoria).execute();
                     //Se cierra el diálogo
                     dialog.dismiss();
                 }
@@ -71,7 +69,7 @@ public class DialogoBusquedaAvanzada {
                 if (genero.isEmpty()) {
                     generoET.setError(context.getString(R.string.error_campo_vacio_busqueda));
                 } else {
-                    new ListadoLecturas.RecogerLibrosGeneroDB(context, genero).execute();
+                    new ListadoLecturasFragment.RecogerLibrosGeneroDB(context, genero).execute();
                     //Se cierra el diálogo
                     dialog.dismiss();
                 }
@@ -86,7 +84,7 @@ public class DialogoBusquedaAvanzada {
                 if (editorial.isEmpty()) {
                     editorialET.setError(context.getString(R.string.error_campo_vacio_busqueda));
                 } else {
-                    new ListadoLecturas.RecogerLibrosEditorialDB(context, editorial).execute();
+                    new ListadoLecturasFragment.RecogerLibrosEditorialDB(context, editorial).execute();
                     //Se cierra el diálogo
                     dialog.dismiss();
                 }

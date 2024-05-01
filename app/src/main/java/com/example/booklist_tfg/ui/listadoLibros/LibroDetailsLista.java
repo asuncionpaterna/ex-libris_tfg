@@ -2,7 +2,7 @@ package com.example.booklist_tfg.ui.listadoLibros;
 
 import static com.example.booklist_tfg.MainActivity.database;
 import static com.example.booklist_tfg.ui.Inicio.InicioFragment.porcentajeLectura;
-import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturas.mostrarLibrosLecturas;
+import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturasFragment.mostrarLibrosLecturas;
 import static com.example.booklist_tfg.utils.Utils.establecerTema;
 import static com.example.booklist_tfg.utils.Utils.formateoAutoria;
 import static com.example.booklist_tfg.utils.Utils.formateoFecha;

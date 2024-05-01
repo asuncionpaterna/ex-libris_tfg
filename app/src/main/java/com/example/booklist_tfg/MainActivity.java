@@ -1,10 +1,8 @@
 package com.example.booklist_tfg;
 
 import static com.example.booklist_tfg.ui.Inicio.InicioFragment.mostrarLibrosInicio;
-import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturas.mostrarLibrosLecturas;
+import static com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturasFragment.mostrarLibrosLecturas;
 import static com.example.booklist_tfg.utils.Json.gestionarJson;
-
-import com.example.booklist_tfg.databinding.ActivityMainBinding;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,6 +19,7 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.booklist_tfg.Model.Libro;
+import com.example.booklist_tfg.databinding.ActivityMainBinding;
 import com.example.booklist_tfg.ddbb.AppDatabase;
 import com.example.booklist_tfg.ui.dialog.DialogoBusquedaAvanzada;
 import com.example.booklist_tfg.ui.dialog.DialogoConfiguracion;
@@ -48,7 +47,6 @@ import androidx.room.Room;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.SplittableRandom;
 
 public class MainActivity extends AppCompatActivity {
     public static boolean peq = false;

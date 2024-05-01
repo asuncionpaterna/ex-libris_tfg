@@ -41,7 +41,7 @@ import com.example.booklist_tfg.ui.listadoLibros.LibroAdapterListaPeq;
 
 import java.util.ArrayList;
 
-public class ListadoLecturas extends Fragment {
+public class ListadoLecturasFragment extends Fragment {
 
     static RecyclerView mRecyclerView;
     FrameLayout listadoLecturasFL;
@@ -50,7 +50,7 @@ public class ListadoLecturas extends Fragment {
     CheckBox favoritoCB, papelCB, digitalCB;
     EditText anioET;
     ImageButton anioBtn;
-    boolean filtroFavorito, filtroEsPapel;
+    boolean filtroFavorito, filtroEsPapel, filtroDigital;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listadolecturas, container, false);
@@ -84,7 +84,7 @@ public class ListadoLecturas extends Fragment {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-
+                filtroFavorito = favoritoCB.isChecked();
                 filtrarLibros();
             }
         });
@@ -95,6 +95,7 @@ public class ListadoLecturas extends Fragment {
                 if (papelCB.isChecked()) {
                     digitalCB.setChecked(false);
                 }
+                filtroEsPapel = papelCB.isChecked();
                 progressBar.setVisibility(View.VISIBLE);
 
                 filtrarLibros();
@@ -108,7 +109,7 @@ public class ListadoLecturas extends Fragment {
                 if (digitalCB.isChecked()) {
                     papelCB.setChecked(false);
                 }
-
+                filtroDigital = digitalCB.isChecked();
                 progressBar.setVisibility(View.VISIBLE);
 
                 filtrarLibros();
@@ -126,11 +127,15 @@ public class ListadoLecturas extends Fragment {
             }
         });
 
-        new RecogerTodosLibrosDB(getContext()).execute();
         return view;
     }
 
-
+    // Función para mantener las preferencias en la búsqueda cuando se navega en la aplicación (volver)
+    @Override
+    public void onStart() {
+        super.onStart();
+        filtrarLibros();
+    }
     private void filtrarLibros() {
 
         Thread thread = new Thread(() -> {
@@ -165,7 +170,7 @@ public class ListadoLecturas extends Fragment {
                 consulta.append(" es_papel = false ");
             }
 
-            if(!(anioET.getText().toString()).isEmpty()){
+            if (!(anioET.getText().toString()).isEmpty()) {
                 String anio = anioET.getText().toString();
                 if (!wherebool) {
                     consulta.append("WHERE ");
@@ -173,8 +178,10 @@ public class ListadoLecturas extends Fragment {
                 } else {
                     consulta.append(" AND ");
                 }
-                consulta.append(" fecha_lectura like "+anio+" || '%' ");
+                consulta.append(" fecha_lectura like " + anio + " || '%' ");
             }
+
+            consulta.append(" ORDER BY fecha_lectura DESC");
 
             SupportSQLiteQuery sqlq = new SimpleSQLiteQuery(consulta.toString());
             listaLibros = libroDAO.getLibrosFiltro(sqlq);
