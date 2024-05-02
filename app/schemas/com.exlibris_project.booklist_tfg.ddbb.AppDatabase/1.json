@@ -1,0 +1,100 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "505ae789d6783defa1dbe508b6897eb4",
+    "entities": [
+      {
+        "tableName": "libros",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `titulo` TEXT NOT NULL, `nombreAutoria` TEXT, `editorial` TEXT, `genero` TEXT, `descripcion` TEXT, `fecha_publicacion` TEXT, `paginas` INTEGER NOT NULL, `portada` TEXT, `favorito` INTEGER, `fecha_lectura` TEXT NOT NULL, `es_papel` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titulo",
+            "columnName": "titulo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombreAutoria",
+            "columnName": "nombreAutoria",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "editorial",
+            "columnName": "editorial",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "genero",
+            "columnName": "genero",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaPublicacion",
+            "columnName": "fecha_publicacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "paginas",
+            "columnName": "paginas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "portada",
+            "columnName": "portada",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "favorito",
+            "columnName": "favorito",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaLectura",
+            "columnName": "fecha_lectura",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "esPapel",
+            "columnName": "es_papel",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '505ae789d6783defa1dbe508b6897eb4')"
+    ]
+  }
+}
