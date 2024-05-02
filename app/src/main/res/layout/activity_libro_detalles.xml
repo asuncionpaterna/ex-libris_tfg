@@ -1,297 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idFLLibroDetalles"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/idFLLibroDetalles">
+    android:layout_height="match_parent">
 
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <LinearLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+
+        android:orientation="vertical"
+        tools:context="com.exlibris_project.booklist_tfg.MainActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!--Image view for displaying our book image-->
-            <ImageView
-                android:id="@+id/idIVPortadaList"
-                android:layout_width="130dp"
-                android:layout_height="160dp"
-                android:layout_margin="18dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <!--Image view for displaying our book image-->
+                <ImageView
+                    android:id="@+id/idIVPortadaList"
+                    android:layout_width="130dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/idTVTituloLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:text="Titulo"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/idTVAutoriaLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:text="Autoria"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+                    <!--Text view for displaying book publisher-->
+                    <TextView
+                        android:id="@+id/idTVEditorialLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:text="Editorial"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/idTVgeneroLiterarioLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
+                        android:text="Género literario"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/idTVTituloLibroDetalles"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:text="Titulo"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="fill"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/idTVAutoriaLibroDetalles"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="@string/label_fecha_publicacion"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/idTVFechaPublicacionLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="año"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:text="Autoria"
-                    android:textSize="15sp"
-                    android:textStyle="italic" />
-                <!--Text view for displaying book publisher-->
-                <TextView
-                    android:id="@+id/idTVEditorialLibroDetalles"
-                    android:layout_width="match_parent"
+                    android:layout_gravity="fill"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="@string/label_num_paginas"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/idTVPaginasLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="Num"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:text="Editorial"
-                    android:textSize="15sp" />
+                    android:layout_gravity="fill"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/idTVgeneroLiterarioLibroDetalles"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    android:text="Género literario"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="@string/label_descripcion"
+                        android:textSize="12sp" />
 
-
+                    <TextView
+                        android:id="@+id/idTVDescripcionLibroDetalles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscinostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="@string/label_fecha_publicacion"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/idTVFechaPublicacionLibroDetalles"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="año"
-                    android:textSize="12sp"
-                    android:textStyle="italic" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="@string/label_num_paginas"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/idTVPaginasLibroDetalles"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="Num"
-                    android:textSize="12sp"
-                    android:textStyle="italic" />
-            </LinearLayout>
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="@string/label_descripcion"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/idTVDescripcionLibroDetalles"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscinostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
-                    android:textSize="12sp"
-                    android:textStyle="italic" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/listDivider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="vertical">
 
-                <Space
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="@string/label_fecha_lectura"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/idTVFechaLecturaLibroDetalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="Hoy"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageButton
+                        android:id="@+id/idBtnFechaLibroDetalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:contentDescription="Icono de modificar fecha"
+                        android:src="@drawable/ic_edit_calendar"
+                        android:text="Cambiar" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="@string/label_fecha_lectura"
-                    android:textSize="15sp" />
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <CheckBox
+                        android:id="@+id/idCBFavoritoLibroDetalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/checkbox_selector_favorite"
+                        android:checked="false"
+                        android:padding="4dp"
+                        android:text="Favorito"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <CheckBox
+                        android:id="@+id/idCBesPapelLibroDetalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/checkbox_selector_book_digital"
+                        android:checked="true"
+                        android:padding="4dp"
+                        android:text="@string/label_papel"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/idTVFechaLecturaLibroDetalles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Hoy"
-                    android:textSize="15sp" />
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                   />
-
-                <ImageButton
-                    android:id="@+id/idBtnFechaLibroDetalles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:contentDescription="Icono de modificar fecha"
-                    android:src="@drawable/ic_edit_calendar"
-                    android:text="Cambiar" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
             </LinearLayout>
+
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="1">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <CheckBox
-                    android:id="@+id/idCBFavoritoLibroDetalles"
+                <!--Botón para añadir el libro al listado de lecturas -->
+                <Button
+                    android:id="@+id/idBtnAnadir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector_favorite"
-                    android:checked="false"
-                    android:padding="4dp"
-                    android:text="Favorito"
-                    android:textSize="15sp" />
-
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
-
-                <CheckBox
-                    android:id="@+id/idCBesPapelLibroDetalles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector_book_digital"
-                    android:checked="true"
-                    android:padding="4dp"
-                    android:text="@string/label_papel"
-                    android:textSize="15sp" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:background="@drawable/btn_redondeado"
+                    android:scaleType="centerInside"
+                    android:drawableTop="@drawable/ic_libro"
+                    android:gravity="center_horizontal"
+                    android:text="Añadir"
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
-
         </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:weightSum="1">
-
-            <!--Botón para añadir el libro al listado de lecturas -->
-            <ImageButton
-                android:id="@+id/idBtnAnadir"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:contentDescription="Icono de añadir en listado"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_add_simple" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
 </FrameLayout>

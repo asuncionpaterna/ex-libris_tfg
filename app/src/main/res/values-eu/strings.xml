@@ -98,6 +98,12 @@
     <string name="label_filtros">Iragazkiak</string>
     <string name="label_favoritos">Gogokoena</string>
     <string name="label_anio">Urtea: </string>
+    <string name="dialogo_borrar">Ezabatu</string>
+    <string name="dialogo_cancelar">Ezabatu</string>
+    <string name="dialogo_titulo">Ziur zaude ezabatzea</string>
+    <string name="menu_detalles">Liburuaren xehetasunak</string>
+    <string name="menu_grafico_barras">Barra-diagrama</string>
+    <string name="menu_grafico_sectores">Sektore-diagrama</string>
 
 
 </resources>

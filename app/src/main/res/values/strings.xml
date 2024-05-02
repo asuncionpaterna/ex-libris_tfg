@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lecturas realizadas</string>
+    <string name="app_name">Ex-Libris</string>
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Cerrar</string>
     <string name="nav_header_title">Ex-Libris</string>
@@ -13,6 +13,9 @@
     <string name="menu_gallery">Lecturas</string>
     <string name="menu_anadir">Añadir</string>
     <string name="menu_estadisticas">Estadísticas</string>
+    <string name="menu_detalles">Detalles libro</string>
+    <string name="menu_grafico_barras">Gráfico barras</string>
+    <string name="menu_grafico_sectores">Gráfico sectores</string>
 
     <!--Inici-->
     <string name="titulo_lecturas_inicio">Lecturas del</string>
@@ -24,7 +27,7 @@
     <string name="error_encontrado">Error encontrado es  </string>
 
     <!--Guardar libro asincrono-->
-    <string name="anadir_exito">Se ha añadido libro</string>
+    <string name="anadir_exito">Se ha añadido libro correctamente</string>
 
     <!--Estadisticas-->
     <string name="titulo_estadisticas_barras">Géneros literarios más leídos</string>

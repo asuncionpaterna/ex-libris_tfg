@@ -5,7 +5,7 @@
     android:id="@+id/homeFL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Inicio.InicioFragment">
+    tools:context="com.exlibris_project.booklist_tfg.ui.Inicio.InicioFragment">
 
 
     <RelativeLayout

@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.booklist_tfg.ui.Inicio.InicioFragment"
+        android:name="com.exlibris_project.booklist_tfg.ui.Inicio.InicioFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.booklist_tfg.ui.listadoLecturas.ListadoLecturasFragment"
+        android:name="com.exlibris_project.booklist_tfg.ui.listadoLecturas.ListadoLecturasFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_listadolecturas" />
 
     <fragment
         android:id="@+id/nav_anadir"
-        android:name="com.example.booklist_tfg.ui.anadir.AnadirFragment"
+        android:name="com.exlibris_project.booklist_tfg.ui.anadir.AnadirFragment"
         android:label="@string/menu_anadir"
         tools:layout="@layout/fragment_anadir" />
     <fragment
         android:id="@+id/nav_estadisticas"
-        android:name="com.example.booklist_tfg.ui.estadisticas.EstadisticasFragment"
+        android:name="com.exlibris_project.booklist_tfg.ui.estadisticas.EstadisticasFragment"
         android:label="@string/menu_estadisticas"
         tools:layout="@layout/fragment_estadisticas" />
 </navigation>

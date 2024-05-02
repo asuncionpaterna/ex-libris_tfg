@@ -7,19 +7,19 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_exlibris_pq"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_exlibris_pq"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.BookList_TFG"
         android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.exlibris_project.booklist_tfg.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.BookList_TFG.NoActionBar">
@@ -29,20 +29,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.booklist_tfg.ui.anadir.LibroDetalles"
-            android:label="Añadir libro"
+            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.anadir.LibroDetalles"
+            android:label="@string/menu_anadir"
             />
         <activity
-            android:name="com.example.booklist_tfg.ui.listadoLibros.LibroDetailsLista"
-            android:label="Detalles del libro"
+            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.listadoLibros.LibroDetailsLista"
+            android:label="@string/menu_detalles"
             />
         <activity
-            android:name="com.example.booklist_tfg.ui.estadisticas.PieChartActivity"
-            android:label="Grafico circular"
+            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.estadisticas.GraficoSectoresActivty"
+            android:label="@string/menu_grafico_sectores"
             />
         <activity
-            android:name="com.example.booklist_tfg.ui.estadisticas.BarChartActivity"
-            android:label="Grafico Barras"
+            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.estadisticas.GraficoBarrasActivity"
+            android:label="@string/menu_grafico_barras"
             />
         <provider
             android:name="androidx.core.content.FileProvider"

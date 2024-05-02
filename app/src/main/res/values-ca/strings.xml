@@ -19,6 +19,9 @@
     <string name="menu_gallery">Lectures</string>
     <string name="menu_anadir">Afegir</string>
     <string name="menu_estadisticas">Estadístiques</string>
+    <string name="menu_detalles">Detalls del llibre</string>
+    <string name="menu_grafico_barras">Gràfic de barres</string>
+    <string name="menu_grafico_sectores">Gràfic de sectors</string>
 
     <!--Inici-->
     <string name="titulo_lecturas_inicio">Lectures del</string>
@@ -64,8 +67,6 @@
     <string name="mes_noviembre">Novembre</string>
     <string name="mes_diciembre">Desembre</string>
 
-
-
     <!-- Etiqueta del llibre -->
     <string name="label_fecha">Llegit el: </string>
 
@@ -101,6 +102,11 @@
     <string name="label_filtros">Filtres</string>
     <string name="label_favoritos">Favorit</string>
     <string name="label_anio">Any: </string>
+
+    <!--Leyendas diálogos-->
+    <string name="dialogo_borrar">Esborrar</string>
+    <string name="dialogo_cancelar">Cancel·lar</string>
+    <string name="dialogo_titulo">Estàs segura d\'esborrar</string>
 
 
 </resources>

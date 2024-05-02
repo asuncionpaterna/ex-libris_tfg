@@ -99,7 +99,12 @@
     <string name="label_filtros">Filtros</string>
     <string name="label_favoritos">Favorito</string>
     <string name="label_anio">Ano: </string>
-
+    <string name="dialogo_borrar">Borrar</string>
+    <string name="dialogo_cancelar">Cancelar</string>
+    <string name="dialogo_titulo">Estás segura de borrar</string>
+    <string name="menu_detalles">Detalles do libro</string>
+    <string name="menu_grafico_barras">Gráfico de barras</string>
+    <string name="menu_grafico_sectores">Gráfico de sectores</string>
 
 
 </resources>

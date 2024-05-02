@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/idFLLibroDetallesLista"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.exlibris_project.booklist_tfg.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
