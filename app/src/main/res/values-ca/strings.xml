@@ -30,7 +30,7 @@
     <string name="error_campo_vacio_busqueda">Introdueix les dades de cerca</string>
     <string name="error_campo_vacio">Aquest camp no pot estar buit</string>
     <string name="error_no_datos">No s\'han trobat dades</string>
-    <string name="error_encontrado">Error trobat és </string>
+    <string name="error_encontrado">Error trobat</string>
     <string name="anadir_exito">El llibre s\'ha afegit</string>
 
     <!-- Estadístiques -->

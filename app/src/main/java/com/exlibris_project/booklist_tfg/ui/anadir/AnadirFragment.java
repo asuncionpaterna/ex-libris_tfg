@@ -4,15 +4,20 @@ import static com.exlibris_project.booklist_tfg.MainActivity.floatingBTN;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarListaPeq;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -63,6 +68,25 @@ public class AnadirFragment extends Fragment {
         buscarBTN = view.findViewById(R.id.idBtnSearch);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.idRVBooks);
 
+        buscarET.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                // Si se pulsa una tecla y es el botón ENTER
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+                    //Se oculta el teclado
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(buscarET.getWindowToken(), 0);
+
+                    //Se hace click en el botón Buscar
+                    buscarBTN.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         Utils.establecerTema(modoOscuro, anadirFL);
@@ -70,6 +94,10 @@ public class AnadirFragment extends Fragment {
         buscarBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Se oculta el teclado
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(buscarET.getWindowToken(), 0);
+
                 progressBar.setVisibility(View.VISIBLE);
                 //Se comprueba que el edit text tenga datos mediante una estructura de control if/else
                 if (buscarET.getText().toString().isEmpty()) {
@@ -146,7 +174,8 @@ public class AnadirFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     // Se captura la excepción en caso de error al procesar el JSON y se muestra
-                    Toast.makeText(getContext(), getString(R.string.error_no_datos) + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_no_datos), Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE); //Se oculta la barra de progreso
 
                 }
             }
@@ -154,7 +183,9 @@ public class AnadirFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Se muestran y manejan errores de la petición
-                Toast.makeText(getContext(), getString(R.string.error_encontrado)+ error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_encontrado), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE); //Se oculta la barra de progreso
+
             }
         });
         // Se añade la solicitud a la cola para su posterior ejecución

@@ -21,7 +21,7 @@
     <string name="error_campo_vacio_busqueda">Sartu bilaketa-datuak</string>
     <string name="error_campo_vacio">Eremu hau ezin da hutsa izan</string>
     <string name="error_no_datos">Ez dira daturik aurkitu</string>
-    <string name="error_encontrado">Errorea aurkitua da </string>
+    <string name="error_encontrado">Errorea aurkitua</string>
 
     <!-- Liburua asinkronoki gorde -->
     <string name="anadir_exito">Liburua gehitu da</string>

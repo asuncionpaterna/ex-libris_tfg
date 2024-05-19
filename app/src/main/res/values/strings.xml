@@ -24,7 +24,7 @@
     <string name="error_campo_vacio_busqueda">Introduce los datos de búsqueda</string>
     <string name="error_campo_vacio">Este campo no puede estar vacío</string>
     <string name="error_no_datos">No se han encontrado datos</string>
-    <string name="error_encontrado">Error encontrado es  </string>
+    <string name="error_encontrado">"Error encontrado "</string>
 
     <!--Guardar libro asincrono-->
     <string name="anadir_exito">Se ha añadido libro correctamente</string>

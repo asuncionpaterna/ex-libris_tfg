@@ -29,19 +29,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.anadir.LibroDetalles"
+            android:name="com.exlibris_project.booklist_tfg.ui.anadir.LibroDetalles"
             android:label="@string/menu_anadir"
             />
         <activity
-            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.listadoLibros.LibroDetailsLista"
+            android:name="com.exlibris_project.booklist_tfg.ui.listadoLibros.LibroDetailsLista"
             android:label="@string/menu_detalles"
             />
         <activity
-            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.estadisticas.GraficoSectoresActivty"
+            android:name="com.exlibris_project.booklist_tfg.ui.estadisticas.GraficoSectoresActivty"
             android:label="@string/menu_grafico_sectores"
             />
         <activity
-            android:name="com.example.booklist_tfg.com.exlibris_project.booklist_tfg.ui.estadisticas.GraficoBarrasActivity"
+            android:name="com.exlibris_project.booklist_tfg.ui.estadisticas.GraficoBarrasActivity"
             android:label="@string/menu_grafico_barras"
             />
         <provider

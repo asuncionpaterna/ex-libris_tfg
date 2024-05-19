@@ -21,7 +21,7 @@
     <string name="error_campo_vacio_busqueda">Introduce os datos da busca</string>
     <string name="error_campo_vacio">Este campo non pode estar baleiro</string>
     <string name="error_no_datos">Non se atoparon datos</string>
-    <string name="error_encontrado">Erro atopado é </string>
+    <string name="error_encontrado">Erro atopado</string>
 
     <!-- Gardar libro asincrónico -->
     <string name="anadir_exito">O libro engadiuse</string>
