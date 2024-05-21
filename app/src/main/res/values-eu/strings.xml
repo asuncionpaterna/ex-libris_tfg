@@ -104,6 +104,7 @@
     <string name="menu_detalles">Liburuaren xehetasunak</string>
     <string name="menu_grafico_barras">Barra-diagrama</string>
     <string name="menu_grafico_sectores">Sektore-diagrama</string>
+    <string name="error_anio">Urtea 4 zenbaki izan behar dira</string>
 
 
 </resources>

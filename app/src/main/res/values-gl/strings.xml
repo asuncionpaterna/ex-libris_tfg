@@ -105,6 +105,7 @@
     <string name="menu_detalles">Detalles do libro</string>
     <string name="menu_grafico_barras">Gráfico de barras</string>
     <string name="menu_grafico_sectores">Gráfico de sectores</string>
+    <string name="error_anio">O ano debe ser 4 números</string>
 
 
 </resources>

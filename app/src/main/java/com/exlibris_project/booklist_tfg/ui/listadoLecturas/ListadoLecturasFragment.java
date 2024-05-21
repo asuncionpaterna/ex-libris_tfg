@@ -12,8 +12,10 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +52,7 @@ public class ListadoLecturasFragment extends Fragment {
     CheckBox favoritoCB, papelCB, digitalCB;
     EditText anioET;
     ImageButton anioBtn;
-    boolean filtroFavorito, filtroEsPapel, filtroDigital;
+    boolean filtroFavorito, filtroEsPapel, filtroDigital, anioCorrecto;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listadolecturas, container, false);
@@ -118,6 +120,28 @@ public class ListadoLecturasFragment extends Fragment {
 
 
         anioET.setFilters(new InputFilter[]{new ValidacionNumeros()});
+
+        anioET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+           }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(anioET.getText().length()!= 0 && anioET.getText().length()<4){
+                    anioET.setError(getString(R.string.error_anio));
+                    anioCorrecto =false;
+                } else if (anioET.getText().length()==4) {
+                    anioET.setError(null);
+                    anioCorrecto =true;                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         anioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,7 +174,7 @@ public class ListadoLecturasFragment extends Fragment {
                 } else {
                     consulta.append(" AND ");
                 }
-                consulta.append("favorito = true");
+                consulta.append("favorito = 1");
             }
             if (papelCB.isChecked() && !digitalCB.isChecked()) {
                 if (!wherebool) {
@@ -159,7 +183,7 @@ public class ListadoLecturasFragment extends Fragment {
                 } else {
                     consulta.append(" AND ");
                 }
-                consulta.append(" es_papel = true ");
+                consulta.append(" es_papel = 1 ");
             } else if (!papelCB.isChecked() && digitalCB.isChecked()) {
                 if (!wherebool) {
                     consulta.append("WHERE ");
@@ -167,18 +191,17 @@ public class ListadoLecturasFragment extends Fragment {
                 } else {
                     consulta.append(" AND ");
                 }
-                consulta.append(" es_papel = false ");
+                consulta.append(" es_papel = 0 ");
             }
 
-            if (!(anioET.getText().toString()).isEmpty()) {
+            if (!(anioET.getText().toString()).isEmpty() && anioCorrecto) {
                 String anio = anioET.getText().toString();
                 if (!wherebool) {
                     consulta.append("WHERE ");
-                    wherebool = true;
                 } else {
                     consulta.append(" AND ");
                 }
-                consulta.append(" fecha_lectura like " + anio + " || '%' ");
+                consulta.append(" fecha_lectura like ").append(anio).append(" || '%' ");
             }
 
             consulta.append(" ORDER BY fecha_lectura DESC");

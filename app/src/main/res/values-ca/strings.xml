@@ -107,6 +107,7 @@
     <string name="dialogo_borrar">Esborrar</string>
     <string name="dialogo_cancelar">Cancel·lar</string>
     <string name="dialogo_titulo">Estàs segura d\'esborrar</string>
+    <string name="error_anio">L\'any ha de ser 4 números</string>
 
 
 </resources>

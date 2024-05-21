@@ -112,6 +112,7 @@
     <string name="dialogo_borrar">Borrar</string>
     <string name="dialogo_cancelar">Cancelar</string>
     <string name="dialogo_titulo">¿Estás segura de borrar</string>
+    <string name="error_anio">El año debe ser 4 números</string>
 
 
 </resources>
