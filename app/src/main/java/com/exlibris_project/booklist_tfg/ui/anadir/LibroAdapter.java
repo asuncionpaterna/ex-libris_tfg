@@ -17,11 +17,11 @@ import java.util.ArrayList;
 
 public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHolder> {
 
-    // creating variables for arraylist and context.
+    // Variables para la lista de libros y el contexto.
     private ArrayList<Libro> libroInfoArrayList;
     private Context mcontext;
 
-    // creating constructor for array list and context.
+    // Constructor para la lista de libros y el contexto.
     public LibroAdapter(ArrayList<Libro> libroInfoArrayList, Context mcontext) {
         this.libroInfoArrayList = libroInfoArrayList;
         this.mcontext = mcontext;
@@ -30,7 +30,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // inflating our layout for item of recycler view item.
+        // Inflar el layout para el ítem del RecyclerView.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.libro_anadir_rv_item, parent, false);
         return new BookViewHolder(view);
     }
@@ -38,18 +38,16 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
 
-        // inside on bind view holder method we are
-        // setting our data to each UI component.
+        // En el método onBindViewHolder, estamos configurando los datos para cada componente de la UI.
         Libro libroInfo = libroInfoArrayList.get(position);
         holder.tituloTV.setText(libroInfo.getTitulo());
         holder.editorialTV.setText(libroInfo.getEditorial());
         String fechaPublicacion =libroInfo.getFechaPublicacion();
-//        formateoFechaString(fechaPublicacion);
         holder.fechaTV.setText(fechaPublicacion);
         holder.paginasTV.setText(mcontext.getString(R.string.label_paginas) + libroInfo.getPaginas());
-        // below line is use to set image from URL in our image view.
+        // Configurar la imagen desde la URL en el ImageView.
         Picasso.get().load(libroInfo.getPortada()).into(holder.portadaIV);
-        // below line is use to add on click listener for our item of recycler view.
+        // Agregar un listener de click para cada ítem del RecyclerView.
         StringBuilder sb = new StringBuilder();
             ArrayList<String> autores = libroInfo.getNombreAutoria();
             for (int i = 0; i < autores.size(); i++){
@@ -60,15 +58,11 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // inside on click listener method we are calling a new activity
-                // La informacióin que se pasa a los detalles del libro
+                // Dentro del listener de click, estamos llamando a una nueva actividad
+                // y pasando la información a los detalles del libro.
                 Intent i = new Intent(mcontext, LibroDetalles.class);
-
                 i.putExtra("libro", libroInfo);
-
-
-                // after passing that data we are
-                // starting our new intent.
+                //Se inicia la actividad
                 mcontext.startActivity(i);
             }
         });
@@ -76,14 +70,12 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.BookViewHold
 
     @Override
     public int getItemCount() {
-        // inside get item count method we
-        // are returning the size of our array list.
+        // En el método getItemCount, estamos devolviendo el tamaño de nuestra lista.
         return libroInfoArrayList.size();
     }
 
     public class BookViewHolder extends RecyclerView.ViewHolder {
-        // below line is use to initialize
-        // our text view and image views.
+        // Inicializar los TextViews y ImageViews
         TextView tituloTV, editorialTV, paginasTV, fechaTV, autoriaTV;
         ImageView portadaIV;
 

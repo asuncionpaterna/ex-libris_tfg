@@ -64,8 +64,8 @@ public class ListadoLecturasFragment extends Fragment {
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         mostrarBusquedaAvanzada = true;
         mostrarListaPeq = true;
-
         requireActivity().invalidateOptionsMenu();
+        //Se inicializan los elementos de la vista para poder usarlos
         mRecyclerView = view.findViewById(R.id.idRVMostrarListaLL);
         listadoLecturasFL = view.findViewById(R.id.listadoLecturasFL);
         tituloTV = view.findViewById(R.id.idTVTituloLL);
@@ -81,7 +81,7 @@ public class ListadoLecturasFragment extends Fragment {
         filtroEsPapel = MainActivity.sharedPreferences.getBoolean("filtro_espapel", false);
 
         Utils.establecerTema(modoOscuro, listadoLecturasFL);
-
+        //Se crean las funcionalidades de los checkbox de pantalla
         favoritoCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,9 +118,9 @@ public class ListadoLecturasFragment extends Fragment {
             }
         });
 
-
+        // Se establece el filtro para permitir solo números en el campo de texto del año
         anioET.setFilters(new InputFilter[]{new ValidacionNumeros()});
-
+        //Se implementa la funcionalidad del campo de texto antes de mandar
         anioET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -146,7 +146,6 @@ public class ListadoLecturasFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-
                 filtrarLibros();
             }
         });
@@ -160,13 +159,14 @@ public class ListadoLecturasFragment extends Fragment {
         super.onStart();
         filtrarLibros();
     }
+    // Método para filtrar los libros según las preferencias seleccionadas
     private void filtrarLibros() {
 
         Thread thread = new Thread(() -> {
             LibroDAO libroDAO = MainActivity.database.libroDAO();
             StringBuilder consulta = new StringBuilder("SELECT * FROM libros ");
             boolean wherebool = false;
-
+            // Filtro para libros favoritos
             if (favoritoCB.isChecked()) {
                 if (!wherebool) {
                     consulta.append("WHERE ");
@@ -176,6 +176,7 @@ public class ListadoLecturasFragment extends Fragment {
                 }
                 consulta.append("favorito = 1");
             }
+            // Filtro para libros en papel
             if (papelCB.isChecked() && !digitalCB.isChecked()) {
                 if (!wherebool) {
                     consulta.append("WHERE ");
@@ -184,6 +185,7 @@ public class ListadoLecturasFragment extends Fragment {
                     consulta.append(" AND ");
                 }
                 consulta.append(" es_papel = 1 ");
+                //Filtro para libros en digital
             } else if (!papelCB.isChecked() && digitalCB.isChecked()) {
                 if (!wherebool) {
                     consulta.append("WHERE ");
@@ -193,7 +195,7 @@ public class ListadoLecturasFragment extends Fragment {
                 }
                 consulta.append(" es_papel = 0 ");
             }
-
+            // Filtro para el año de lectura
             if (!(anioET.getText().toString()).isEmpty() && anioCorrecto) {
                 String anio = anioET.getText().toString();
                 if (!wherebool) {
@@ -208,7 +210,7 @@ public class ListadoLecturasFragment extends Fragment {
 
             SupportSQLiteQuery sqlq = new SimpleSQLiteQuery(consulta.toString());
             listaLibros = libroDAO.getLibrosFiltro(sqlq);
-
+            // Actualiza la UI en el hilo principal
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -218,21 +220,18 @@ public class ListadoLecturasFragment extends Fragment {
         });
         thread.start();
     }
-
+    // Método para mostrar los libros filtrados en el RecyclerView
     public static void mostrarLibrosLecturas(Context context) {
 
         progressBar.setVisibility(View.GONE);
 
-        // below line is use to add linear layout
-        // manager for our recycler view.
+        // Se agrega el LinearLayoutManager al RecyclerView
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
 
-        // in below line we are setting layout manager and
-        // adapter to our recycler view.
+        // Se establece el layout manager y el adaptador para el RecyclerView
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        // below line is use to pass our
-        // array list in adapter class.
+        // Se pasa la lista de libros al adaptador correspondiente según el tamaño de las tarjetas
         if (!peq) {
             LibroAdapterLista adapter = new LibroAdapterLista((ArrayList<Libro>) listaLibros, context);
             mRecyclerView.setAdapter(adapter);
@@ -241,9 +240,8 @@ public class ListadoLecturasFragment extends Fragment {
             mRecyclerView.setAdapter(adapter);
         }
     }
-
+    // Clase para validar que solo se introduzcan números en el campo de texto del año
     public class ValidacionNumeros implements InputFilter {
-        // Método para filtrar caracteres no deseados (letras y simbolos)
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
 
             for (int i = start; i < end; i++) {
@@ -255,7 +253,7 @@ public class ListadoLecturasFragment extends Fragment {
             return null;
         }
     }
-
+    // Clase para recoger libros por autoría desde la base de datos
     public static class RecogerLibrosAutoriaDB extends AsyncTask<Void, Void, Void> {
         Context context;
         String autoria;
@@ -278,7 +276,7 @@ public class ListadoLecturasFragment extends Fragment {
             mostrarLibrosLecturas(context);
         }
     }
-
+    // Clase para recoger libros por género desde la base de datos
     public static class RecogerLibrosGeneroDB extends AsyncTask<Void, Void, Void> {
         Context context;
         String genero;
@@ -301,7 +299,7 @@ public class ListadoLecturasFragment extends Fragment {
             mostrarLibrosLecturas(context);
         }
     }
-
+    // Clase para recoger libros por editorial desde la base de datos
     public static class RecogerLibrosEditorialDB extends AsyncTask<Void, Void, Void> {
         Context context;
         String editorial;

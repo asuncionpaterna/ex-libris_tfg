@@ -126,7 +126,6 @@ public class AnadirFragment extends Fragment {
         String queryMod = query.replace(" ","+");
         // URL para conseguir los datos en formato JSON desde la API de Google Books
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
-        System.out.println(url);
         // Se crea la variable de cola con el contexto
         RequestQueue queue = Volley.newRequestQueue(getContext());
         // A continuación se crea un nuevo JsonObjectRequest para obtener los datos de la API

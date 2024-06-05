@@ -21,10 +21,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class LibroAdapterListaPeq extends RecyclerView.Adapter<LibroAdapterListaPeq.BookViewHolder> {
+    // Variables para la lista de libros y el contexto.
     private ArrayList<Libro> bookInfoArrayList;
     private Context mcontext;
 
-    // creating constructor for array list and context.
+    // Constructor para la lista de libros y el contexto.
     public LibroAdapterListaPeq(ArrayList<Libro> bookInfoArrayList, Context mcontext) {
         this.bookInfoArrayList = bookInfoArrayList;
         this.mcontext = mcontext;
@@ -33,28 +34,28 @@ public class LibroAdapterListaPeq extends RecyclerView.Adapter<LibroAdapterLista
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // inflating our layout for item of recycler view item.
+        // Inflar el layout para el ítem del RecyclerView.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.libro_lista_rv_item_peq, parent, false);
         return new LibroAdapterListaPeq.BookViewHolder(view);    }
 
 
     @Override
     public void onBindViewHolder(@NonNull LibroAdapterListaPeq.BookViewHolder holder, int position) {
-        // inside on bind view holder method we are
-        // setting our data to each UI component.
+        // En el método onBindViewHolder, estamos configurando los datos para cada componente de la UI.
         Libro libroInfo = bookInfoArrayList.get(position);
         holder.tituloTV.setText(libroInfo.getTitulo());
         holder.favoritoCB.setChecked(libroInfo.getFavorito());
 
         ArrayList<String> autores = libroInfo.getNombreAutoria();
         holder.autoriaTV.setText(Utils.formateoAutoria(autores));
-        // below line is use to set image from URL in our image view.
+        // Configurar la imagen desde la URL en el ImageView.
         Picasso.get().load(libroInfo.getPortada()).into(holder.portadaIV);
+        // Agregar un listener de click para cada ítem del RecyclerView.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // inside on click listener method we are calling a new activity
-                // La informacióin que se pasa a los detalles del libro
+                // Dentro del listener de click, estamos llamando a una nueva actividad
+                // y pasando la información a los detalles del libro.
                 Intent i = new Intent(mcontext, LibroDetailsLista.class);
                 i.putExtra("title", libroInfo.getTitulo());
 
@@ -66,8 +67,7 @@ public class LibroAdapterListaPeq extends RecyclerView.Adapter<LibroAdapterLista
                 i.putExtra("thumbnail", libroInfo.getPortada());
                 i.putExtra("libro", libroInfo);
 
-                // after passing that data we are
-                // starting our new intent.
+                //Se inicia la actividad
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(i);
             }
@@ -76,11 +76,12 @@ public class LibroAdapterListaPeq extends RecyclerView.Adapter<LibroAdapterLista
 
     @Override
     public int getItemCount() {
-        return bookInfoArrayList.size();    }
+        // En el método getItemCount, estamos devolviendo el tamaño de nuestra lista.
+        return bookInfoArrayList.size();
+    }
 
     public class BookViewHolder extends RecyclerView.ViewHolder {
-        // below line is use to initialize
-        // our text view and image views.
+        // Inicializar los TextViews y ImageViews
         TextView tituloTV, autoriaTV;
         ImageView portadaIV;
 

@@ -59,25 +59,27 @@ public class InicioFragment extends Fragment {
         inicio = true;
         mostrarBusquedaAvanzada = false;
         mostrarListaPeq = true;
-
+        //Invalida el menú de opciones para que se vuelva a mostrar
         requireActivity().invalidateOptionsMenu();
         //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        //Elementos de la vista
         homeFL = view.findViewById(R.id.homeFL);
         Utils.establecerTema(modoOscuro, homeFL);
         mRecyclerView = view.findViewById(R.id.idRVMostrarLista);
         tituloTV = view.findViewById(R.id.idTvTitulo);
 
+        //Establece el título del textview con el año actual
         tituloTV.setText(getResources().getString(R.string.titulo_lecturas_inicio) +" "+ anio);
         objetivoLecturaPB = view.findViewById(R.id.idObjetivoLectura);
-
+        // Se actualiza el porcentaje de lectura llamando al método
         porcentajeLectura();
         new RecogerLibrosDB(getContext()).execute();
         return view;
     }
 
     public static void porcentajeLectura() {
-
+    //Método para calcular y establecer el porcentaje de lectura, con colores
         Thread thread = new Thread(() -> {
             LibroDAO libroDAO = database.libroDAO();
 
@@ -87,7 +89,7 @@ public class InicioFragment extends Fragment {
             objetivoLecturaPB.setProgress((int) porcentaje);
 
             ColorStateList progressColor;
-
+            // Se establece el color de la barra de progreso según el porcentaje de lectura
             if (porcentaje < 20) {
                 progressColor = ColorStateList.valueOf(0xFFCC0000);
             } else if (porcentaje < 45) {
@@ -104,18 +106,15 @@ public class InicioFragment extends Fragment {
         });
         thread.start();
     }
-
+    // Método para mostrar la lista de libros en la pantalla de inicio
     public static void mostrarLibrosInicio(Context context) {
-        // below line is use to add linear layout
-        // manager for our recycler view.
+        // Se agrega el LinearLayoutManager al RecyclerView
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
 
-        // in below line we are setting layout manager and
-        // adapter to our recycler view.
+        // Se establece el layout manager y el adaptador para el RecyclerView
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        // below line is use to pass our
-        // array list in adapter class.
+        // Se pasa la lista de libros al adaptador correspondiente según si la visualización es de arjeta pequeña o grande
         if (!peq) {
             LibroAdapterLista adapter = new LibroAdapterLista((ArrayList<Libro>) listaLibros, context);
             mRecyclerView.setAdapter(adapter);
@@ -125,7 +124,7 @@ public class InicioFragment extends Fragment {
         }
 
     }
-
+    // Clase AsyncTask para recoger los libros de la base de datos
     public static class RecogerLibrosDB extends AsyncTask<Void, Void, Void> {
         Context context;
 
@@ -138,7 +137,6 @@ public class InicioFragment extends Fragment {
 
             LibroDAO libroDAO = database.libroDAO();
             listaLibros = libroDAO.getByAnio(String.valueOf(anio));
-            //libroDAO.deleteAll(listaLibros);
             return null;
         }
 
