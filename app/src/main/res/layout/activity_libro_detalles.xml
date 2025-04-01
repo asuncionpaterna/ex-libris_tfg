@@ -185,7 +185,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="@string/label_fecha_lectura"
+                        android:text="@string/label_fecha_lectura_inicio"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/idTVFechaLecturaLibroDetallesInicio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="Hoy"
+                        android:textSize="15sp" />
+                    <ImageButton
+                        android:id="@+id/idBtnFechaLibroDetallesInicio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:contentDescription="Icono de modificar fecha"
+                        android:src="@drawable/ic_edit_calendar"
+                        android:text="Cambiar" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="@string/label_fecha_lectura_fin"
                         android:textSize="15sp" />
 
 

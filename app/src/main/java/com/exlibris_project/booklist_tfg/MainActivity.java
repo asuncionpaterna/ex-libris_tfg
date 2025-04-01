@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //SharedPreferences Ajustes de usuarios que no se guardan en bases de datos.
         sharedPreferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         database = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "BaseDatos").build();

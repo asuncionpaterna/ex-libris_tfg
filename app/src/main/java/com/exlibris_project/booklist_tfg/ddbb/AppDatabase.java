@@ -9,6 +9,8 @@ import com.exlibris_project.booklist_tfg.Model.Libro;
 @androidx.room.TypeConverters({TypeConverters.class})
 
 public abstract class AppDatabase extends RoomDatabase {
+    //Conexión de la capa de abstracción Room.
+    //Se crea la base de tabla de base de datos en MainActivity
     public abstract LibroDAO libroDAO();
 
 }

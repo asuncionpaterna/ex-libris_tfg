@@ -68,11 +68,9 @@ public class DialogoConfiguracion {
         idiomasSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //Se maneja el spinner para evitar fallos
                 if (idiomaSeleccionado[0]) {
-                    // I set the export size on the Main activity int as the selected one
                     cambiarIdioma(codigosIdiomas.get(i));
-
-
                 } else {
                     idiomaSeleccionado[0] = true; // Because the spinner executes an item selection on startup
                 }

@@ -19,6 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+//Futuras mejoras
 public class Autoria {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_autoria")

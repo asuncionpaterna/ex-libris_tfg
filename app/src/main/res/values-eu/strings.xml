@@ -71,7 +71,8 @@
     <string name="label_fecha_publicacion">Argitalpen data: </string>
     <string name="label_num_paginas">Orrialde kopurua: </string>
     <string name="label_descripcion">Deskribapena: </string>
-    <string name="label_fecha_lectura">Irakurketa data: </string>
+    <string name="label_fecha_lectura_inicio">Hasiera data: </string>
+    <string name="label_fecha_lectura_fin">Amaiera data: </string>
     <string name="label_favorito">Gogokoena: </string>
 
     <!-- xml estatistikak -->

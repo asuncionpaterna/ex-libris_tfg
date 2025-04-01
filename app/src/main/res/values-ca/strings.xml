@@ -77,7 +77,8 @@
     <string name="label_fecha_publicacion">Data de publicació: </string>
     <string name="label_num_paginas">Nombre de pàgines: </string>
     <string name="label_descripcion">Descripció: </string>
-    <string name="label_fecha_lectura">Data de lectura: </string>
+    <string name="label_fecha_lectura_inicio">Data inici: </string>
+    <string name="label_fecha_lectura_fin">Data fi: </string>
     <string name="label_favorito">Favorit: </string>
 
     <!-- Estadístiques -->
