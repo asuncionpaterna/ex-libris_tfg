@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,6 +21,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
+@Data
 //Clase del objeto Libro
 public class Libro implements Serializable {
     //Clave primaria autogenerada para la columna id
@@ -44,9 +46,14 @@ public class Libro implements Serializable {
     private String portada;
 
     private Boolean favorito;
-    @NonNull
+
     @ColumnInfo(name = "fecha_lectura")
     private Date fechaLectura;
+
+    @NonNull
+    @ColumnInfo(name = "fecha_lectura_inicio")
+    private Date fechaLecturaInicio;
+
     @NonNull
     @ColumnInfo(name = "es_papel")
     private Boolean esPapel;
@@ -62,7 +69,7 @@ public class Libro implements Serializable {
         this.paginas = paginas;
         this.portada = portada;
     }
-    //Métodos para acceder a los elementos del libro
+    //Métodos para acceder a los elementos del libro.
     public int getId() {
         return id;
     }

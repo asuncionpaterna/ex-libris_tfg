@@ -40,20 +40,21 @@ import java.util.concurrent.Executors;
 
 public class LibroDetailsLista extends AppCompatActivity {
 
-    String titulo, editorial, generoLiterario, portada, fechaLectura, descripcion;
+    String titulo, editorial, generoLiterario, portada, fechaLecturaInicio, fechaLectura, descripcion;
     private ArrayList<String> autoriaList;
     boolean favorito, esPapel;
     Libro libro;
-    private Date fecha;
+    private Date fechaInicio, fecha;
     Context mcontext = this;
 
     private ImageView portadaIV;
-    TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaTV, descripcionTV;
+    TextView tituloTV, autoriaTV, editorialTV, generoLiterarioTV, fechaLecturaInicioTv, fechaLecturaTV, descripcionTV;
     FrameLayout libroDetallesFL;
     CheckBox favoritoCB, esPapelCB;
     Button eliminarBtn, actualizarBtn;
     Date[] fechas = new Date[1];
-    ImageButton fechaBtn;
+    Date[] fechasInicio = new Date[1];
+    ImageButton fechaBtnInicio, fechaBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         autoriaTV = findViewById(R.id.idTVAutoria);
         editorialTV = findViewById(R.id.idTVEditorial);
         generoLiterarioTV = findViewById(R.id.idTVGenero);
+        fechaLecturaInicioTv = findViewById(R.id.idTVFechaLecturaLibroDetallesInicio);
         fechaLecturaTV = findViewById(R.id.idTVFechaLecturaLibroDetalles);
         descripcionTV = findViewById(R.id.idTVDescripcion);
 
@@ -75,11 +77,15 @@ public class LibroDetailsLista extends AppCompatActivity {
 
         eliminarBtn = findViewById(R.id.idBtnEliminar);
         actualizarBtn = findViewById(R.id.idBtnModificar);
+        fechaBtnInicio = findViewById(R.id.idBtnFechaDetailsInicio);
         fechaBtn = findViewById(R.id.idBtnFechaDetails);
         fechas[0] = fecha;
+        fechasInicio[0] = fechaInicio;
+
         //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         Utils.establecerTema(modoOscuro, libroDetallesFL);
+
         //Almacenando los datos en las variables y se crea el contexto
         libro = (Libro) getIntent().getSerializableExtra("libro");
         titulo = libro.getTitulo();
@@ -87,6 +93,7 @@ public class LibroDetailsLista extends AppCompatActivity {
         editorial = libro.getEditorial();
         generoLiterario = libro.getGenero();
         fecha = libro.getFechaLectura();
+        fechaInicio = libro.getFechaLecturaInicio();
         favorito = libro.getFavorito();
         esPapel = libro.getEsPapel();
         portada = libro.getPortada();
@@ -117,10 +124,12 @@ public class LibroDetailsLista extends AppCompatActivity {
 
 
         fechaLectura = Utils.formateoFecha(fecha);
-        tituloTV.setText(getString(R.string.label_titulo) + titulo);
+        fechaLecturaInicio = Utils.formateoFecha(fechaInicio);
+        tituloTV.setText(titulo);
         autoriaTV.setText(Utils.formateoAutoria(autoriaList));
         editorialTV.setText(getString(R.string.label_editorial) + " " + Utils.verificarDatos(editorial, getBaseContext()));
         generoLiterarioTV.setText(getString(R.string.label_genero_literario) + " " + Utils.verificarGeneroLiterario(generoLiterario, getBaseContext()));
+        fechaLecturaInicioTv.setText(fechaLecturaInicio);
         fechaLecturaTV.setText(fechaLectura);
         esPapelCB.setChecked(esPapel);
         actualizarTextoFormato(esPapelCB);

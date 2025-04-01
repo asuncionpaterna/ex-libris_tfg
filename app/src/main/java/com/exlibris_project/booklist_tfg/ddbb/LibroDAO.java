@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Dao
 public interface LibroDAO {
-
+    //Interfaz Data Access Object, accede con anotaciones a la base de datos
     @Query("SELECT * FROM libros ORDER BY fecha_lectura DESC")
     List<Libro> getAll();
 

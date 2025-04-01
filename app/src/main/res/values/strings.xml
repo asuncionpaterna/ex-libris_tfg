@@ -81,7 +81,8 @@
     <string name="label_fecha_publicacion">Fecha publicación: </string>
     <string name="label_num_paginas">Número de páginas: </string>
     <string name="label_descripcion">Descripción: </string>
-    <string name="label_fecha_lectura">Fecha Lectura: </string>
+    <string name="label_fecha_lectura_inicio">Fecha inicio: </string>
+    <string name="label_fecha_lectura_fin">Fecha fin: </string>
     <string name="label_favorito">Favorito: </string>
 
     <!--xml estadisticas-->
