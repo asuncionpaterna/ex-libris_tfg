@@ -94,12 +94,12 @@ public class AnadirFragment extends Fragment {
         buscarBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Se oculta el teclado
+                // Se oculta el teclado
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(buscarET.getWindowToken(), 0);
 
                 progressBar.setVisibility(View.VISIBLE);
-                //Se comprueba que el edit text tenga datos mediante una estructura de control if/else
+                // Se comprueba que el edit text tenga datos mediante una estructura de control if/else
                 if (buscarET.getText().toString().isEmpty()) {
                     //Si está vacio se notifica mediante un error
                     buscarET.setError(getString(R.string.error_campo_vacio_busqueda));
