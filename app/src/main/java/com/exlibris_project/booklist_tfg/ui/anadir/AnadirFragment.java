@@ -1,6 +1,7 @@
 package com.exlibris_project.booklist_tfg.ui.anadir;
 
 import static com.exlibris_project.booklist_tfg.MainActivity.floatingBTN;
+import static com.exlibris_project.booklist_tfg.MainActivity.mostrarAnadirManual;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarListaPeq;
 
@@ -58,6 +59,7 @@ public class AnadirFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_anadir, container, false);
         floatingBTN.hide();
         mostrarBusquedaAvanzada = false;
+        mostrarAnadirManual= true;
         mostrarListaPeq = false;
 
         requireActivity().invalidateOptionsMenu();

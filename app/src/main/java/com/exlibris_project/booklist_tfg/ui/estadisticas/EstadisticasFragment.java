@@ -1,5 +1,6 @@
 package com.exlibris_project.booklist_tfg.ui.estadisticas;
 
+import static com.exlibris_project.booklist_tfg.MainActivity.mostrarAnadirManual;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarListaPeq;
 
@@ -34,6 +35,7 @@ public class EstadisticasFragment extends Fragment {
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         Utils.establecerTema(modoOscuro, mEstadisticasFL);
         mostrarBusquedaAvanzada = false;
+        mostrarAnadirManual = false;
         mostrarListaPeq = false;
 
         requireActivity().invalidateOptionsMenu();

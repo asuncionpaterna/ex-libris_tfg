@@ -20,6 +20,7 @@ import com.exlibris_project.booklist_tfg.Model.Libro;
 import com.example.booklist_tfg.R;
 import com.example.booklist_tfg.databinding.ActivityMainBinding;
 import com.exlibris_project.booklist_tfg.ddbb.AppDatabase;
+import com.exlibris_project.booklist_tfg.ui.anadir.AnadirManual;
 import com.exlibris_project.booklist_tfg.ui.dialog.DialogoBusquedaAvanzada;
 import com.exlibris_project.booklist_tfg.ui.dialog.DialogoConfiguracion;
 import com.exlibris_project.booklist_tfg.ui.dialog.DialogoObjetivo;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<Libro> listaLibros = new ArrayList<>();
     public  static String codigoIdioma = "es";
     public static boolean mostrarBusquedaAvanzada;
+    public static boolean mostrarAnadirManual;
     public static boolean mostrarListaPeq;
     public static int objetivoLectura = 0;
     public static SharedPreferences sharedPreferences;
@@ -135,9 +137,13 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         // Ocultar un elemento específico
         MenuItem itemBusquedaAvanzada = menu.findItem(R.id.menu_busqueda_avanzada);
+        MenuItem itemAnadirManual = menu.findItem(R.id.menu_anadir_manual);
         MenuItem itemListadoPeq = menu.findItem(R.id.menu_peq);
         if (itemBusquedaAvanzada != null) {
             itemBusquedaAvanzada.setVisible(mostrarBusquedaAvanzada ? true : false); // Oculta el item del menú
+        }
+        if(itemAnadirManual !=null){
+            itemAnadirManual.setVisible(mostrarAnadirManual ? true:false);
         }
         if (itemListadoPeq != null) {
             itemListadoPeq.setIcon(peq ? getDrawable(R.drawable.ic_grande) : getDrawable(R.drawable.ic_pequeno));
@@ -182,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
             dialogoBusquedaAvanzada.showDialog();
 
             return true;
+        } else if (id == R.id.menu_anadir_manual){
+            //AQUIIII
         }
 
         return super.onOptionsItemSelected(item);

@@ -4,6 +4,7 @@ import static com.exlibris_project.booklist_tfg.MainActivity.database;
 import static com.exlibris_project.booklist_tfg.MainActivity.floatingBTN;
 import static com.exlibris_project.booklist_tfg.MainActivity.inicio;
 import static com.exlibris_project.booklist_tfg.MainActivity.listaLibros;
+import static com.exlibris_project.booklist_tfg.MainActivity.mostrarAnadirManual;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarListaPeq;
 import static com.exlibris_project.booklist_tfg.MainActivity.peq;
@@ -63,6 +64,7 @@ public class ListadoLecturasFragment extends Fragment {
         //Se comprueba el tema del terminal (oscuro o claro) y se establece en la aplicación
         int modoOscuro = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         mostrarBusquedaAvanzada = true;
+        mostrarAnadirManual = false;
         mostrarListaPeq = true;
         requireActivity().invalidateOptionsMenu();
         //Se inicializan los elementos de la vista para poder usarlos

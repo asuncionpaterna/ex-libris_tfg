@@ -4,6 +4,7 @@ import static com.exlibris_project.booklist_tfg.MainActivity.database;
 import static com.exlibris_project.booklist_tfg.MainActivity.floatingBTN;
 import static com.exlibris_project.booklist_tfg.MainActivity.inicio;
 import static com.exlibris_project.booklist_tfg.MainActivity.listaLibros;
+import static com.exlibris_project.booklist_tfg.MainActivity.mostrarAnadirManual;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarBusquedaAvanzada;
 import static com.exlibris_project.booklist_tfg.MainActivity.mostrarListaPeq;
 import static com.exlibris_project.booklist_tfg.MainActivity.objetivoLectura;
@@ -58,6 +59,7 @@ public class InicioFragment extends Fragment {
         }
         inicio = true;
         mostrarBusquedaAvanzada = false;
+        mostrarAnadirManual = false;
         mostrarListaPeq = true;
         //Invalida el menú de opciones para que se vuelva a mostrar
         requireActivity().invalidateOptionsMenu();
