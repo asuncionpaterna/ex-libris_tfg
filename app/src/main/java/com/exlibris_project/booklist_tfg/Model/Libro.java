@@ -113,4 +113,69 @@ public class Libro implements Serializable {
     public Boolean getEsPapel() {
         return esPapel;
     }
+
+    public void setFechaPublicacion(String fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    @NonNull
+    public Date getFechaLecturaInicio() {
+        return fechaLecturaInicio;
+    }
+
+    public void setFechaLecturaInicio(@NonNull Date fechaLecturaInicio) {
+        this.fechaLecturaInicio = fechaLecturaInicio;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitulo(@NonNull String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setNombreAutoria(ArrayList<String> nombreAutoria) {
+        this.nombreAutoria = nombreAutoria;
+    }
+
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setPaginas(int paginas) {
+        this.paginas = paginas;
+    }
+
+    public void setPortada(String portada) {
+        this.portada = portada;
+    }
+
+    public void setFavorito(Boolean favorito) {
+        this.favorito = favorito;
+    }
+
+    public void setFechaLectura(Date fechaLectura) {
+        this.fechaLectura = fechaLectura;
+    }
+
+    public void setEsPapel(@NonNull Boolean esPapel) {
+        this.esPapel = esPapel;
+    }
 }

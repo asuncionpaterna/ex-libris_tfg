@@ -31,15 +31,15 @@ public class LibroDetalles extends AppCompatActivity {
     int paginasLD;
     private ArrayList<String> autoriaListLD;
     FrameLayout libroDetallesFL;
-    TextView tituloTV, autoriaTV, editorialTV, descripcionTV, paginasTV, anioPublicacionTV, fechaLecturaTV, generoLiterarioTV;
+    TextView tituloTV, autoriaTV, editorialTV, descripcionTV, paginasTV, anioPublicacionTV, fechaLecturaInicioTV, fechaLecturaTV, generoLiterarioTV;
 
     Button anadirBtn;
-    ImageButton fechaBtn;
+    ImageButton fechaInicioBtn, fechaBtn;
 
     CheckBox favoritoCB, esPapelCB;
     private ImageView imagenLibroIV;
     boolean favorito, esPapel;
-    public Date fechaBD;
+    public Date fechaBD, fechaInicio;
 
 
     @Override
@@ -57,6 +57,8 @@ public class LibroDetalles extends AppCompatActivity {
         anioPublicacionTV = findViewById(R.id.idTVFechaPublicacionLibroDetalles);
         anadirBtn = findViewById(R.id.idBtnAnadir);
         imagenLibroIV = findViewById(R.id.idIVPortadaList);
+        fechaInicioBtn = findViewById(R.id.idBtnFechaLibroDetallesInicio);
+        fechaLecturaInicioTV = findViewById(R.id.idTVFechaLecturaLibroDetallesInicio);
         fechaBtn = findViewById(R.id.idBtnFechaLibroDetalles);
         fechaLecturaTV = findViewById(R.id.idTVFechaLecturaLibroDetalles);
         generoLiterarioTV = findViewById(R.id.idTVgeneroLiterarioLibroDetalles);
@@ -98,12 +100,27 @@ public class LibroDetalles extends AppCompatActivity {
                 favorito = favoritoCB.isChecked();
                 esPapel = esPapelCB.isChecked();
                 libro.setFechaLectura(fechaBD);
+                libro.setFechaLecturaInicio(fechaInicio);
                 libro.setFavorito(favorito);
                 libro.setEsPapel(esPapel);
                 //Se guarda el libro empleando el método asíncrono GuardarLibroAsinc
                 new GuardarLibroAsinc(libro, getBaseContext()).execute();
                 Toast.makeText(getBaseContext(), getBaseContext().getString(R.string.anadir_exito), Toast.LENGTH_LONG).show();
                 finish();
+            }
+        });
+
+        fechaInicioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Se muestra el selector de fecha y obtener la fecha seleccionar
+                Utils.showDatePicker(LibroDetalles.this, fechaLecturaInicioTV, fechaInicio, new Utils.OnDateSelectedListener() {
+                    @Override
+                    public void onDateSelected(Date selectedDate) {
+                        // Se establece la fecha seleccionada como la fecha de lectura
+                        fechaInicio = selectedDate;
+                    }
+                });
             }
         });
         // Se configura la funcionalidad del botón de fecha de lectura
@@ -124,7 +141,9 @@ public class LibroDetalles extends AppCompatActivity {
         // Se configura la fecha de lectura por defecto al día actual
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         fechaBD = new Date();
+        fechaInicio = new Date();
         fechaLecturaTV.setText(sdf.format(fechaBD));
+        fechaLecturaInicioTV.setText(sdf.format(fechaInicio));
 
         //Se configura la funcionalidad del checkbox del formato del libro
         esPapelCB.setOnClickListener(new View.OnClickListener() {
