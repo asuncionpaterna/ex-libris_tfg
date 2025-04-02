@@ -8,6 +8,7 @@
     <string name="action_configuracion">Konfigurazioa</string>
     <string name="action_objetivo_lectura">Irakurketa helburua</string>
     <string name="action_busqueda_avanzada">Bilaketa aurreratua</string>
+    <string name="action_anadir_manual">Eskuz gehitu</string>
 
     <string name="menu_home">Hasiera</string>
     <string name="menu_gallery">Irakurketak</string>

@@ -8,6 +8,7 @@
     <string name="action_configuracion">Configuración</string>
     <string name="action_objetivo_lectura">Obxectivo de lectura</string>
     <string name="action_busqueda_avanzada">Busca avanzada</string>
+    <string name="action_anadir_manual">Engadir manualmente</string>
 
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Lecturas</string>

@@ -13,6 +13,7 @@
     <string name="action_configuracion">Configuració</string>
     <string name="action_objetivo_lectura">Objectiu de lectura</string>
     <string name="action_busqueda_avanzada">Cerca avançada</string>
+    <string name="action_anadir_manual">Afegir manualment</string>
 
     <!-- Menú -->
     <string name="menu_home">Inici</string>
